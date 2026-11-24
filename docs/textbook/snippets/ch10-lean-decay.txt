@@ -1,0 +1,22 @@
+theorem decay_truncation (T : ℝ) :
+    (∫ x : ℝ in (0 : ℝ)..T, Real.exp (-x)) = 1 - Real.exp (-T) := by
+  have hd : ∀ x : ℝ, HasDerivAt (fun t => -Real.exp (-t)) (Real.exp (-x)) x := by
+    intro x
+    convert ((Real.hasDerivAt_exp (-x)).comp x (hasDerivAt_id' x).neg).neg
+      using 1 <;>
+      first | rfl | ring
+  have hi : IntervalIntegrable (fun x : ℝ => Real.exp (-x)) volume 0 T := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  rw [Ch09.primitive_integral (fun x _ => hd x) hi]
+  simp only [neg_zero, Real.exp_zero, sub_neg_eq_add]
+  ring	-- exp(0)=1，得到截断积分公式
+
+theorem exponential_improper :
+    ImproperRight (fun x : ℝ => Real.exp (-x)) 0 1 := by
+  constructor
+  · intro T hT
+    apply Continuous.intervalIntegrable
+    fun_prop	-- 每个有限截断区间都可积
+  · simp_rw [decay_truncation]
+    simpa using tendsto_const_nhds.sub Real.tendsto_exp_neg_atTop_nhds_zero

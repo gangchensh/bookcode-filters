@@ -1,0 +1,9 @@
+def nextNat (n : ℕ) : ℕ := n + 1	-- 自然数的后继函数
+def Positive (n : ℕ) : Prop := 0 < n	-- 自然数为正的谓词
+
+example : nextNat 2 = 3 := by
+  rfl	-- 两侧计算后都是3
+
+example : Positive 3 := by
+  change 0 < (3 : ℕ)	-- 展开谓词Positive
+  decide	-- 判定自然数不等式0 < 3

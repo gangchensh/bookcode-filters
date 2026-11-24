@@ -1,0 +1,8 @@
+theorem eventually_subst {f g : α → β} {P : β → Prop}   -- 用最终相等替换性质
+    (hfg : EventuallyEq F f g)                          -- hfg：f =^F g
+    (hP : Eventually F (fun x => P (f x))) :            -- hP：P(f x)沿F最终成立
+    Eventually F (fun x => P (g x)) := by               -- 目标：P(g x)沿F最终成立
+  apply eventually_mono (eventually_and hfg hP)         -- 合并f x=g x与P(f x)的最终区域
+  intro x hx
+  rw [← hx.1]                                           -- 由hx.1：f x=g x，把g x换成f x
+  exact hx.2                                            -- 使用共同区域内的P(f x)

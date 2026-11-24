@@ -1,0 +1,7 @@
+Theorem polar_determinant (r theta : R) :
+  cos theta*(r*cos theta)-(-r*sin theta)*sin theta = r.
+Proof.
+  replace (cos theta*(r*cos theta)-(-r*sin theta)*sin theta)
+    with (r*(Rsqr (sin theta)+Rsqr (cos theta))) by (unfold Rsqr; ring).
+  rewrite sin2_cos2. ring.
+Qed.	(* 面积因子再取绝对值 *)

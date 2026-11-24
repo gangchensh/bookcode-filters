@@ -1,0 +1,11 @@
+def BookBigO {α : Type*} (r g : α → ℝ) (F : Filter α) : Prop :=
+  ∃ C ≥ 0, ∀ᶠ x in F, |r x| ≤ C * |g x|	-- 一个固定非负倍数最终控制r
+
+theorem bigO_mathlib {α : Type*} (r g : α → ℝ) (F : Filter α) :
+    BookBigO r g F ↔ r =O[F] g := by
+  constructor
+  · rintro ⟨C, _, hC⟩
+    exact isBigO_iff.mpr ⟨C, by simpa only [Real.norm_eq_abs] using hC⟩
+  · intro h
+    obtain ⟨C, hC, hb⟩ := isBigO_iff'.mp h
+    exact ⟨C, hC.le, by simpa only [Real.norm_eq_abs] using hb⟩

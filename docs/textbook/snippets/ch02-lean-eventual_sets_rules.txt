@@ -1,0 +1,9 @@
+theorem EventualSet.inter {A B : Set ℕ}                 -- 两个最终集合的交仍包含尾集
+    (hA : EventualSet A) (hB : EventualSet B) :
+    EventualSet (A ∩ B) := by
+  exact EventuallyNat.and hA hB
+
+theorem EventualSet.mono {A B : Set ℕ}                  -- 包含尾集的集合向上封闭
+    (hA : EventualSet A) (hAB : A ⊆ B) :
+    EventualSet B := by
+  exact EventuallyNat.mono hA (fun n hn => hAB hn)

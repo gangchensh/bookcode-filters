@@ -1,0 +1,9 @@
+theorem locally_abs_bound (a : ℝ) :	-- |x|在a附近有统一上界
+    LocallyHolds a (fun x => |x| < |a| + 1) := by
+  refine ⟨1, by norm_num, ?_⟩	-- 半径1对每个中心a都可用
+  intro x hx
+  change |x - a| < 1 at hx
+  calc
+    |x| = |(x - a) + a| := by congr 1; ring
+    _ ≤ |x - a| + |a| := abs_add_le _ _	-- 使用三角不等式
+    _ < |a| + 1 := by linarith	-- 用hx控制与中心的距离

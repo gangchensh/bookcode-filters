@@ -1,0 +1,3 @@
+theorem integral_constant (c a b : ℝ) :
+    (∫ _ : ℝ in a..b, c) = (b - a) * c := by
+  simpa using (intervalIntegral.integral_const (a := a) (b := b) c)

@@ -1,0 +1,3 @@
+def ImproperRight (f : ℝ → ℝ) (a L : ℝ) : Prop :=
+  (∀ T, a ≤ T → IntervalIntegrable f volume a T) ∧
+    Tendsto (fun T => ∫ x in a..T, f x) atTop (𝓝 L)

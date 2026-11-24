@@ -1,0 +1,13 @@
+theorem reciprocal_identity (h : ℝ) (hh : 1 + h ≠ 0) :
+    1 / (1 + h) - (1 - h + h ^ 2) = -h ^ 3 / (1 + h) := by
+  field_simp [hh]	-- 用1+h≠0清除分母
+  ring	-- 核对有限多项式恒等式
+
+theorem reciprocal_error (h : ℝ) (hh : |h| ≤ 1 / 2) :
+    |1 / (1 + h) - (1 - h + h ^ 2)| ≤ 2 * |h| ^ 3 := by
+  have hl : -(1 / 2 : ℝ) ≤ h := (abs_le.mp hh).1	-- 由绝对值界取出h的下界
+  have hd : 0 < 1 + h := by linarith	-- 分母至少为1/2，因而为正
+  rw [reciprocal_identity h (ne_of_gt hd), abs_div, abs_neg,
+    abs_pow, abs_of_pos hd]
+  apply (div_le_iff₀ hd).2	-- 把商的上界转为乘法不等式
+  nlinarith [pow_nonneg (abs_nonneg h) 3]	-- 用1+h≥1/2及|h|³≥0完成估计

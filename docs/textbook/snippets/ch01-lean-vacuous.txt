@@ -1,0 +1,3 @@
+theorem contradictory_premise (x : ℝ) (hneg : x < 0) (hpos : 0 < x) :
+    x = 1 := by	-- 相互矛盾的前提可推出任意结论
+  linarith

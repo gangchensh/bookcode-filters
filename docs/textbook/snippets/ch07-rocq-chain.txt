@@ -1,0 +1,9 @@
+Theorem chain_rule (f g : R -> R) (a df dg : R)
+  (Hf : HasDerivative f a df) (Hg : HasDerivative g (f a) dg) :
+  HasDerivative (fun x => g (f x)) a (dg*df).
+Proof.
+  apply (proj2 (derivative_standard _ _ _)).
+  eapply derivable_pt_lim_comp.
+  - apply (proj1 (derivative_standard _ _ _)). exact Hf.
+  - apply (proj1 (derivative_standard _ _ _)). exact Hg.
+Qed.

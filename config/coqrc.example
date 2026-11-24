@@ -1,0 +1,2 @@
+(* Optional display-only startup setting; no implicit library imports. *)
+Set Printing Width 80.

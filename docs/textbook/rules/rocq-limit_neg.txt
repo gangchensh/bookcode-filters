@@ -1,0 +1,9 @@
+Theorem limit_neg (f : X -> R) (a : R) :
+  Approaches f F (neighborhood_filter a) ->
+  Approaches (fun x => -f x) F (neighborhood_filter (-a)).
+Proof.
+  intros Hf. apply (proj2 (real_iff _ _ _)). intros eps Heps.
+  eapply upward; [exact (proj1 (real_iff _ _ _) Hf eps Heps) |].
+  intros x Hx. replace (-f x- -a) with (-(f x-a)) by ring.
+  rewrite Rabs_Ropp. exact Hx.	(* 用 |-z|=|z| *)
+Qed.

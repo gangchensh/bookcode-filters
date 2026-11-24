@@ -1,0 +1,13 @@
+Theorem partialSum_geometric (q : R) (Hq : q <> 1) (N : nat) :
+  PartialSum (fun n => q^n) N = (1-q^N)/(1-q).
+Proof.
+  induction N as [|N IH].
+  - simpl. field; lra.
+  - simpl. rewrite IH. field; lra.	(* 有限几何和由归纳与代数恒等式得到 *)
+Qed.
+Theorem geometric_native (q : R) (Hq : Rabs q < 1) :
+  is_series (fun n : nat => q^n) (1/(1-q)).
+Proof.
+  replace (1/(1-q)) with (/(1-q)) by (unfold Rdiv; ring).
+  exact (is_series_geom q Hq).	(* 库中的自然顺序级数收敛证书 *)
+Qed.

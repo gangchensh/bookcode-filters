@@ -1,0 +1,17 @@
+Theorem rectangle_product :
+  IsIterated (fun x y : R => x*y) 0 1 0 1 (1/4).
+Proof.
+  split.
+  - intros x Hx. exists (x/2).
+    replace (x/2) with (x*1*1/2-x*0*0/2) by field.
+    apply integral_affine.	(* 每条竖直切片的积分存在 *)
+  - assert (Hslice : forall x, RInt (fun y : R => x*y) 0 1 = x/2).
+    { intro x. apply is_RInt_unique.
+      replace (x/2) with (x*1*1/2-x*0*0/2) by field.
+      apply integral_affine. }
+    eapply is_RInt_ext with (f := fun x : R => (1/2)*x).
+    + intros x Hx. rewrite Hslice.
+      unfold Rdiv. rewrite Rmult_1_l. apply Rmult_comm.
+    + replace (1/4) with ((1/2)*1*1/2-(1/2)*0*0/2) by field.
+      apply integral_affine.	(* 外层积分为1/4 *)
+Qed.

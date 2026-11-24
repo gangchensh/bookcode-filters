@@ -1,0 +1,4 @@
+theorem derivative_affine (m b a : ℝ) :	-- mx+b在a处的导数为m
+    HasDerivative (fun x => m * x + b) a m := by
+  apply (derivative_mathlib _ _ _).2	-- 转为库中的导数命题
+  simpa using ((hasDerivAt_id a).const_mul m).add_const b

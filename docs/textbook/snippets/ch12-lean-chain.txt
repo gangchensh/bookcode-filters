@@ -1,0 +1,12 @@
+theorem chain_derivative (c d : ℝ) (a : ℝ × ℝ) :
+    HasFDerivAt (fun x => linearModel c d (sensor x))
+      ((linearModel c d).comp (sensorDifferential a)) a := by
+  exact ((linearModel c d).hasFDerivAt).comp a
+    (sensor_derivative a)	-- 先内层微分，再外层微分
+
+theorem chain_coefficients (c d : ℝ) (a h : ℝ × ℝ) :
+    (linearModel c d).comp (sensorDifferential a) h =
+      (2 * c * a.1 + d * a.2) * h.1 +
+        (c + d * a.1) * h.2 := by
+  simp [sensorDifferential, linearModel]
+  ring	-- 矩阵行乘内层雅可比

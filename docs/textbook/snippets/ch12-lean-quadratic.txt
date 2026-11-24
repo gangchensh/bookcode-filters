@@ -1,0 +1,20 @@
+def sensor (x : ℝ × ℝ) : ℝ × ℝ :=
+  (x.1 * x.1 + x.2, x.1 * x.2)
+
+def sensorDifferential (a : ℝ × ℝ) :
+    (ℝ × ℝ) →L[ℝ] (ℝ × ℝ) :=
+  (linearModel (2 * a.1) 1).prod (linearModel a.2 a.1)
+
+theorem sensor_derivative (a : ℝ × ℝ) :
+    HasFDerivAt sensor (sensorDifferential a) a := by
+  have hx := hasFDerivAt_fst (𝕜 := ℝ) (p := a)
+  have hy := hasFDerivAt_snd (𝕜 := ℝ) (p := a)
+  have hfirst : HasFDerivAt
+      (fun x : ℝ × ℝ => x.1 * x.1 + x.2)
+      (linearModel (2 * a.1) 1) a := by
+    convert! (hx.mul hx).add hy using 1
+    apply ContinuousLinearMap.ext
+    intro h
+    simp [linearModel]
+    ring	-- 两份a₁h₁合并为2a₁h₁
+  exact hfirst.prodMk (product_derivative a)	-- 分别核验两个输出分量

@@ -1,0 +1,5 @@
+theorem integral_adjacent {f : ℝ → ℝ} {a c b : ℝ}
+    (h₁ : IntervalIntegrable f volume a c)
+    (h₂ : IntervalIntegrable f volume c b) :
+    (∫ x in a..c, f x) + (∫ x in c..b, f x) = ∫ x in a..b, f x := by
+  exact intervalIntegral.integral_add_adjacent_intervals h₁ h₂

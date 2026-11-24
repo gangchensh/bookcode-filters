@@ -1,0 +1,4 @@
+theorem plane_cross_product :
+    crossProduct (![1, 0, 1] : Fin 3 → ℝ) ![0, 1, 2] = ![-1, -2, 1] := by
+  ext i
+  fin_cases i <;> norm_num [crossProduct]	-- 三个分量分别核验向上叉积

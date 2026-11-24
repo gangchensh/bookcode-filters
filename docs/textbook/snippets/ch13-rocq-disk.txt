@@ -1,0 +1,14 @@
+Theorem polar_disk_area (r : R) :
+  is_RInt (fun _theta : R => RInt (fun t : R => t) 0 r)
+    0 (2*PI) (PI*r*r).
+Proof.
+  assert (Hradial : RInt (fun t : R => t) 0 r = r*r/2).
+  { apply is_RInt_unique.
+    replace (r*r/2) with (1*r*r/2-1*0*0/2) by field.
+    eapply is_RInt_ext with (f := fun t : R => 1*t).
+    - intros t Ht. exact (Rmult_1_l t).
+    - apply integral_affine. }
+  rewrite Hradial.
+  replace (PI*r*r) with ((2*PI-0)*(r*r/2)) by field.
+  exact (is_RInt_const 0 (2*PI) (r*r/2)).	(* 对全部角度累加相同的径向积分 *)
+Qed.

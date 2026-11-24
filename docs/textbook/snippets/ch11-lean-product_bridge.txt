@@ -1,0 +1,6 @@
+theorem uniform_product_iff {α : Type*} (F : ℕ → α → ℝ) (f : α → ℝ)
+    (E : Set α) :
+    TendstoUniformlyOn F f atTop E ↔
+      Tendsto (fun p : ℕ × α => (f p.2, F p.1 p.2))
+        (atTop ×ˢ 𝓟 E) (𝓤 ℝ) := by
+  exact tendstoUniformlyOn_iff_tendsto	-- 积源要求N充分大且x位于E

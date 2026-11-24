@@ -1,0 +1,17 @@
+theorem uniform_on_iff {α : Type*} (F : ℕ → α → ℝ) (f : α → ℝ) (E : Set α) :
+    TendstoUniformlyOn F f atTop E ↔
+      ∀ ε > 0, ∃ N₀, ∀ N ≥ N₀, ∀ x ∈ E, |F N x - f x| < ε := by
+  rw [Metric.tendstoUniformlyOn_iff]
+  simp only [Real.dist_eq, abs_sub_comm, eventually_atTop]	-- 同一个阈值控制全部x
+
+theorem uniform_of_error_bound {α : Type*} {F : ℕ → α → ℝ}
+    {f : α → ℝ} {E : Set α} {r : ℕ → ℝ}
+    (hr : Tendsto r atTop (𝓝 0))
+    (hbound : ∀ N, ∀ x ∈ E, |F N x - f x| ≤ r N) :
+    TendstoUniformlyOn F f atTop E := by
+  apply Metric.tendstoUniformlyOn_iff.2
+  intro ε hε
+  have he : ∀ᶠ N in atTop, r N < ε := hr.eventually (gt_mem_nhds hε)
+  filter_upwards [he] with N hN x hx
+  rw [Real.dist_eq, abs_sub_comm]
+  exact (hbound N x hx).trans_lt hN	-- 误差先不超过r_N，再小于ε

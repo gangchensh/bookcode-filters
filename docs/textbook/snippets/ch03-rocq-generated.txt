@@ -1,0 +1,14 @@
+Definition generated_filter {I X : Type} (B : I -> X -> Prop)
+    (HI : exists i : I, True)
+    (HB : forall i j, exists k, forall x, B k x -> B i x /\ B j x)
+    : BookFilter X.
+Proof.
+  refine {| members := fun U => exists i, forall x, B i x -> U x |}.
+  - destruct HI as [i _]. exists i. intros x Hx. constructor.
+  - intros U V [i Hi] [j Hj].
+    destruct (HB i j) as [k Hk].	(* 找同时细化两个范围的B k *)
+    exists k. intros x Hx. destruct (Hk x Hx) as [H1 H2].
+    split; [exact (Hi x H1) | exact (Hj x H2)].
+  - intros U V [i Hi] HUV. exists i.
+    intros x Hx. exact (HUV x (Hi x Hx)).
+Defined.

@@ -1,0 +1,9 @@
+Theorem circle_work :
+  is_RInt (fun t : R => (-sin t)*(-sin t)+cos t*cos t)
+    0 (2*PI) (2*PI).
+Proof.
+  eapply is_RInt_ext with (f := fun _ : R => 1).
+  - intros t Ht. pose proof (sin2_cos2 t). unfold Rsqr in H. nra.
+  - replace (2*PI) with ((2*PI-0)*1) at 2 by ring.
+    exact (is_RInt_const 0 (2*PI) 1).	(* 逆时针一周的功为2π *)
+Qed.

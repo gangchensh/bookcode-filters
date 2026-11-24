@@ -1,0 +1,6 @@
+theorem product_rule {f g : ℝ → ℝ} {a df dg : ℝ}
+    (hf : HasDerivative f a df) (hg : HasDerivative g a dg) :
+    HasDerivative (fun x => f x * g x) a (df * g a + f a * dg) := by
+  apply (derivative_mathlib _ _ _).2	-- 转换成Mathlib的导数命题
+  exact ((derivative_mathlib _ _ _).1 hf).fun_mul
+    ((derivative_mathlib _ _ _).1 hg)

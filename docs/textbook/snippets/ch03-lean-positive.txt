@@ -1,0 +1,8 @@
+theorem locally_positive :	-- x > 0在2附近成立
+    LocallyHolds 2 (fun x => 0 < x) := by
+  refine ⟨1, by norm_num, ?_⟩	-- 取半径1
+  intro x hx
+  change |x - (2 : ℝ)| < 1 at hx
+  have hl : -1 < x - 2 := (abs_lt.mp hx).1	-- 从绝对值取出左侧不等式
+  change 0 < x	-- 展开目标中的集合成员命题
+  linarith	-- 由1 < x推出0 < x

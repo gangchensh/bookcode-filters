@@ -1,0 +1,14 @@
+noncomputable def changed (n : ℕ) : ℝ :=
+  if n = 0 then 100 else reciprocal n
+
+theorem reciprocal_changed_eq :
+    EventuallyEq tailFilter reciprocal changed := by
+  refine ⟨1, ?_⟩                             -- 从第1项起两数列相等
+  intro n hn
+  have hne : n ≠ 0 := by omega
+  simp [changed, hne]
+
+theorem changed_small (ε : ℝ) (hε : 0 < ε) :
+    Eventually tailFilter (fun n => |changed n| < ε) := by
+  exact eventually_subst (P := fun t : ℝ => |t| < ε)
+    reciprocal_changed_eq (reciprocal_small ε hε)

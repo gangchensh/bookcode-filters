@@ -1,0 +1,9 @@
+def HasTotalDerivative (f : (ℝ × ℝ) → ℝ)
+    (a : ℝ × ℝ) (L : (ℝ × ℝ) →L[ℝ] ℝ) : Prop :=
+  (fun x => f x - f a - L (x - a)) =o[𝓝 a]
+    (fun x => x - a)	-- 余项相对输入增量为小o
+
+theorem total_native_iff (f : (ℝ × ℝ) → ℝ)
+    (a : ℝ × ℝ) (L : (ℝ × ℝ) →L[ℝ] ℝ) :
+    HasTotalDerivative f a L ↔ HasFDerivAt f L a := by
+  exact hasFDerivAt_iff_isLittleO.symm	-- 库定义与余项表述等价

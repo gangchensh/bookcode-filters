@@ -1,0 +1,4 @@
+theorem real_mathlib_iff (f : α → ℝ) (F : BookFilter α) (a : ℝ) :
+    Approaches f F (neighborhoodFilter a) ↔
+      Filter.Tendsto f (toMathlib F) (nhds a) := by
+  rw [approaches_mathlib_iff, Ch03.toMathlib_neighborhood]

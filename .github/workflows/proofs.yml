@@ -1,0 +1,41 @@
+name: Proof checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  lean:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install Elan
+        run: |
+          curl -fsSL https://elan.lean-lang.org/elan-init.sh -o /tmp/elan-init.sh
+          sh /tmp/elan-init.sh -y --no-modify-path --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Fetch pinned Mathlib cache
+        working-directory: lean
+        run: |
+          project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+          elan run --install "$project_toolchain" lean --version
+          elan run "$project_toolchain" lake exe cache get
+      - run: make check-lean
+  rocq:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install system build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential m4 pkg-config libgmp-dev
+      - uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: "4.14.1"
+          opam-pin: false
+          opam-repositories: |
+            rocq-released: https://rocq-prover.org/opam/released
+            default: https://opam.ocaml.org
+      - name: Install locked proof dependencies
+        run: opam install . --deps-only --yes
+      - run: opam exec -- make check-rocq

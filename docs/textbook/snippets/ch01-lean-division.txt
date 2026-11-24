@@ -1,0 +1,9 @@
+example : (1 : ℕ) / 2 = 0 := by	-- 自然数除法取整数商
+  decide
+
+example : (1 : ℝ) / 0 = 0 := by	-- 实数库约定除以0的值为0
+  simp
+
+theorem real_div_self (x : ℝ) (hx : x ≠ 0) :	-- 非零实数除以自身等于1
+    x / x = 1 := by
+  exact div_self hx	-- 使用非零假设hx

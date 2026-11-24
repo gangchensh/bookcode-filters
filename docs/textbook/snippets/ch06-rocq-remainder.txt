@@ -1,0 +1,11 @@
+Theorem square_remainder (a h : R) :	(* 平方函数的精确线性余项 *)
+  (a+h)*(a+h) - (a*a+(2*a)*h) = h*h.
+Proof. ring. Qed.
+
+Theorem square_error_bound (a h eta : R)
+  (Heta : 0 <= eta) (Hh : Rabs h <= eta) :	(* 将输入变化界传递到余项 *)
+  Rabs ((a+h)*(a+h)-(a*a+(2*a)*h)) <= eta*eta.
+Proof.
+  rewrite square_remainder, Rabs_mult.
+  pose proof (Rabs_pos h). nra.
+Qed.

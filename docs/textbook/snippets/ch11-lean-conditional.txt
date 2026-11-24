@@ -1,0 +1,5 @@
+theorem ordered_mathlib_iff (a : ℕ → ℝ) (s : ℝ) :
+    SeriesHasSum a s ↔ HasSum a s (SummationFilter.conditional ℕ) := by
+  unfold SeriesHasSum partialSum HasSum
+  rw [SummationFilter.conditional_filter_eq_map_range, tendsto_map'_iff]
+  rfl	-- 两边都是前N项部分和的极限

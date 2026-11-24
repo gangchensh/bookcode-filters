@@ -1,0 +1,8 @@
+theorem perturbed_cost_bound (y eta actualY actual3 : ℝ)
+    (hY : cost y ≤ actualY + eta)
+    (hopt : actualY ≤ actual3)
+    (h3 : actual3 ≤ cost 3 + eta) :
+    (y - 3) ^ 2 ≤ 2 * eta := by
+  have hc : cost 3 = 2 := by norm_num [cost]
+  unfold cost at hY	-- 代价差中出现(y-3)²
+  linarith	-- 合并三条代价上界

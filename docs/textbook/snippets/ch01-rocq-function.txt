@@ -1,0 +1,8 @@
+Definition next_nat (n : nat) : nat := S n.	(* 自然数的后继函数 *)
+Definition is_positive_nat (n : nat) : Prop := (0 < n)%nat.
+
+Example next_two : next_nat 2 = 3%nat.
+Proof. reflexivity. Qed.
+
+Example three_positive : is_positive_nat 3.
+Proof. unfold is_positive_nat. apply Nat.lt_0_succ. Qed.

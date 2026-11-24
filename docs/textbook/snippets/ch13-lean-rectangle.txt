@@ -1,0 +1,17 @@
+theorem rectangle_integrable :
+    Integrable (fun z : ℝ × ℝ => z.1 * z.2)
+      ((volume.restrict (Ioc 0 1)).prod (volume.restrict (Ioc 0 1))) := by
+  have h : IntegrableOn (fun x : ℝ => x) (Ioc 0 1) :=
+    continuous_id.integrableOn_Ioc
+  exact h.mul_prod h	-- 两个一元可积函数的乘积可积
+
+theorem rectangle_product :
+    (∫ z : ℝ × ℝ in (Ioc (0 : ℝ) 1) ×ˢ (Ioc (0 : ℝ) 1),
+      z.1 * z.2 ∂volume.prod volume) = 1 / 4 := by
+  have hi : (∫ x : ℝ in Ioc (0 : ℝ) 1, x) = 1 / 2 := by
+    rw [← intervalIntegral.integral_of_le (by norm_num : (0 : ℝ) ≤ 1)]
+    exact Ch09.integral_linear
+  calc
+    _ = (∫ x : ℝ in Ioc (0 : ℝ) 1, x) * (∫ y : ℝ in Ioc (0 : ℝ) 1, y) :=
+      setIntegral_prod_mul (fun x : ℝ => x) (fun y : ℝ => y) _ _
+    _ = 1/4 := by rw [hi]; norm_num	-- 两个1/2相乘得到1/4

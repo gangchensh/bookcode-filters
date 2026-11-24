@@ -1,0 +1,11 @@
+theorem decay_tail_error (T : ℝ) :
+    |1 - (∫ x : ℝ in (0 : ℝ)..T, Real.exp (-x))| = Real.exp (-T) := by
+  rw [decay_truncation]
+  simp [abs_of_pos (Real.exp_pos (-T))]	-- 尾部余量严格为正
+
+theorem total_error_budget {I A Q disc tail : ℝ}
+    (ht : |I-A| ≤ tail) (hd : |A-Q| ≤ disc) : |I-Q| ≤ tail+disc := by
+  calc
+    |I-Q| = |(I-A)+(A-Q)| := by congr 1; ring
+    _ ≤ |I-A|+|A-Q| := abs_add_le _ _
+    _ ≤ tail+disc := add_le_add ht hd	-- 截断余量加有限区间求积误差

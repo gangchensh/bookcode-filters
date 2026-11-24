@@ -1,0 +1,5 @@
+theorem limit_div
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hg : Approaches g F (neighborhoodFilter b)) (hb : b ≠ 0) :
+    Approaches (fun x => f x/g x) F (neighborhoodFilter (a/b)) := by
+  simpa only [div_eq_mul_inv] using limit_mul hf (limit_inv hg hb)

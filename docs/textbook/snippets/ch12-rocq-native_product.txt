@@ -1,0 +1,8 @@
+Theorem product_native (a : R * R) :
+  filterdiff (fun x : R * R => fst x * snd x) (locally a)
+    (fun h => fst h * snd a + fst a * snd h).
+Proof.
+  apply (@filterdiff_mult R_AbsRing (locally a) _ a).
+  - intros P HP. exact HP.	(* 源滤子就是中心a的邻域滤子 *)
+  - intros x y. apply Rmult_comm.	(* 实数乘法可交换 *)
+Qed.

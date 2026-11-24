@@ -1,0 +1,7 @@
+Definition Finer {X : Type} (F G : BookFilter X) : Prop :=
+  forall A, members G A -> members F A.
+
+Theorem approaches_image_iff {X Y : Type} (f : X -> Y)
+    (F : BookFilter X) (G : BookFilter Y) :
+  Approaches f F G <-> Finer (image_filter f F) G.
+Proof. reflexivity. Qed.

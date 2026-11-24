@@ -1,0 +1,12 @@
+theorem polynomial_substitution :
+    (∫ x : ℝ in (0 : ℝ)..1, 2*x*(x^2+1)) = 3/2 := by
+  have hd : ∀ x : ℝ, HasDerivAt (fun t => (t^2+1)^2/2) (2*x*(x^2+1)) x := by
+    intro x
+    convert
+      ((((hasDerivAt_id x).fun_pow 2).add_const 1).fun_pow 2).div_const 2
+      using 1 <;> simp <;> ring	-- 链式求导后核对系数
+  have hi : IntervalIntegrable (fun x : ℝ => 2*x*(x^2+1)) volume 0 1 := by
+    apply Continuous.intervalIntegrable
+    fun_prop	-- 多项式连续，故紧区间可积
+  rw [Ch09.primitive_integral (fun x _ => hd x) hi]
+  norm_num	-- 只计算原函数的两个端点值

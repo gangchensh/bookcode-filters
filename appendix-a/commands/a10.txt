@@ -1,0 +1,106 @@
+附录 A.10：Rocq 编辑器与第一个完整证明
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入 RocqBasics
+
+cd /mnt/d/calculus-work
+mkdir -p RocqBasics
+cd RocqBasics
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam switch list
+eval "$(opam env --switch=calculus-rocq-9.2 --set-switch)"
+rocq -v
+opam list --installed vsrocq-language-server
+command -v vsrocqtop
+
+===== 输出示例 3（只核对，不执行） =====
+显示内容：输出示例（节选，只核对）
+目录或对象：仅列 command -v 的路径；用户名与 switch 名按本机替换
+
+/home/student/.opam/calculus-rocq-9.2/bin/vsrocqtop
+
+===== 示例 4 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam update
+opam show vsrocq-language-server.2.5.0
+opam install rocq-core=9.2.0 vsrocq-language-server.2.5.0 --dry-run
+opam install rocq-core=9.2.0 vsrocq-language-server.2.5.0
+opam list --installed vsrocq-language-server
+command -v vsrocqtop
+
+===== 示例 5 =====
+输入位置：VS Code 配置内容
+目录或对象：当前 Rocq 项目的 .vscode/settings.json；新建时使用完整对象，已有内容时合并
+
+{
+  "vsrocq.path": "/home/student/.opam/calculus-rocq-9.2/bin/vsrocqtop",
+  "vsrocq.proof.mode": 0,
+  "vsrocq.proof.display-buttons": true
+}
+
+===== 示例 6 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam install rocq-core=9.2.0 rocqide.9.2.0 --dry-run
+opam install rocq-core=9.2.0 rocqide.9.2.0
+command -v rocqide
+rocqide
+
+===== 示例 7 =====
+输入位置：编辑器源码
+目录或对象：RocqBasics 目录中的 AndDemo.v
+
+Example and_demo : True /\ True.                        (* 合并两个恒真命题 *)
+Proof.
+  split.
+  - exact I.
+  - exact I.
+Qed.
+
+===== 示例 8 =====
+输入位置：编辑器源码
+目录或对象：RocqBasics 目录中的 SmokeRocq.v
+
+From Stdlib Require Import Arith.
+
+Definition EventuallyNat (P : nat -> Prop) : Prop :=    (* 定义自然数上的最终成立 *)
+  exists N : nat, forall n : nat, N <= n -> P n.  (* 选取N : nat, forall n : nat, N <= n -> P n作为见证 *)
+
+Example eventually_ge_100 :                             (* 自然数最终不小于100 *)
+  EventuallyNat (fun n => 100 <= n).                    (* 陈述 100 不大于 n 最终成立 *)
+Proof.
+  exists 100.                                           (* 选取100作为见证 *)
+  intros n Hn.
+  exact Hn.
+Qed.
+
+===== 示例 9 =====
+输入位置：Ubuntu 终端
+目录或对象：RocqBasics 目录；文件已保存，switch 为 Rocq 9.2.0
+
+rocq compile SmokeRocq.v
+
+===== 示例 10 =====
+输入位置：Ubuntu 终端
+目录或对象：RocqBasics 目录；紧接上一条编译命令执行
+
+echo $?
+
+===== 输出示例 11（只核对，不执行） =====
+显示内容：正常输出示例（只核对）
+目录或对象：上一条编译成功时的退出状态
+
+0

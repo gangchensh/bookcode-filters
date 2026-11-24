@@ -1,0 +1,48 @@
+附录 A.15：把已有开发环境迁移到另一台机器
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：原机器的练习目录；先选中需要导出的 opam switch
+
+opam switch show
+opam switch export --full --freeze calculus-rocq.export
+opam repository list
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：新机器的练习目录；导出文件已复制到当前目录
+
+opam switch create calculus-copy --empty
+eval "$(opam env --switch=calculus-copy --set-switch)"
+opam switch import calculus-rocq.export
+
+===== 示例 3 =====
+输入位置：Ubuntu 终端
+目录或对象：新机器的任意目录开始；工具链与项目源码已按说明就位
+
+"$HOME/tools/lean-4.31.0/bin/lean" --version
+elan toolchain link local-4.31.0 "$HOME/tools/lean-4.31.0"
+cd /mnt/d/calculus-work/CalculusBasics
+elan override set local-4.31.0
+elan run local-4.31.0 lean --version
+elan run local-4.31.0 lake build
+
+===== 示例 4 =====
+输入位置：原机器 Windows PowerShell
+目录或对象：任意目录；先创建 D:/transfer 并保存 Ubuntu 工作
+
+wsl --list --verbose
+wsl --terminate Ubuntu
+wsl --export Ubuntu D:\transfer\ubuntu-calculus.tar
+
+===== 示例 5 =====
+输入位置：新机器 Windows PowerShell
+目录或对象：任意目录；归档已复制，目标安装目录按说明准备
+
+wsl --import CalculusUbuntu D:\WSL\CalculusUbuntu D:\transfer\ubuntu-calculus.tar --version 2
+wsl -d CalculusUbuntu -u student

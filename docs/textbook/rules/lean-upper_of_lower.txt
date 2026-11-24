@@ -1,0 +1,12 @@
+theorem upper_of_lower	-- 最终较大的函数继承正无穷
+    (hf : Approaches f F (upperFilter ℝ))
+    (hfg : Eventually F (fun x => f x ≤ g x)) :
+    Approaches g F (upperFilter ℝ) := by
+  apply (Ch04Infinity.upper_iff _ _).2
+  intro M
+  apply F.upward (F.inter_mem ((Ch04Infinity.upper_iff _ _).1 hf M) hfg)
+  intro x hx
+  have hM : M ≤ f x := hx.1
+  have hfgx : f x ≤ g x := hx.2
+  change M ≤ g x
+  exact le_trans hM hfgx

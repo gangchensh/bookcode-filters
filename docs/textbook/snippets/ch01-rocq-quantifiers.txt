@@ -1,0 +1,8 @@
+Theorem threshold_example :	(* 选择阈值100后保持下界 *)
+  exists N : nat, forall n : nat,
+    (N <= n)%nat -> (100 <= n)%nat.
+Proof.
+  exists 100%nat.	(* 取N = 100 *)
+  intros n Hn.	(* Hn : 100 <= n *)
+  exact Hn.
+Qed.

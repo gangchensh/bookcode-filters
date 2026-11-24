@@ -1,0 +1,10 @@
+Definition Upper100 : nat -> Prop :=	(* 自然数中不小于100的点集 *)
+  fun n => (100 <= n)%nat.
+
+Theorem upper100_mem (n : nat) :
+  Upper100 n <-> (100 <= n)%nat.
+Proof. unfold Upper100. reflexivity. Qed.
+
+Theorem inter_left (A B : nat -> Prop) :	(* 交集包含在左边的集合内 *)
+  forall n, A n /\ B n -> A n.
+Proof. intros n [HA HB]. exact HA. Qed.

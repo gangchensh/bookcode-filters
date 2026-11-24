@@ -1,0 +1,4 @@
+# Map the physical Theories/ directory to a logical prefix.
+-Q Theories BookLibrary
+# Include this source file in the generated build targets.
+Theories/ProjectBase.v

@@ -1,0 +1,4 @@
+Definition BookLittleO (r g : R -> R)
+  (F : (R -> Prop) -> Prop) : Prop :=
+  forall eps, 0 < eps ->
+    F (fun x => Rabs (r x) <= eps * Rabs (g x)).

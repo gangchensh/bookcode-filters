@@ -1,0 +1,11 @@
+def linearModel (c d : ℝ) : (ℝ × ℝ) →L[ℝ] ℝ :=
+  c • ContinuousLinearMap.fst ℝ ℝ ℝ +
+    d • ContinuousLinearMap.snd ℝ ℝ ℝ
+
+theorem linearModel_apply (c d : ℝ) (h : ℝ × ℝ) :
+    linearModel c d h = c * h.1 + d * h.2 := by
+  rfl	-- 两个系数作用于两个坐标
+
+theorem linear_derivative (c d : ℝ) (a : ℝ × ℝ) :
+    HasFDerivAt (linearModel c d) (linearModel c d) a := by
+  exact (linearModel c d).hasFDerivAt	-- 线性映射的微分就是自身

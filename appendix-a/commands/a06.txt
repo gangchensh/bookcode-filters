@@ -1,0 +1,46 @@
+附录 A.6：安装 VS Code、扩展与 WSL 连接
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 桌面终端
+目录或对象：任意目录开始；先确认安装包在 ~/Downloads
+
+cd ~/Downloads
+sudo apt install ./code.deb
+code --version
+
+===== 示例 2 =====
+输入位置：Ubuntu 桌面终端
+目录或对象：任意目录；配置软件源或安装系统软件
+
+sudo apt update
+sudo apt install code
+code --version
+
+===== 示例 3 =====
+输入位置：Ubuntu 桌面终端
+目录或对象：任意目录开始；随后进入用户缓存目录
+
+sudo apt install curl gpg
+mkdir -p "$HOME/.cache/vscode-setup"
+cd "$HOME/.cache/vscode-setup"
+curl -fL https://packages.microsoft.com/keys/microsoft.asc -o microsoft.asc
+gpg --dearmor --yes -o microsoft.gpg microsoft.asc
+sudo install -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg
+
+===== 示例 4 =====
+输入位置：Ubuntu 桌面终端
+目录或对象：任意目录；配置软件源或安装系统软件
+
+sudo tee /etc/apt/sources.list.d/vscode.sources >/dev/null <<'EOF'
+Types: deb
+URIs: https://packages.microsoft.com/repos/code
+Suites: stable
+Components: main
+Architectures: amd64,arm64,armhf
+Signed-By: /usr/share/keyrings/microsoft.gpg
+EOF

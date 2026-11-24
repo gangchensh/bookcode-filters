@@ -1,0 +1,15 @@
+附录 A.19：Rocq 与 Lean 工具链的对照
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：编辑器源码
+目录或对象：可保存为基础 Lean 项目中的 AxiomAudit.lean；无需 Mathlib
+
+theorem excludedMiddleDemo (P : Prop) : P ∨ ¬ P :=      -- 排中律：P成立或P不成立
+  Classical.em P                                        -- 使用经典排中律证明 P 或非 P
+
+#print axioms excludedMiddleDemo

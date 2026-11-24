@@ -1,0 +1,7 @@
+Fixpoint PartialSum (a : nat -> R) (N : nat) : R :=
+  match N with
+  | O => 0
+  | S n => PartialSum a n + a n	(* 新增第n项，前n项保持不变 *)
+  end.
+Definition SeriesHasSum (a : nat -> R) (s : R) : Prop :=
+  filterlim (PartialSum a) eventually (locally s).

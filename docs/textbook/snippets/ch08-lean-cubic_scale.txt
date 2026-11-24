@@ -1,0 +1,13 @@
+theorem cubic_scale_bound (r h K eps : ℝ)
+    (hK : 0 ≤ K) (heps : 0 < eps)
+    (hh : |h| ≤ eps / (K + 1))
+    (hr : |r| ≤ K * |h| ^ 3) :
+    |r| ≤ eps * |h| ^ 2 := by
+  have hh' : |h| * (K + 1) ≤ eps :=
+    (le_div_iff₀ (by linarith : 0 < K + 1)).mp hh
+  have hk : K * |h| ≤ eps := by nlinarith [abs_nonneg h]
+  calc
+    |r| ≤ K * |h| ^ 3 := hr
+    _ = (K * |h|) * |h| ^ 2 := by ring	-- 分出一个趋零的|h|因子
+    _ ≤ eps * |h| ^ 2 :=
+      mul_le_mul_of_nonneg_right hk (sq_nonneg |h|)

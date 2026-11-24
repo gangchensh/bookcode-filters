@@ -1,0 +1,4 @@
+theorem swap_and_term (P Q : Prop) : P ∧ Q → Q ∧ P :=
+  fun h =>
+    let swapped : Q ∧ P := ⟨h.2, h.1⟩
+    swapped

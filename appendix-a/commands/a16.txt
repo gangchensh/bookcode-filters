@@ -1,0 +1,141 @@
+附录 A.16：日常使用、版本记录与问题定位
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 项目根目录；保存文件后的日常检查
+
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lake env lean MathlibSmoke.lean
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；另开终端观察，不中断正在进行的检查
+
+ps -C lean -C lake -o pid,etime,%cpu,%mem,args
+
+===== 示例 3 =====
+输入位置：Ubuntu 终端
+目录或对象：待检查的 Lean 项目根目录；使用该项目自己的版本
+
+pwd
+cat lean-toolchain
+type -a lean lake elan
+command -v lean
+command -v lake
+lean --version
+lake --version
+elan show
+elan override list
+printenv ELAN_TOOLCHAIN
+ls -l "$HOME/.elan/bin/lean" "$HOME/.elan/bin/lake"
+readlink -f "$HOME/.elan/bin/lean"
+readlink -f "$HOME/.elan/bin/lake"
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lean --version
+elan run "$project_toolchain" lake --version
+
+===== 示例 4 =====
+输入位置：VS Code 配置内容
+目录或对象：待检查项目的 .vscode/settings.json；替换用户名与版本
+
+{
+  "lean4.envPathExtensions": [
+    "/home/REPLACE_USER/.elan/toolchains/leanprover--lean4---v4.35.0/bin"
+  ]
+}
+
+===== 示例 5 =====
+输入位置：Ubuntu 终端
+目录或对象：待检查的 Lean 项目根目录；使用该项目自己的版本
+
+cat -A lean-toolchain
+raw_toolchain=$(cat lean-toolchain)
+printf '%q\n' "$raw_toolchain"
+od -An -tx1 lean-toolchain
+
+===== 示例 6 =====
+输入位置：Ubuntu 终端
+目录或对象：待检查的 Lean 项目根目录；使用该项目自己的版本
+
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lean --version
+elan run "$project_toolchain" lake --version
+
+===== 示例 7 =====
+输入位置：Ubuntu 终端
+目录或对象：待检查的 Lean 项目根目录；使用该项目自己的版本
+
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lean --version
+elan run "$project_toolchain" lake --version
+elan run "$project_toolchain" lake env lean MathlibSmoke.lean
+
+===== 示例 8 =====
+输入位置：Ubuntu 终端
+目录或对象：待检查的 Lean 项目根目录；使用该项目自己的版本
+
+type -a lake
+command -v elan
+ls -l "$HOME/.elan/bin/lake"
+elan toolchain list
+
+===== 示例 9 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 项目根目录；仅执行对应现象所需的步骤
+
+pwd
+cat lean-toolchain
+cat lakefile.toml
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lake exe cache get
+elan run "$project_toolchain" lake env lean MathlibSmoke.lean
+code .
+
+===== 示例 10 =====
+输入位置：错误提示示意
+目录或对象：这是程序输出，不复制到终端执行
+
+Imports are out of date and must be rebuilt;
+use the "Restart File" command in your editor.
+
+===== 示例 11 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 项目根目录；仅执行对应现象所需的步骤
+
+pwd
+cat lean-toolchain
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lake exe cache get
+elan run "$project_toolchain" lake build
+elan run "$project_toolchain" lake env lean MathlibSmoke.lean
+
+===== 示例 12 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 项目根目录；仅执行对应现象所需的步骤
+
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lake exe cache unpack!
+elan run "$project_toolchain" lake env lean MathlibSmoke.lean
+
+===== 示例 13 =====
+输入位置：Ubuntu 终端
+目录或对象：练习目录；目标 mathematics_in_lean 尚未存在或为空
+
+repo_url='https://mirror.sjtu.edu.cn/git/lean4-packages/mathematics_in_lean/'
+git clone --depth 1 "$repo_url" mathematics_in_lean
+
+===== 示例 14 =====
+输入位置：Ubuntu 终端
+目录或对象：待检查的 Lean 项目根目录；使用该项目自己的版本
+
+pwd
+cat lean-toolchain
+command -v lean
+elan toolchain list
+lean --version
+lake build

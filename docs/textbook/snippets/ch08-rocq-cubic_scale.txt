@@ -1,0 +1,12 @@
+Theorem cubic_scale_bound (r h K eps : R)
+  (Hsmall : K * Rabs h <= eps)
+  (Hr : Rabs r <= K * (Rabs h)^3) :
+  Rabs r <= eps * (Rabs h)^2.
+Proof.
+  eapply Rle_trans; [exact Hr |].	(* 先使用已有的三次余项界 *)
+  replace (K*(Rabs h)^3) with
+    ((K*Rabs h)*(Rabs h)^2) by ring.	(* 分出K乘|h|作为系数 *)
+  apply Rmult_le_compat_r.
+  - pose proof (Rle_0_sqr (Rabs h)). unfold Rsqr in *. nra.
+  - exact Hsmall.	(* 系数已经不超过eps *)
+Qed.

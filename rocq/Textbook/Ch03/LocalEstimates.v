@@ -1,0 +1,29 @@
+From Stdlib Require Import Reals Psatz.
+From Textbook.Ch02 Require Import Neighborhoods.
+Open Scope R_scope.
+
+(* BEGIN positive *)
+Theorem locally_positive :                         (* x > 0在2附近成立 *)
+  locally_holds 2 (fun x => 0 < x).
+Proof.
+  unfold locally_holds, is_neighborhood.
+  exists 1. split; [lra |].                         (* 取正半径1 *)
+  intros x Hx. unfold eps_neighborhood in Hx.
+  apply Rabs_def2 in Hx.                            (* 取出-1 < x-2与x-2 < 1 *)
+  lra.
+Qed.
+(* END positive *)
+
+(* BEGIN bound *)
+Theorem locally_abs_bound (a : R) :                (* |x|在a附近有统一上界 *)
+  locally_holds a (fun x => Rabs x < Rabs a + 1).
+Proof.
+  unfold locally_holds, is_neighborhood.
+  exists 1. split; [lra |].                         (* 取正半径1 *)
+  intros x Hx. unfold eps_neighborhood in Hx.
+  assert (Habs : Rabs x <= Rabs (x-a) + Rabs a).
+  { replace x with ((x-a)+a) at 1 by ring.
+    apply Rabs_triang. }                            (* 使用三角不等式 *)
+  lra.                                             (* 由|x-a| < 1得到所需上界 *)
+Qed.
+(* END bound *)

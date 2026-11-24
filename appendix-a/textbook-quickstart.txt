@@ -1,0 +1,66 @@
+# 本书简明附录A的命令框；按正文选择执行，不可整份运行。
+# 路径采用$HOME/calculus-work/code，D盘方案按正文替换。
+
+# 命令框 1
+wsl --install -d Ubuntu
+
+# 命令框 2
+sudo apt update
+sudo apt install git curl make build-essential opam m4 pkg-config
+
+# 命令框 3
+mkdir -p "$HOME/calculus-work"
+cd "$HOME/calculus-work"
+pwd
+
+# 命令框 4
+curl -fL \
+  https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \
+  -o elan-init.sh
+less elan-init.sh
+sh elan-init.sh
+source "$HOME/.elan/env"
+command -v elan
+
+# 命令框 5
+cd "$HOME/calculus-work/code/lean"
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run --install "$project_toolchain" lean --version
+elan run "$project_toolchain" lake exe cache get
+elan run "$project_toolchain" lake build Textbook.Ch01.All
+# 第1章通过后，构建全部教材模块（含未收入精简版的扩展内容）
+elan run "$project_toolchain" lake build Textbook
+
+# 命令框 6
+opam init --bare
+opam switch create calculus-rocq-9.2 ocaml-base-compiler.4.14.1
+eval "$(opam env --switch=calculus-rocq-9.2 --set-switch)"
+opam repository add rocq-released https://rocq-prover.org/opam/released
+cd "$HOME/calculus-work/code"
+opam install . --deps-only
+rocq -v
+opam list --installed coq-coquelicot
+make check-rocq
+
+# 命令框 7
+# 从仓库根目录，先构建公共模块和独立示例
+cd "$HOME/calculus-work/code"
+make lean
+# 打开Lean项目
+cd lean
+code .
+
+# 命令框 8
+cd "$HOME/calculus-work/code/rocq"
+rocqide -Q Theories Theories examples/ProjectUse.v
+
+# 命令框 9
+cd "$HOME/calculus-work/code"
+make chapter CHAPTER=08
+make check-lean
+make check-rocq
+
+# 命令框 10
+cd "$HOME/calculus-work/code/lean"
+lake build Textbook.Ch08.All
+lake env lean Textbook/Ch08/Taylor.lean

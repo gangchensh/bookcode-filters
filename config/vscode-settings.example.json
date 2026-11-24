@@ -1,0 +1,8 @@
+{
+  "vsrocq.path": "/home/REPLACE_USER/.opam/REPLACE_SWITCH/bin/vsrocqtop",
+  "vsrocq.proof.mode": 0,
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "[makefile]": { "editor.insertSpaces": false }
+}

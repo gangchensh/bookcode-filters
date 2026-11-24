@@ -1,0 +1,58 @@
+# 《形式化微积分的滤子基础》第1—13章命令
+# 开始目录：下载的代码仓库顶层（含lean、rocq、Makefile）。
+# 首次安装及Mathlib缓存准备按appendix-a完成，不要每次检查都重新下载。
+
+# 一、按当前教材第1—13章检查。需Lean 4.35.0、Rocq 9.2及Coquelicot 3.4.5。
+make check
+# 仅一种语言，或仅指定章节：
+make check-lean
+make check-rocq
+make chapter CHAPTER=03
+# 源码发布包（不含依赖缓存和编译文件）：
+make release
+
+# 第一章 1.9 的 Rocq 单文件检查。从仓库根目录进入 rocq，再返回。
+cd rocq
+rocq compile -Q Textbook Textbook Textbook/Ch01/Language.v
+cd ..
+
+# 二、进入Lean项目，核对版本并检查第6章。
+cd lean
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lean --version
+elan run "$project_toolchain" lake build Textbook
+elan run "$project_toolchain" lake env lean Textbook/Ch06/Derivatives.lean
+# 常见成功结果：单文件检查没有输出；构建显示Build completed successfully。
+# 首次载入大库可能需要数分钟；有error应先处理第一条报错。
+
+# 若确认当前终端已由Elan使用项目版本，日常可简写为：
+lake env lean Textbook/Ch06/Derivatives.lean
+
+# 三、在同一个Lean根目录检查极限运算、连续性及有理区间。
+lake env lean Textbook/Ch04/LimitRules.lean
+lake env lean Textbook/Ch04/Continuity.lean
+lake env lean Textbook/Ch05/SqrtBounds.lean
+lake env lean Textbook/Ch05/Recursion.lean
+
+# 同一个Lean根目录中检查第7—9章（先完成上面的项目构建）。
+lake env lean Textbook/Ch07/Differentiation.lean
+lake env lean Textbook/Ch08/Taylor.lean
+lake env lean Textbook/Ch09/Integration.lean
+
+# 四、从lean回到仓库顶层后，按依赖顺序重新构建Rocq。
+cd ..
+make foundations
+# 不建议只复制一个依赖其他模块的.v文件编译；基础模块改变会使旧.vo依赖失配。
+
+# 新增第10章：从仓库根目录执行，检查换元、截断积分及工程误差证书。
+# 若此前进入了lean目录，应先cd ..回到仓库根目录。
+make chapter CHAPTER=10
+
+# 第11章级数与库接口：从同一个仓库根目录执行。
+make chapter CHAPTER=11
+
+# 第12章多元微分与原生库接口：仓库根目录执行。
+make chapter CHAPTER=12
+
+# 第13章多重积分与工程积分：在仓库根目录执行。
+make chapter CHAPTER=13

@@ -1,0 +1,7 @@
+theorem quadratic_limit (s : ℝ)	-- 组合规则代替重复半径估计
+    : Approaches (fun x : ℝ => x^2+3*x-2)
+      (punctured s) (neighborhoodFilter (s^2+3*s-2)) := by
+  have hi : Approaches (fun x : ℝ => x) (punctured s) (neighborhoodFilter s) :=
+    approaches_within_source _ (approaches_id _)
+  exact limit_sub (limit_add (limit_pow 2 hi) (limit_const_mul 3 hi))
+    (const_limit _ 2)

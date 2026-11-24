@@ -1,0 +1,5 @@
+Theorem riemann_filter_iff (f : R -> R) (a b I : R) :
+  is_RInt f a b I <->
+  filterlim (fun ptd => scal (sign (b-a)) (Riemann_sum f ptd))
+    (Riemann_fine a b) (locally I).
+Proof. reflexivity. Qed.	(* 展开库中积分的细分极限定义 *)

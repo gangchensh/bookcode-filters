@@ -1,0 +1,12 @@
+Theorem upper_add_finite (f g : X -> R) (b : R) :
+  Approaches f F upper_filter ->
+  Approaches g F (neighborhood_filter b) ->
+  Approaches (fun x => f x+g x) F upper_filter.
+Proof.
+  intros Hf Hg. apply (proj2 (Ch04Infinity.upper_iff _ _)). intros M.
+  eapply upward.
+  - exact (eventually_and
+      (proj1 (Ch04Infinity.upper_iff _ _) Hf (M-b+1))
+      (proj1 (real_iff _ _ _) Hg 1 Rlt_0_1)).	(* 上阈值与有限目标距离同时满足 *)
+  - intros x [Hfm Hgb]. apply Rabs_def2 in Hgb. lra.
+Qed.

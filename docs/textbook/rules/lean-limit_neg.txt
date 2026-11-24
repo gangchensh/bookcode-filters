@@ -1,0 +1,10 @@
+theorem limit_neg	-- 取负号保持到目标的距离
+    (hf : Approaches f F (neighborhoodFilter a)) :
+    Approaches (fun x => -f x) F (neighborhoodFilter (-a)) := by
+  apply (real_iff _ _ _).2
+  intro ε hε
+  apply F.upward ((real_iff _ _ _).1 hf ε hε)
+  intro x hx
+  have hd : |f x-a| < ε := hx
+  change |-f x-(-a)| < ε
+  simpa only [neg_sub_neg, abs_sub_comm] using hd	-- 用 |-u-(-v)|=|u-v|

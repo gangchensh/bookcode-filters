@@ -1,0 +1,12 @@
+Theorem triangle_mass :
+  is_RInt (fun x : R => RInt (fun _y : R => 2*x) 0 (1-x)) 0 1 (1/3).
+Proof.
+  eapply is_RInt_ext with (f := fun x : R => (1-x)*(2*x)).
+  - intros x Hx. rewrite RInt_const. cbn. ring.	(* 内层是密度乘切片长度 *)
+  - replace (1/3) with ((1*1-2*1*1*1/3)-(0*0-2*0*0*0/3)) by field.
+    apply (is_RInt_derive (fun t : R => t*t-2*t*t*t/3)
+      (fun t : R => (1-t)*(2*t))).
+    + intros x Hx. auto_derive; nra.
+    + intros x Hx. apply (ex_derive_continuous (fun t : R => (1-t)*(2*t)) x).
+      exists (2-4*x). auto_derive; nra.
+Qed.

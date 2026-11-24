@@ -1,0 +1,6 @@
+theorem change_variable {g g' f : ℝ → ℝ} {a b : ℝ}
+    (hd : ∀ x ∈ Set.uIcc a b, HasDerivAt g (g' x) x)
+    (hg' : ContinuousOn g' (Set.uIcc a b)) (hf : Continuous f) :
+    (∫ x in a..b, g' x * f (g x)) = ∫ y in g a..g b, f y := by
+  simpa only [smul_eq_mul, Function.comp_apply] using
+    intervalIntegral.integral_deriv_smul_comp hd hg' hf	-- 区间方向由g(a)、g(b)保留

@@ -1,0 +1,7 @@
+theorem derivative_continuous {f : ℝ → ℝ} {a d : ℝ}
+    (h : HasDerivative f a d) :
+    Ch04Continuity.BookContinuousAt f a := by
+  unfold Ch04Continuity.BookContinuousAt
+  apply (approaches_mathlib_iff _ _ _).2
+  rw [Ch03.toMathlib_neighborhood, Ch03.toMathlib_neighborhood]
+  exact ((derivative_mathlib _ _ _).1 h).continuousAt

@@ -1,0 +1,12 @@
+def Finer {α : Type*} (F G : BookFilter α) : Prop :=	-- F比G更细：F含有G的每个成员
+  ∀ A, A ∈ G.sets → A ∈ F.sets
+
+theorem approaches_image_iff {α β : Type*}
+    (f : α → β) (F : BookFilter α) (G : BookFilter β) :
+    Approaches f F G ↔ Finer (imageFilter f F) G := Iff.rfl
+
+theorem image_mathlib {α β : Type*}
+    (f : α → β) (F : BookFilter α) :
+    toMathlib (imageFilter f F) = Filter.map f (toMathlib F) := by
+  ext V	-- 比较任意目标集合的成员命题
+  rfl

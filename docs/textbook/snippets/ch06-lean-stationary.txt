@@ -1,0 +1,4 @@
+theorem cubic_stationary :	-- x³在0处导数为0，不代表局部极值
+    HasDerivative (fun x : ℝ => x ^ 3) 0 0 := by
+  apply (derivative_mathlib _ _ _).2
+  simpa using (hasDerivAt_id (0 : ℝ)).fun_pow 3

@@ -1,0 +1,35 @@
+-Q Textbook Textbook
+-Q Theories Theories
+-Q AppendixA AppendixA
+-Q examples Examples
+-docroot FilterCalculus
+Theories/Eventually.v
+Textbook/Ch01/Language.v
+Theories/ProjectBase.v
+Textbook/Ch02/Eventually.v
+Textbook/Ch02/Reciprocal.v
+Textbook/Ch02/Sets.v
+Textbook/Ch02/Neighborhoods.v
+Textbook/Ch03/LocalEstimates.v
+Textbook/Ch03/Maps.v
+Textbook/Ch02/Filters.v
+Textbook/Ch02/Logic.v
+Textbook/Ch03/StandardFilters.v
+Textbook/Ch03/Approach.v
+Textbook/Ch03/LimitRules.v
+Textbook/Ch05/Sequences.v
+Textbook/Ch04/LocalLimits.v
+AppendixA/AndDemo.v
+AppendixA/FirstProof.v
+examples/ProjectUse.v
+examples/Smoke.v
+Textbook/Ch04/OneSidedInfinity.v
+Textbook/Ch04/LimitRules.v
+Textbook/Ch06/Derivatives.v
+
+Textbook/Ch07/Differentiation.v
+
+Textbook/Ch08/Taylor.v
+Textbook/Ch03/DefinitionExamples.v
+Textbook/Ch03/CoquelicotBridge.v
+Textbook/IntroductionExamples.v

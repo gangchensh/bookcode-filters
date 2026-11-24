@@ -1,0 +1,14 @@
+def productFilter {α β : Type*}
+    (F : BookFilter α) (G : BookFilter β) : BookFilter (α × β) where
+  sets := {U | ∃ A ∈ F.sets, ∃ B ∈ G.sets, A ×ˢ B ⊆ U}
+  univ_mem := ⟨Set.univ, F.univ_mem, Set.univ, G.univ_mem,
+    Set.subset_univ _⟩
+  inter_mem := by
+    rintro U V ⟨A, hA, B, hB, hU⟩ ⟨C, hC, D, hD, hV⟩
+    refine ⟨A ∩ C, F.inter_mem hA hC,
+      B ∩ D, G.inter_mem hB hD, ?_⟩	-- 用两个交集组成新矩形
+    rintro ⟨x, y⟩ ⟨hx, hy⟩
+    exact ⟨hU ⟨hx.1, hy.1⟩, hV ⟨hx.2, hy.2⟩⟩
+  upward := by
+    rintro U V ⟨A, hA, B, hB, hU⟩ hUV
+    exact ⟨A, hA, B, hB, fun p hp => hUV (hU hp)⟩

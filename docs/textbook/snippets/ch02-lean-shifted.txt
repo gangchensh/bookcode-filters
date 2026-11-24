@@ -1,0 +1,11 @@
+theorem shifted_small (ε : ℝ) (hε : 0 < ε) :
+    Eventually tailFilter (fun n => |shifted n| < ε) := by
+  apply eventually_mono (reciprocal_small ε hε) -- 将倒数估计传给较小的项
+  intro n hn
+  have hle : |shifted n| ≤ |reciprocal n| := by
+    have h1 : 0 < 1 / ((n : ℝ) + 1) := by positivity
+    have h2 : 0 < 1 / ((n : ℝ) + 2) := by positivity
+    simp only [shifted, reciprocal, abs_of_pos h1, abs_of_pos h2]
+    apply one_div_le_one_div_of_le (by positivity)
+    linarith
+  exact lt_of_le_of_lt hle hn

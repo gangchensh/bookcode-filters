@@ -1,0 +1,11 @@
+Theorem locally_abs_bound (a : R) :	(* |x|在a附近有统一上界 *)
+  locally_holds a (fun x => Rabs x < Rabs a + 1).
+Proof.
+  unfold locally_holds, is_neighborhood.
+  exists 1. split; [lra |].	(* 取正半径1 *)
+  intros x Hx. unfold eps_neighborhood in Hx.
+  assert (Habs : Rabs x <= Rabs (x-a) + Rabs a).
+  { replace x with ((x-a)+a) at 1 by ring.
+    apply Rabs_triang. }	(* 使用三角不等式 *)
+  lra.	(* 由|x-a| < 1得到所需上界 *)
+Qed.

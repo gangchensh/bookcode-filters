@@ -1,0 +1,24 @@
+Theorem bounded_mul_zero (f g : X -> R) (C : R) :	(* 有界因子不必存在极限 *)
+  0 <= C -> Eventually F (fun x => Rabs (f x) <= C) ->
+  Approaches g F (neighborhood_filter 0) ->
+  Approaches (fun x => f x*g x) F (neighborhood_filter 0).
+Proof.
+  intros HC Hbound Hg.
+  apply (proj2 (real_iff _ _ _)). intros eps Heps.
+  assert (HC1 : 0 < C+1) by lra.
+  assert (Heta : 0 < eps/(C+1)) by (apply Rdiv_lt_0_compat; assumption).
+  eapply upward.
+  - exact (eventually_and Hbound
+      (proj1 (real_iff _ _ _) Hg _ Heta)).
+  - intros x [Hf Hgsmall]. rewrite Rminus_0_r in *.
+    rewrite Rabs_mult.
+    assert (Hprod : Rabs (f x)*Rabs (g x) <= C*Rabs (g x)).
+    { apply Rmult_le_compat_r; [apply Rabs_pos | exact Hf]. }
+    assert (Hsmall : Rabs (g x)*(C+1) < eps).
+    { apply (Rmult_lt_reg_r (/ (C+1))).
+      - apply Rinv_0_lt_compat. exact HC1.
+      - replace (Rabs (g x)*(C+1)*/(C+1)) with (Rabs (g x)).
+        + exact Hgsmall.
+        + field. lra. }
+    pose proof (Rabs_pos (g x)). nra.	(* C|g|≤(C+1)|g|<eps *)
+Qed.

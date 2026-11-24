@@ -1,0 +1,19 @@
+theorem limit_squeeze	-- 两侧同极限与最终夹住即可
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hh : Approaches h F (neighborhoodFilter a))
+    (hfg : Eventually F (fun x => f x ≤ g x))
+    (hgh : Eventually F (fun x => g x ≤ h x)) :
+    Approaches g F (neighborhoodFilter a) := by
+  apply (real_iff _ _ _).2
+  intro ε hε
+  apply F.upward (F.inter_mem (F.inter_mem hfg hgh)
+    (F.inter_mem ((real_iff _ _ _).1 hf ε hε)
+      ((real_iff _ _ _).1 hh ε hε)))
+  intro x hx
+  have hlow : f x ≤ g x := hx.1.1
+  have hupp : g x ≤ h x := hx.1.2
+  have hfd : |f x-a| < ε := hx.2.1
+  have hhd : |h x-a| < ε := hx.2.2
+  change |g x-a| < ε
+  exact abs_lt.mpr ⟨by linarith [(abs_lt.mp hfd).1],
+    by linarith [(abs_lt.mp hhd).2]⟩	-- 得到 a-ε<g(x)<a+ε

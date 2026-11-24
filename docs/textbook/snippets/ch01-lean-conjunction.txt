@@ -1,0 +1,6 @@
+theorem swap_and (P Q : Prop) :	-- 交换合取中的两个命题
+    P ∧ Q → Q ∧ P := by
+  intro h	-- h : P ∧ Q，目标Q ∧ P
+  constructor	-- 分别证明Q和P
+  · exact h.2	-- h的第二部分是Q的证明
+  · exact h.1	-- h的第一部分是P的证明

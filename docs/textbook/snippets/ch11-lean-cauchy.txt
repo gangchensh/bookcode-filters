@@ -1,0 +1,7 @@
+theorem series_cauchy_iff (a : ℕ → ℝ) :
+    (∃ s, SeriesHasSum a s) ↔ CauchySeq (partialSum a) := by
+  constructor
+  · rintro ⟨s, hs⟩
+    exact hs.cauchySeq
+  · intro h
+    exact cauchySeq_tendsto_of_complete h	-- 完备性把部分和Cauchy性转成存在性

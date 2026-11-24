@@ -1,0 +1,6 @@
+theorem fourth_power_derivative (a : ℝ) :
+    HasDerivative (fun x => (x ^ 2) ^ 2) a (4 * a ^ 3) := by
+  have hinner := derivative_square a	-- 内层在a处的导数为2a
+  have houter := derivative_square (a ^ 2)	-- 外层在a²处的导数为2a²
+  have h := chain_rule hinner houter	-- 合成后系数为2a²乘2a
+  convert h using 1 <;> ring	-- 核对系数等于4a³

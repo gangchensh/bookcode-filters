@@ -1,0 +1,9 @@
+def BookContinuousAt (f : ℝ → ℝ) (a : ℝ) : Prop :=
+  Approaches f (neighborhoodFilter a) (neighborhoodFilter (f a))
+
+theorem continuous_mathlib (f : ℝ → ℝ) (a : ℝ) :
+    BookContinuousAt f a ↔ ContinuousAt f a := by
+  unfold BookContinuousAt
+  rw [approaches_mathlib_iff, Ch03.toMathlib_neighborhood,
+    Ch03.toMathlib_neighborhood]
+  rfl

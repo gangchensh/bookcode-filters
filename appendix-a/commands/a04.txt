@@ -1,0 +1,79 @@
+附录 A.4：目录对应关系与工作位置的选择
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：任意已有目录；命令会创建并进入练习目录
+
+mkdir -p /mnt/d/calculus-work
+cd /mnt/d/calculus-work
+pwd
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：任意已有目录；命令会创建并进入练习目录
+
+mkdir -p ~/calculus-work
+cd ~/calculus-work
+pwd
+
+===== 示例 3 =====
+输入位置：Windows 资源管理器地址栏
+目录或对象：替换发行版与用户名；不是终端命令
+
+\\wsl.localhost\Ubuntu\home\student\calculus-work
+
+===== 示例 4 =====
+输入位置：Ubuntu 终端
+目录或对象：想在资源管理器打开的那个目录
+
+explorer.exe .
+
+===== 示例 5 =====
+输入位置：目录布局示意
+目录或对象：后文逐步建立；不是命令或配置文件
+
+calculus-work/
+  GitNotes/              # Git notes project
+  CalculusBasics/        # Lean project using Std
+  CalculusLean/          # Lean project using mathlib
+  RocqBasics/            # Rocq practice files
+  tools/                # installer materials
+  code/ # companion code repository
+    README.md
+    lean/
+    rocq/
+    appendix-a/
+
+===== 示例 6 =====
+输入位置：目录结构示意
+目录或对象：代码附件根目录；不是终端命令
+
+code/
+  lean/                    # Lean + mathlib project
+    Theories/
+    Textbook/Ch01/
+    Textbook/Ch02/
+    Textbook/Ch03/  # continuing through Ch13
+    AppendixA/
+    examples/
+    templates/
+    FilterCalculus.lean
+    lean-toolchain
+    lakefile.toml
+    lake-manifest.json
+  rocq/                    # Rocq project
+    Theories/
+    Textbook/
+    AppendixA/
+    examples/
+    templates/
+    _CoqProject
+  appendix-a/              # commands, scripts, images, outputs
+  docs/textbook/           # non-compilable book snippets
+  config/
+  Makefile

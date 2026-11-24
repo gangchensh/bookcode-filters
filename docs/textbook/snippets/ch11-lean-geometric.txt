@@ -1,0 +1,11 @@
+theorem geometric_series (q : ℝ) (hq : |q| < 1) :
+    SeriesHasSum (fun n => q^n) (1-q)⁻¹ := by
+  have hnorm : ‖q‖ < 1 := by simpa only [Real.norm_eq_abs] using hq
+  exact (hasSum_geometric_of_norm_lt_one hnorm).tendsto_sum_nat
+
+theorem geometric_remainder (q : ℝ) (hq : q ≠ 1) (N : ℕ) :
+    1/(1-q) - partialSum (fun n => q^n) N = q^N/(1-q) := by
+  rw [partialSum, geom_sum_eq hq N]	-- 先使用有限几何恒等式
+  have hden : 1-q ≠ 0 := sub_ne_zero.mpr (Ne.symm hq)
+  field_simp [hden]
+  <;> ring

@@ -1,0 +1,8 @@
+theorem polar_region_change (D : Set (ℝ × ℝ)) (hD : MeasurableSet D)
+    (f : ℝ × ℝ → ℝ) :
+    (∫ p in D, f p) = ∫ q in polarCoord.target,
+      q.1 * (D.indicator f) (polarCoord.symm q) := by
+  rw [← integral_indicator hD]
+  symm
+  simpa only [smul_eq_mul] using
+    integral_comp_polarCoord_symm (D.indicator f)	-- 区域限制随极坐标映射一起拉回

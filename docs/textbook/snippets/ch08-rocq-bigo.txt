@@ -1,0 +1,4 @@
+Definition BookBigO (r g : R -> R)
+  (F : (R -> Prop) -> Prop) : Prop :=
+  exists C, 0 <= C /\
+    F (fun x => Rabs (r x) <= C * Rabs (g x)).

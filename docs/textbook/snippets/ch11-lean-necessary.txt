@@ -1,0 +1,9 @@
+theorem term_tendsto_zero {a : ℕ → ℝ} {s : ℝ} (h : SeriesHasSum a s) :
+    Tendsto a atTop (𝓝 0) := by
+  have hshift := h.comp (tendsto_add_atTop_nat 1)
+  have hdiff := hshift.sub h	-- 相邻部分和之差趋于s-s
+  have heq : (fun N => partialSum a (N+1) - partialSum a N) = a := by
+    funext N
+    rw [partialSum_succ]
+    ring
+  simpa only [Function.comp_def, heq, sub_self] using hdiff

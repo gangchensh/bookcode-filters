@@ -1,0 +1,10 @@
+def imageFilter {α β : Type*} (f : α → β)	-- 用原像构造像滤子
+    (F : BookFilter α) : BookFilter β where
+  sets := {V | f ⁻¹' V ∈ F.sets}
+  univ_mem := F.univ_mem
+  inter_mem := by
+    intro A B hA hB
+    exact F.inter_mem hA hB	-- 原像保持交集
+  upward := by
+    intro A B hA hAB
+    exact F.upward hA (fun x hx => hAB hx)	-- 原像保持集合包含

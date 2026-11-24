@@ -1,0 +1,29 @@
+theorem littleO_add {α : Type*} {F : Filter α} {r s g : α → ℝ}
+    (hr : BookLittleO r g F) (hs : BookLittleO s g F) :
+    BookLittleO (fun x => r x + s x) g F := by
+  intro ε hε
+  filter_upwards [hr (ε/2) (by linarith), hs (ε/2) (by linarith)] with x hx hy
+  calc
+    |r x + s x| ≤ |r x| + |s x| := abs_add_le _ _
+    _ ≤ ε * |g x| := by linarith	-- 两个ε/2界合成同一ε界
+
+theorem littleO_comp {α β : Type*} {F : Filter α} {G : Filter β}
+    {r g : β → ℝ} {u : α → β}
+    (hr : BookLittleO r g G) (hu : Tendsto u F G) :
+    BookLittleO (r ∘ u) (g ∘ u) F := by
+  intro ε hε
+  exact hu.eventually (hr ε hε)	-- 将G中的最终范围取原像拉回F
+
+theorem bigO_comp {α β : Type*} {F : Filter α} {G : Filter β}
+    {r g : β → ℝ} {u : α → β}
+    (hr : BookBigO r g G) (hu : Tendsto u F G) :
+    BookBigO (r ∘ u) (g ∘ u) F := by
+  obtain ⟨C, hC, h⟩ := hr
+  exact ⟨C, hC, hu.eventually h⟩	-- 原像保留同一个控制常数
+
+theorem littleO_mul_bigO {α : Type*} {F : Filter α} {r g s k : α → ℝ}
+    (hr : BookLittleO r g F) (hs : BookBigO s k F) :
+    BookLittleO (fun x => r x * s x) (fun x => g x * k x) F := by
+  apply (littleO_mathlib _ _ _).mpr
+  exact ((littleO_mathlib _ _ _).mp hr).mul_isBigO
+    ((bigO_mathlib _ _ _).mp hs)	-- 两个因子的控制合成乘积控制

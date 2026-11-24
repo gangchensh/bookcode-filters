@@ -1,0 +1,11 @@
+theorem square_small (ε : ℝ) (hε : 0 < ε) :
+    Eventually tailFilter (fun n => |reciprocal n ^ 2| < ε) := by
+  have hImp : Eventually tailFilter
+      (fun n => |reciprocal n| < ε → |reciprocal n ^ 2| < ε) := by
+    apply eventually_mono (reciprocal_small 1 zero_lt_one)
+    intro n hn hεn
+    have hnonneg : 0 ≤ reciprocal n := by unfold reciprocal; positivity
+    rw [abs_of_nonneg hnonneg] at hn hεn
+    rw [abs_of_nonneg (sq_nonneg _)]
+    nlinarith                                -- 0≤u<1时，u²≤u<ε
+  exact eventually_mp hImp (reciprocal_small ε hε)

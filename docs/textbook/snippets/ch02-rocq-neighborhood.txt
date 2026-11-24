@@ -1,0 +1,19 @@
+Definition neighborhood_filter (a : R) : BookFilter R.  (* 构造实数邻域滤子 *)
+Proof.
+  refine {| members := is_neighborhood a |}.  (* 指定members为is_neighborhood a，其余字段待证 *)
+  - exists 1. split.                                    (* 选取1作为见证，再分别证明各项要求 *)
+    + lra.                                              (* 核对线性实数不等式 *)
+    + intros x Hx. exact I.
+  - intros A B [e [He HA]] [d [Hd HB]].
+    exists (Rmin e d). split.                           (* 选取(Rmin e d)作为见证，再分别证明各项要求 *)
+    + apply Rmin_pos; assumption.
+    + intros x Hx. split.
+      * apply HA. unfold eps_neighborhood in *.
+        exact (Rlt_le_trans _ _ _ Hx (Rmin_l e d)).     (* 连接已有关系完成目标 *)
+      * apply HB. unfold eps_neighborhood in *.
+        exact (Rlt_le_trans _ _ _ Hx (Rmin_r e d)).     (* 连接已有关系完成目标 *)
+  - intros A B [e [He HA]] HAB.
+    exists e. split.                                    (* 选取e作为见证，再分别证明各项要求 *)
+    + exact He.
+    + intros x Hx. exact (HAB x (HA x Hx)).
+Defined.

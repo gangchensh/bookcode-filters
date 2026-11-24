@@ -1,0 +1,9 @@
+theorem lagrange_remainder {f : ℝ → ℝ} {a x : ℝ} {n : ℕ}
+    (hax : a ≠ x) (hf : ContDiffOn ℝ (n + 1) f (Set.uIcc a x)) :
+    ∃ c ∈ Set.uIoo a x,
+      f x - taylorWithinEval f n (Set.uIcc a x) a x =
+        iteratedDeriv (n + 1) f c * (x - a) ^ (n + 1) /
+          Nat.factorial (n + 1) := by
+	-- 由区间光滑性取得中间点c
+  exact
+    taylor_mean_remainder_lagrange_iteratedDeriv hax hf

@@ -1,0 +1,6 @@
+theorem fineFilter_proper {P : Type*} (mesh : P → ℝ)
+    (hsmall : ∀ d > 0, ∃ p, mesh p < d) :
+    Ch02.IsProper (fineFilter mesh) := by
+  rintro ⟨d, hd, hmem⟩	-- 假定空集含有所有充分细的分割
+  obtain ⟨p, hp⟩ := hsmall d hd	-- 选到网格小于d的实际分割
+  exact hmem hp	-- 该分割不可能属于空集

@@ -1,0 +1,6 @@
+theorem reciprocal_remainder (a h : ℝ)
+    (ha : a ≠ 0) (hah : a + h ≠ 0) :	-- 两个非零条件分别控制两个分母
+    1 / (a + h) - (1 / a - h / a ^ 2) =
+      h ^ 2 / (a ^ 2 * (a + h)) := by
+  field_simp [ha, hah]
+  ring

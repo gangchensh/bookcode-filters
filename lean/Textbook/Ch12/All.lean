@@ -1,0 +1,9 @@
+import Textbook.Ch12.Audit
+import Textbook.Ch12.Applications
+import Textbook.Ch12.ContinuousPartials
+import Textbook.Ch12.Coordinates
+import Textbook.Ch12.DirectionCounterexamples
+import Textbook.Ch12.GradientModels
+import Textbook.Ch12.PathCounterexamples
+import Textbook.Ch12.PlaneModels
+import Textbook.Ch12.SensorBudget

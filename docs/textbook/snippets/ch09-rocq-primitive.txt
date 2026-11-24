@@ -1,0 +1,5 @@
+Theorem primitive_integral (F f : R -> R) (a b : R)
+  (Hd : forall x, Rmin a b <= x <= Rmax a b -> is_derive F x (f x))
+  (Hc : forall x, Rmin a b <= x <= Rmax a b -> continuous f x) :
+  is_RInt f a b (F b-F a).
+Proof. exact (is_RInt_derive F f a b Hd Hc). Qed.

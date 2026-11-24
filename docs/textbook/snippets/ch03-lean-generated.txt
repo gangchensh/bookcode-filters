@@ -1,0 +1,14 @@
+def generatedFilter {ι α : Type*} (B : ι → Set α)
+    (hI : Nonempty ι)
+    (hB : ∀ i j, ∃ k, B k ⊆ B i ∩ B j) : BookFilter α where
+  sets := {U | ∃ i, B i ⊆ U}	-- 成员必须包含某个基本集合
+  univ_mem := by
+    rcases hI with ⟨i⟩
+    exact ⟨i, Set.subset_univ _⟩
+  inter_mem := by
+    rintro U V ⟨i, hi⟩ ⟨j, hj⟩
+    rcases hB i j with ⟨k, hk⟩	-- 找同时落在两个基本集合内的B k
+    exact ⟨k, fun x hx => ⟨hi (hk hx).1, hj (hk hx).2⟩⟩
+  upward := by
+    rintro U V ⟨i, hi⟩ hUV
+    exact ⟨i, fun x hx => hUV (hi hx)⟩

@@ -1,0 +1,4 @@
+Theorem reciprocal_remainder (a h : R)
+  (Ha : a <> 0) (Hah : a+h <> 0) :	(* 线性模型与倒数值的精确差 *)
+  1/(a+h) - (1/a-h/(a*a)) = h*h/((a*a)*(a+h)).
+Proof. field; split; assumption. Qed.

@@ -1,0 +1,8 @@
+theorem product_proper {α β : Type*}
+    {F : BookFilter α} {G : BookFilter β}
+    (hF : IsProper F) (hG : IsProper G) :
+    IsProper (productFilter F G) := by
+  rintro ⟨A, hA, B, hB, hEmpty⟩
+  rcases eventually_exists hF hA with ⟨x, hx⟩	-- 从F的成员A中取到一个点
+  rcases eventually_exists hG hB with ⟨y, hy⟩	-- 从G的成员B中取到一个点
+  exact hEmpty (show (x, y) ∈ A ×ˢ B from ⟨hx, hy⟩)	-- 矩形中的点不可能属于空集

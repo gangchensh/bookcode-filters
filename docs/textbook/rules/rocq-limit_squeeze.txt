@@ -1,0 +1,19 @@
+Theorem limit_squeeze (f g h : X -> R) (a : R) :	(* 两端同极限，最终夹住中间函数 *)
+  Approaches f F (neighborhood_filter a) ->
+  Approaches h F (neighborhood_filter a) ->
+  Eventually F (fun x => f x <= g x) ->
+  Eventually F (fun x => g x <= h x) ->
+  Approaches g F (neighborhood_filter a).
+Proof.
+  intros Hf Hh Hfg Hgh.
+  apply (proj2 (real_iff _ _ _)). intros eps Heps.
+  eapply upward.
+  - exact (eventually_and (eventually_and Hfg Hgh)
+      (eventually_and
+        (proj1 (real_iff _ _ _) Hf eps Heps)
+        (proj1 (real_iff _ _ _) Hh eps Heps))).	(* 四项要求取共同成员 *)
+  - intros x [[Hlow Hupp] [Hfd Hhd]].
+    apply Rabs_def1.
+    + apply Rabs_def2 in Hhd. lra.	(* 用右端得到 g(x)-a<eps *)
+    + apply Rabs_def2 in Hfd. lra.	(* 用左端得到 -eps<g(x)-a *)
+Qed.

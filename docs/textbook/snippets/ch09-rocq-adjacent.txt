@@ -1,0 +1,6 @@
+Theorem integral_adjacent (f : R -> R) (a c b I J : R)
+  (Hleft : is_RInt f a c I) (Hright : is_RInt f c b J) :
+  is_RInt f a b (I+J).
+Proof.
+  exact (is_RInt_Chasles f a c b I J Hleft Hright).
+Qed.

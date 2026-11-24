@@ -1,0 +1,9 @@
+Theorem fourth_power_derivative (a : R) :
+  HasDerivative (fun x => (x*x)*(x*x)) a (4*a^3).
+Proof.
+  replace (4*a^3) with ((2*(a*a))*(2*a)) by ring.
+  apply (chain_rule (fun x : R => x*x)
+    (fun x : R => x*x) a (2*a) (2*(a*a))).	(* 中间值为a乘a *)
+  - exact (derivative_square a).	(* 内层平方在a处求导 *)
+  - exact (derivative_square (a*a)).	(* 外层平方在a²处求导 *)
+Qed.

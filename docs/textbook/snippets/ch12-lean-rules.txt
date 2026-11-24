@@ -1,0 +1,11 @@
+theorem linear_combination {f g : (ℝ × ℝ) → ℝ} {a : ℝ × ℝ}
+    {L M : (ℝ × ℝ) →L[ℝ] ℝ} (hf : HasFDerivAt f L a)
+    (hg : HasFDerivAt g M a) (c d : ℝ) :
+    HasFDerivAt (fun x => c * f x + d * g x) (c • L + d • M) a := by
+  exact (hf.const_mul c).add (hg.const_mul d)	-- 两个主部按相同系数相加
+
+theorem product_rule {f g : (ℝ × ℝ) → ℝ} {a : ℝ × ℝ}
+    {L M : (ℝ × ℝ) →L[ℝ] ℝ} (hf : HasFDerivAt f L a)
+    (hg : HasFDerivAt g M a) :
+    HasFDerivAt (fun x => f x * g x) (f a • M + g a • L) a := by
+  exact hf.mul hg	-- 微分为f(a)Dg(a)+g(a)Df(a)

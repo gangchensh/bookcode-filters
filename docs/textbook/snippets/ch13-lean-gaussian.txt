@@ -1,0 +1,6 @@
+theorem gaussian_integrable : Integrable (fun x : ℝ => Real.exp (-(x^2))) := by
+  simpa using integrable_exp_neg_mul_sq (by norm_num : (0 : ℝ) < 1)
+
+theorem gaussian_integral :
+    (∫ x : ℝ, Real.exp (-(x^2))) = Real.sqrt Real.pi := by
+  simpa using integral_gaussian (1 : ℝ)	-- 参数b=1的原生Gaussian积分

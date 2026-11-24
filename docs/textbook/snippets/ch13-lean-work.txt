@@ -1,0 +1,9 @@
+theorem circle_work :
+    (∫ t : ℝ in (0 : ℝ)..(2*Real.pi),
+      (-Real.sin t)*(-Real.sin t)+Real.cos t*Real.cos t) = 2*Real.pi := by
+  have h : (fun t : ℝ => (-Real.sin t)*(-Real.sin t)+Real.cos t*Real.cos t) =
+      (fun _ => (1 : ℝ)) := by
+    funext t
+    nlinarith [Real.sin_sq_add_cos_sq t]	-- 圆周功的参数被积函数恒为1
+  rw [h, intervalIntegral.integral_const]
+  ring

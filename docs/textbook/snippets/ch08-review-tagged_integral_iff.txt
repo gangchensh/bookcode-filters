@@ -1,0 +1,5 @@
+theorem tagged_integral_iff (f : ℝ → ℝ) (a b I : ℝ) :
+    HasTaggedIntegral f a b I ↔
+      ∀ ε > 0, ∃ δ > 0, ∀ P : TaggedPartition a b,
+        P.mesh < δ → |P.riemannSum f - I| < ε :=
+  mesh_integral_iff _ _ _

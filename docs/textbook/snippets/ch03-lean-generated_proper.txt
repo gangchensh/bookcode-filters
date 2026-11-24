@@ -1,0 +1,12 @@
+theorem generated_proper_iff {ι α : Type*} (B : ι → Set α)
+    (hI : Nonempty ι) (hB : ∀ i j, ∃ k, B k ⊆ B i ∩ B j) :
+    IsProper (generatedFilter B hI hB) ↔ ∀ i, (B i).Nonempty := by
+  classical
+  constructor
+  · intro h i
+    by_contra hn	-- 假设B i没有元素
+    apply h
+    exact ⟨i, fun x hx => False.elim (hn ⟨x, hx⟩)⟩
+  · rintro h ⟨i, hi⟩	-- 空集若为成员，就包含某个B i
+    rcases h i with ⟨x, hx⟩
+    exact hi hx	-- B i中的x不可能属于空集

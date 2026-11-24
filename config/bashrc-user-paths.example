@@ -1,0 +1,10 @@
+# Optional example: edit your chosen fragment; never replace your entire .bashrc.
+export CALCULUS_WORK="$HOME/calculus-work"
+export CALCULUS_CODE="$CALCULUS_WORK/code"
+if [ -d "$HOME/tools/bin" ]; then
+  case ":$PATH:" in
+    *":$HOME/tools/bin:"*) ;;
+    *) export PATH="$HOME/tools/bin:$PATH" ;;
+  esac
+fi
+alias cwork='cd "$CALCULUS_WORK"'

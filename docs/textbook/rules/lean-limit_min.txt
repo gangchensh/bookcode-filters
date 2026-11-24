@@ -1,0 +1,6 @@
+theorem limit_min
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hg : Approaches g F (neighborhoodFilter b)) :
+    Approaches (fun x => min (f x) (g x)) F (neighborhoodFilter (min a b)) := by
+  apply (real_mathlib_iff _ _ _).2
+  exact ((real_mathlib_iff _ _ _).1 hf).min ((real_mathlib_iff _ _ _).1 hg)

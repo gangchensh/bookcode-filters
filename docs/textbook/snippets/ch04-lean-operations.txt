@@ -1,0 +1,20 @@
+theorem continuous_add_book {f g : ℝ → ℝ} {a : ℝ}
+    (hf : BookContinuousAt f a) (hg : BookContinuousAt g a) :
+    BookContinuousAt (fun x => f x + g x) a := by
+  apply (continuous_mathlib _ _).2
+  exact ((continuous_mathlib _ _).1 hf).add
+    ((continuous_mathlib _ _).1 hg)                  -- 将和的极限规则用于完整邻域源
+
+theorem continuous_mul_book {f g : ℝ → ℝ} {a : ℝ}
+    (hf : BookContinuousAt f a) (hg : BookContinuousAt g a) :
+    BookContinuousAt (fun x => f x * g x) a := by
+  apply (continuous_mathlib _ _).2
+  exact ((continuous_mathlib _ _).1 hf).mul
+    ((continuous_mathlib _ _).1 hg)
+
+theorem continuous_div_book {f g : ℝ → ℝ} {a : ℝ}
+    (hf : BookContinuousAt f a) (hg : BookContinuousAt g a) (hne : g a ≠ 0) :
+    BookContinuousAt (fun x => f x / g x) a := by
+  apply (continuous_mathlib _ _).2
+  exact ((continuous_mathlib _ _).1 hf).div
+    ((continuous_mathlib _ _).1 hg) hne               -- 非零假设作用于中心的分母值

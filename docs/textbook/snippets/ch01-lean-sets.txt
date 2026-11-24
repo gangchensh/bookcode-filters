@@ -1,0 +1,10 @@
+def Upper100 : Set ℕ := {n | 100 ≤ n}	-- 自然数中不小于100的点集
+
+theorem upper100_mem (n : ℕ) :	-- 成员命题就是定义中的不等式
+    n ∈ Upper100 ↔ 100 ≤ n := by
+  rfl
+
+theorem inter_left (A B : Set ℕ) :	-- 交集包含在左边的集合内
+    A ∩ B ⊆ A := by
+  intro n hn	-- hn : n ∈ A ∩ B
+  exact hn.1	-- 取出n ∈ A的证明

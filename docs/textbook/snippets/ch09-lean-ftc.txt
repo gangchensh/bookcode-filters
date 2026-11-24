@@ -1,0 +1,6 @@
+theorem primitive_integral {F f : ℝ → ℝ} {a b : ℝ}
+    (hd : ∀ x ∈ Set.uIcc a b, HasDerivAt F (f x) x)
+    (hi : IntervalIntegrable f volume a b) :
+    (∫ x in a..b, f x) = F b - F a := by
+	-- 导数关系与可积性给出端点差
+  exact intervalIntegral.integral_eq_sub_of_hasDerivAt hd hi

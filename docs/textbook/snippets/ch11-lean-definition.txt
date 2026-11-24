@@ -1,0 +1,9 @@
+def partialSum (a : ℕ → ℝ) (N : ℕ) : ℝ :=
+  ∑ k ∈ Finset.range N, a k	-- 前N项，下标为0到N-1
+
+def SeriesHasSum (a : ℕ → ℝ) (s : ℝ) : Prop :=
+  Tendsto (partialSum a) atTop (𝓝 s)	-- 部分和沿自然数上尾趋于s
+
+theorem partialSum_succ (a : ℕ → ℝ) (N : ℕ) :
+    partialSum a (N+1) = partialSum a N + a N := by
+  exact Finset.sum_range_succ a N	-- 新增的第N项与旧部分和分开

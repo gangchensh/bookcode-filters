@@ -1,0 +1,14 @@
+Definition size2 (h : R * R) : R :=
+  Rmax (Rabs (fst h)) (Rabs (snd h)).
+
+Definition Linear2 (L : R * R -> R) : Prop :=
+  (forall h k, L (fst h + fst k, snd h + snd k) = L h + L k) /\
+  (forall t h, L (t * fst h, t * snd h) = t * L h).
+
+Definition HasTotalDerivative2 (f : R * R -> R)
+    (a : R * R) (L : R * R -> R) : Prop :=
+  Linear2 L /\
+  forall eps : R, 0 < eps -> exists delta : R,
+    0 < delta /\ forall h : R * R, size2 h < delta ->
+    Rabs (f (fst a + fst h, snd a + snd h) - f a - L h)
+      <= eps * size2 h.	(* 同时控制全部小向量增量 *)

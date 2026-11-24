@@ -1,0 +1,15 @@
+theorem lagrange_bound {f : ℝ → ℝ} {a x M : ℝ} {n : ℕ}
+    (hax : a ≠ x) (hf : ContDiffOn ℝ (n + 1) f (Set.uIcc a x))
+    (hM : ∀ c ∈ Set.uIoo a x, |iteratedDeriv (n + 1) f c| ≤ M) :
+    |f x - taylorWithinEval f n (Set.uIcc a x) a x| ≤
+      M * |x - a| ^ (n + 1) / Nat.factorial (n + 1) := by
+  obtain ⟨c, hc, he⟩ := lagrange_remainder hax hf	-- 取严格介于端点的余项点
+  have hnum := mul_le_mul_of_nonneg_right (hM c hc)
+    (pow_nonneg (abs_nonneg (x - a)) (n + 1))	-- 在c处应用共同导数界
+  calc
+    |f x - taylorWithinEval f n (Set.uIcc a x) a x| =
+        |iteratedDeriv (n + 1) f c| * |x - a| ^ (n + 1) /
+          (Nat.factorial (n + 1) : ℝ) := by
+      rw [he, abs_div, abs_mul, abs_pow,
+        abs_of_nonneg (by positivity : (0 : ℝ) ≤ Nat.factorial (n + 1))]
+    _ ≤ _ := div_le_div_of_nonneg_right hnum (by positivity)

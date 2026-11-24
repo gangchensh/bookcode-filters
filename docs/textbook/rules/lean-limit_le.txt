@@ -1,0 +1,18 @@
+theorem limit_le	-- 保序必须从共同成员取到实际的点
+    (hF : IsProper F)
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hg : Approaches g F (neighborhoodFilter b))
+    (hfg : Eventually F (fun x => f x ≤ g x)) : a ≤ b := by
+  by_contra hn
+  have hab : b < a := lt_of_not_ge hn
+  have hd : 0 < (a-b)/3 := by linarith
+  rcases eventually_exists hF
+    (eventually_and hfg (eventually_and
+      ((real_iff _ _ _).1 hf _ hd)
+      ((real_iff _ _ _).1 hg _ hd))) with ⟨x, hx, hxf, hxg⟩
+  have hfsmall : |f x-a| < (a-b)/3 := hxf
+  have hgsmall : |g x-b| < (a-b)/3 := hxg
+  have hfa := (abs_lt.mp hfsmall).1	-- f(x)>a-(a-b)/3
+  have hgb := (abs_lt.mp hgsmall).2	-- g(x)<b+(a-b)/3
+  have horder : f x ≤ g x := hx
+  linarith	-- 与 f(x)≤g(x) 矛盾

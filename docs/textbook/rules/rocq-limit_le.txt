@@ -1,0 +1,16 @@
+Theorem limit_le (f g : X -> R) (a b : R) :	(* 保序需要源非平凡 *)
+  IsProper F ->
+  Approaches f F (neighborhood_filter a) ->
+  Approaches g F (neighborhood_filter b) ->
+  Eventually F (fun x => f x <= g x) -> a <= b.
+Proof.
+  intros HF Hf Hg Hfg. apply Rnot_lt_le. intro Hba.
+  assert (Heta : 0 < (a-b)/3) by lra.
+  destruct (eventually_exists HF
+    (eventually_and Hfg (eventually_and
+      (proj1 (real_iff _ _ _) Hf _ Heta)
+      (proj1 (real_iff _ _ _) Hg _ Heta))))
+    as [x [Hord [Hfd Hgd]]].	(* 在共同成员中取一个实际点 *)
+  apply Rabs_def2 in Hfd. apply Rabs_def2 in Hgd.
+  lra.	(* 此点同时要求 f(x)>g(x) *)
+Qed.

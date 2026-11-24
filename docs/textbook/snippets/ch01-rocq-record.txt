@@ -1,0 +1,8 @@
+Record ClosedBounds : Type := {	(* 两个实数端点及其顺序证明 *)
+  lower : R;
+  upper : R;
+  ordered : lower <= upper
+}.
+
+Definition unit_bounds : ClosedBounds :=	(* 构造端点为0和1的记录 *)
+  {| lower := 0; upper := 1; ordered := Rle_0_1 |}.

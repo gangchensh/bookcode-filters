@@ -1,0 +1,11 @@
+theorem sensitivity_bound (f df : ℝ → ℝ) {a b M : ℝ}
+    (hab : a < b) (hc : ContinuousOn f (Icc a b))
+    (hd : ∀ x ∈ Ioo a b, HasDerivAt f (df x) x)
+    (hM : ∀ x ∈ Ioo a b, |df x| ≤ M) :
+    |f b - f a| ≤ M * (b - a) := by
+  obtain ⟨c, hc', he⟩ := mean_value f df hab hc hd	-- 取得区间内的点c及斜率等式
+  have heq : f b - f a = df c * (b - a) :=
+    ((eq_div_iff (sub_ne_zero.mpr hab.ne')).1 he).symm
+  rw [heq, abs_mul, abs_of_pos (sub_pos.mpr hab)]	-- 把函数值差改写为导数乘区间长度
+  exact mul_le_mul_of_nonneg_right (hM c hc')	-- 用c处的导数界控制乘积
+    (sub_nonneg.mpr hab.le)

@@ -1,0 +1,8 @@
+theorem derivative_unique {f : ℝ → ℝ} {a d e : ℝ}
+    (hd : HasDerivative f a d) (he : HasDerivative f a e) : d = e := by
+  exact ((derivative_mathlib _ _ _).1 hd).unique
+    ((derivative_mathlib _ _ _).1 he)
+
+theorem derivative_value {f : ℝ → ℝ} {a d : ℝ}
+    (h : HasDerivative f a d) : deriv f a = d := by
+  exact ((derivative_mathlib _ _ _).1 h).deriv

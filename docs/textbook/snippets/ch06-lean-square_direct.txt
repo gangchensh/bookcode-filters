@@ -1,0 +1,16 @@
+theorem derivative_square_direct (a : ℝ) :	-- 直接核验差商，不调用求导法则
+    HasDerivative (fun x => x ^ 2) a (2 * a) := by
+  unfold HasDerivative
+  apply (real_iff _ _ _).2	-- 对每个ε证明差商距离最终小于ε
+  intro ε hε
+  refine ⟨ε, hε, ?_⟩	-- 取半径δ=ε
+  intro x hx hne
+  change |x - a| < ε at hx
+  change x ≠ a at hne
+  have hden : x - a ≠ 0 := sub_ne_zero.mpr hne	-- 去心条件允许约去x-a
+  change |(x ^ 2 - a ^ 2) / (x - a) - 2 * a| < ε
+  have hid : (x ^ 2 - a ^ 2) / (x - a) - 2 * a = x - a := by
+    field_simp [hden]
+    <;> ring
+  rw [hid]
+  exact hx	-- 距离恰好就是|x-a|

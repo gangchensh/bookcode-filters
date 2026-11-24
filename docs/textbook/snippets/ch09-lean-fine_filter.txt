@@ -1,0 +1,19 @@
+def fineFilter {P : Type*} (mesh : P → ℝ) : Ch02.BookFilter P where
+  sets := {U | ∃ delta > 0, {p | mesh p < delta} ⊆ U}
+  univ_mem := ⟨1, by norm_num, fun _ _ => Set.mem_univ _⟩
+  inter_mem := by
+    intro U V hU hV
+    rcases hU with ⟨d, hd, hU⟩	-- U包含网格小于d的全部分割
+    rcases hV with ⟨e, he, hV⟩	-- V包含网格小于e的全部分割
+    refine ⟨min d e, lt_min hd he, ?_⟩	-- 取两个网格上界的最小值
+    intro p hp
+    change mesh p < min d e at hp
+    constructor
+    · apply hU
+      exact lt_of_lt_of_le hp (min_le_left _ _)
+    · apply hV
+      exact lt_of_lt_of_le hp (min_le_right _ _)
+  upward := by
+    intro U V hU hUV
+    rcases hU with ⟨d, hd, hU⟩
+    exact ⟨d, hd, fun p hp => hUV (hU hp)⟩	-- 同一网格上界仍适用于超集

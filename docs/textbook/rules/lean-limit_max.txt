@@ -1,0 +1,6 @@
+theorem limit_max
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hg : Approaches g F (neighborhoodFilter b)) :
+    Approaches (fun x => max (f x) (g x)) F (neighborhoodFilter (max a b)) := by
+  apply (real_mathlib_iff _ _ _).2
+  exact ((real_mathlib_iff _ _ _).1 hf).max ((real_mathlib_iff _ _ _).1 hg)

@@ -1,0 +1,11 @@
+theorem integration_by_parts {u v u' v' : ℝ → ℝ} {a b : ℝ}
+    (hu : ContinuousOn u (Set.uIcc a b))
+    (hv : ContinuousOn v (Set.uIcc a b))
+    (hdu : ∀ x ∈ Set.Ioo (min a b) (max a b), HasDerivAt u (u' x) x)
+    (hdv : ∀ x ∈ Set.Ioo (min a b) (max a b), HasDerivAt v (v' x) x)
+    (hiu : IntervalIntegrable u' volume a b)
+    (hiv : IntervalIntegrable v' volume a b) :
+    (∫ x in a..b, u x * v' x) =
+      u b * v b - u a * v a - ∫ x in a..b, u' x * v x := by
+  exact intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+    hu hv hdu hdv hiu hiv	-- 连续、导数关系与可积性分别传入

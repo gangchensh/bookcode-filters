@@ -1,0 +1,5 @@
+theorem mean_value (f df : ℝ → ℝ) {a b : ℝ} (hab : a < b)
+    (hc : ContinuousOn f (Icc a b))
+    (hd : ∀ x ∈ Ioo a b, HasDerivAt f (df x) x) :
+    ∃ c ∈ Ioo a b, df c = (f b - f a) / (b - a) := by
+  exact exists_hasDerivAt_eq_slope f df hab hc hd

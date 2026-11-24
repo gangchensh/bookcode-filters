@@ -1,0 +1,7 @@
+A.5 资源检查命令：Ubuntu 已安装，并已阅读命令基础后使用。前三条命令在任意目录查看系统资源；du 命令在已有的 Lean 项目根目录统计用户工具与该项目 .lake 的磁盘占用。原生 Ubuntu 没有 /mnt/d 时省略该参数。
+
+df -h / /mnt/d
+free -h
+nproc
+
+du -sh "$HOME/.elan" "$HOME/.opam" .lake 2>/dev/null

@@ -1,0 +1,8 @@
+MathlibSmoke.lean 正常输出示例：只供核对，不输入终端。
+来自四条 #check；类型层次参数的编号可能随版本变化。
+末尾证明通过时没有额外输出。下面保留终端长行，不按 PDF 折行。
+
+Filter.{u_1} (α : Type u_1) : Type u_1
+Filter.atTop.{u_2} {α : Type u_2} [Preorder α] : Filter α
+Filter.Tendsto.{u_1, u_2} {α : Type u_1} {β : Type u_2} (f : α → β) (l₁ : Filter α) (l₂ : Filter β) : Prop
+nhds.{u_3} {X : Type u_3} [TopologicalSpace X] (x : X) : Filter X

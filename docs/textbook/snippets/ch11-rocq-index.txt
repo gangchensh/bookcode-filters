@@ -1,0 +1,8 @@
+Theorem partialSum_sum_n (a : nat -> R) (n : nat) :
+  PartialSum a (S n) = sum_n a n.
+Proof.
+  induction n as [|n IH].
+  - simpl. rewrite sum_O. ring.
+  - change (PartialSum a (S n) + a (S n) = sum_n a (S n)).
+    rewrite IH, sum_Sn. reflexivity.	(* sum_n包括最后的第n项 *)
+Qed.

@@ -1,0 +1,11 @@
+theorem moving_square_interval (x : ℝ) :
+    HasDerivAt (fun y => ∫ t in y..(y^2), t^2) (2*x^5-x^2) x := by
+  have he (y : ℝ) : (∫ t in y..(y^2), t^2) = y^6/3-y^3/3 := by
+    rw [integral_pow]
+    push_cast
+    ring
+  simp_rw [he]
+  convert (((hasDerivAt_id' x).pow 6).div_const 3).sub
+    (((hasDerivAt_id' x).pow 3).div_const 3) using 1
+  norm_num
+  ring

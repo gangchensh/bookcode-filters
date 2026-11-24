@@ -1,0 +1,20 @@
+Theorem derivative_standard (f : R -> R) (a d : R) :
+  HasDerivative f a d <-> derivable_pt_lim f a d.
+Proof.
+  unfold HasDerivative. rewrite (real_iff _ _ _).
+  split.
+  - intros H eps Heps. destruct (H eps Heps) as [r [Hr Hloc]].
+    exists (mkposreal r Hr).	(* 将正半径打包为posreal *)
+    intros h Hh Hsmall.
+    specialize (Hloc (a+h)).
+    unfold Neighborhoods.eps_neighborhood in Hloc.
+    replace (a+h-a) with h in Hloc by ring.
+    apply Hloc; [exact Hsmall | lra].	(* 输入非零增量对应去心点 *)
+  - intros H eps Heps. destruct (H eps Heps) as [r Hloc].
+    exists (pos r). split; [exact (cond_pos r) |].
+    intros x Hsmall Hne.
+    change (Rabs (x-a) < r) in Hsmall.
+    specialize (Hloc (x-a)).
+    replace (a+(x-a)) with x in Hloc by ring.
+    apply Hloc; [lra | exact Hsmall].
+Qed.

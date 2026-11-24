@@ -1,0 +1,11 @@
+Theorem derivative_affine (m b a : R) :	(* 仿射差商在去心范围恒为m *)
+  HasDerivative (fun x => m*x+b) a m.
+Proof.
+  unfold HasDerivative. apply (proj2 (real_iff _ _ _)).
+  intros eps Heps. exists 1. split; [lra |].
+  intros x Hx Hne. change (x <> a) in Hne.
+  assert (Hden : x-a <> 0) by lra.	(* 去心条件保证差商可约分 *)
+  replace ((m*x+b-(m*a+b))/(x-a)-m) with 0.
+  - rewrite Rabs_R0. exact Heps.
+  - field; assumption.
+Qed.

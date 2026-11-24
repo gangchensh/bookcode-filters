@@ -1,0 +1,6 @@
+theorem chain_rule {f g : ℝ → ℝ} {a df dg : ℝ}
+    (hf : HasDerivative f a df) (hg : HasDerivative g (f a) dg) :
+    HasDerivative (fun x => g (f x)) a (dg * df) := by
+  apply (derivative_mathlib _ _ _).2
+  exact ((derivative_mathlib _ _ _).1 hg).comp a
+    ((derivative_mathlib _ _ _).1 hf)	-- 中间点必须为f a

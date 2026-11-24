@@ -1,0 +1,17 @@
+theorem limit_add	-- 共同源上的和极限
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hg : Approaches g F (neighborhoodFilter b)) :
+    Approaches (fun x => f x+g x) F (neighborhoodFilter (a+b)) := by
+  apply (real_iff _ _ _).2	-- 改证和的距离最终小于 ε
+  intro ε hε
+  apply F.upward (F.inter_mem
+    ((real_iff _ _ _).1 hf (ε/2) (half_pos hε))
+    ((real_iff _ _ _).1 hg (ε/2) (half_pos hε)))	-- 合并两个 ε/2 距离要求
+  intro x hx
+  have hxf : |f x-a| < ε/2 := hx.1
+  have hxg : |g x-b| < ε/2 := hx.2
+  change |f x+g x-(a+b)| < ε
+  calc
+    |f x+g x-(a+b)| = |(f x-a)+(g x-b)| := by congr 1; ring
+    _ ≤ |f x-a|+|g x-b| := abs_add_le _ _
+    _ < ε := by linarith	-- 两个半精度相加得到 ε

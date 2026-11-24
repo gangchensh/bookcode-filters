@@ -1,0 +1,4 @@
+theorem integral_abs_bound {f : ℝ → ℝ} {a b : ℝ} (hab : a ≤ b) :
+    |∫ x in a..b, f x| ≤ ∫ x in a..b, |f x| := by
+	-- 正向区间上的积分三角不等式
+  exact intervalIntegral.abs_integral_le_integral_abs hab

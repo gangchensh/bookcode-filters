@@ -1,0 +1,15 @@
+theorem upper_add_finite
+    (hf : Approaches f F (upperFilter ℝ))
+    (hg : Approaches g F (neighborhoodFilter b)) :
+    Approaches (fun x => f x+g x) F (upperFilter ℝ) := by
+  apply (Ch04Infinity.upper_iff _ _).2
+  intro M
+  apply F.upward (F.inter_mem
+    ((Ch04Infinity.upper_iff _ _).1 hf (M+|b|+1))
+    (Ch04Local.limit_eventually_bounded hg))
+  intro x hx
+  have hfm : M+|b|+1 ≤ f x := hx.1
+  have hgb : |g x| < |b|+1 := hx.2
+  have hgl := (abs_lt.mp hgb).1
+  change M ≤ f x+g x
+  linarith

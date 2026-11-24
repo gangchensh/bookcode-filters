@@ -1,0 +1,3 @@
+theorem cubic_expansion (a h : ℝ) :
+    (a+h)^3 - (a^3+3*a^2*h+3*a*h^2) = h^3 ∧
+    (a+h)^3 = a^3+3*a^2*h+3*a*h^2+h^3 := by constructor <;> ring

@@ -1,0 +1,380 @@
+book_chapter	item_label	source_path	declarations_and_original_line
+1	a:division	lean/Textbook/Ch01/Statements.lean	Ch01.division_semantics （第11行）。
+1	a:predicate	lean/Textbook/Ch01/Statements.lean	Ch01.Predicate （第5行）。
+1	a:swap	lean/Textbook/Ch01/Language.lean	Ch01.swap_and （第30行）。
+1	a:quantifier-definition	lean/Textbook/Ch01/Statements.lean	Ch01.Universal; Ch01.Existential （第7行）
+1	a:threshold	lean/Textbook/Ch01/Language.lean	Ch01.threshold_example （第39行）。
+1	a:ai-division	lean/Textbook/Ch01/Statements.lean	Ch01.div_self_without_nonzero_false （第21行）。
+1	a:vacuous	lean/Textbook/Ch01/Language.lean	Ch01.contradictory_premise （第79行）。
+2	def:ch01-eventually	lean/Textbook/Ch02/Eventually.lean	Ch02Eventually.EventuallyNat （第5行）。
+2	ex:ch01-thresholds	lean/Textbook/Ch02/Statements.lean	Ch02.threshold_examples; Ch02.reciprocal_eventual_abs （第37行）
+2	ex:ch01-first-proof	lean/Textbook/Ch02/Statements.lean	Ch02.threshold_hundred （第34行）。
+2	ex:ch01-reciprocal	lean/Textbook/Ch02/Statements.lean	Ch02.reciprocal_eventual_abs （第49行）。
+2	ex:ch01-finite-prefix	lean/Textbook/Ch02/Statements.lean	Ch02.finite_prefix_eventually_equal （第66行）。
+2	def:ch01-tail	lean/Textbook/Ch02/Tail.lean	Ch02Eventually.tail （第6行）。
+2	lem:ch01-and	lean/Textbook/Ch02/Eventually.lean	Ch02Eventually.EventuallyNat.and （第14行）。
+2	ex:ch01-infinite-and	lean/Textbook/Ch02/Statements.lean	Ch02.infinite_conjunction_counterexample （第82行）。
+2	ex:ch01-weaken-bound	lean/Textbook/Ch02/Statements.lean	Ch02.weaker_eventual_bound （第92行）。
+2	lem:ch01-mono	lean/Textbook/Ch02/Eventually.lean	Ch02Eventually.EventuallyNat.mono （第30行）。
+2	lem:ch01-of-forall	lean/Textbook/Ch02/Statements.lean	Ch02.eventually_nat_of_forall （第31行）。
+2	ex:ch01-eventual-nonzero	lean/Textbook/Ch02/Statements.lean	Ch02.eventually_nonzero_denominator （第97行）。
+2	def:ch02-eps	lean/Textbook/Ch02/Neighborhoods.lean	Ch02Neighborhoods.epsNeighborhood （第7行）。
+2	lem:ch02-radius-mono	lean/Textbook/Ch02/Statements.lean	Ch02.basic_neighborhood_mono （第106行）。
+2	ex:ch02-smaller-radius	lean/Textbook/Ch02/Statements.lean	Ch02.smaller_neighborhood （第112行）。
+2	def:ch02-local-radius	lean/Textbook/Ch02/Neighborhoods.lean	Ch02Neighborhoods.LocallyHolds （第14行）。
+2	ex:ch02-local-positive	lean/Textbook/Ch02/Statements.lean	Ch02.local_positive_not_global （第128行）。
+2	def:ch02-neighborhood	lean/Textbook/Ch02/Neighborhoods.lean	Ch02Neighborhoods.IsNeighborhoodR （第10行）。
+2	lem:ch02-neighborhood-laws	lean/Textbook/Ch02/Filters.lean	Ch02.neighborhoodFilter （第54行）。
+2	eng:tail-laws	lean/Textbook/Ch02/Tail.lean	Ch02Eventually.EventualSet.univ; Ch02Eventually.EventualSet.inter; Ch02Eventually.EventualSet.mono （第14行）
+2	def:ch03-filter	lean/Textbook/Ch02/Filters.lean	Ch02.BookFilter （第6行）。
+2	prop:ch03-tail	lean/Textbook/Ch02/Filters.lean	Ch02.tailFilter （第15行）。
+2	prop:ch03-neighborhood	lean/Textbook/Ch02/Filters.lean	Ch02.neighborhoodFilter （第54行）。
+2	eng:principal-example	lean/Textbook/Ch02/Statements.lean	Ch02.principal_proper_iff （第18行）。
+2	prop:ch03-improper	lean/Textbook/Ch02/Statements.lean	Ch02.sets_eq_univ_of_empty_mem （第5行）。
+2	def:ch03-proper	lean/Textbook/Ch02/Filters.lean	Ch02.IsProper （第12行）。
+2	ex:ch03-improper-within	lean/Textbook/Ch02/Statements.lean	Ch02.restricted_neighborhood_degenerate （第147行）。
+2	eng:ch02-basic-proper	lean/Textbook/Ch02/Statements.lean	Ch02.basic_filters_proper （第14行）。
+2	def:ch03-eventually	lean/Textbook/Ch02/Filters.lean	Ch02.Eventually （第97行）。
+2	lem:ch03-of-forall	lean/Textbook/Ch02/Logic.lean	Ch02.eventually_of_forall （第7行）。
+2	lem:ch03-mono	lean/Textbook/Ch02/Logic.lean	Ch02.eventually_mono （第14行）。
+2	lem:ch03-and	lean/Textbook/Ch02/Logic.lean	Ch02.eventually_and_iff （第24行）。
+2	cor:ch03-three	lean/Textbook/Ch02/Logic.lean	Ch02.eventually_three （第42行）。
+2	lem:ch03-mp	lean/Textbook/Ch02/Logic.lean	Ch02.eventually_mp （第35行）。
+2	def:ch03-eventually-eq	lean/Textbook/Ch02/Logic.lean	Ch02.EventuallyEq （第48行）。
+2	lem:ch03-eq-laws	lean/Textbook/Ch02/Logic.lean	Ch02.eventuallyEq_refl; Ch02.eventuallyEq_symm; Ch02.eventuallyEq_trans （第51行）
+2	def:ch03-eventually-le	lean/Textbook/Ch02/Logic.lean	Ch02.EventuallyLE （第96行）。
+2	lem:ch03-le-trans	lean/Textbook/Ch02/Logic.lean	Ch02.eventuallyLE_trans （第99行）。
+2	lem:ch03-le-antisymm	lean/Textbook/Ch02/Logic.lean	Ch02.eventuallyLE_antisymm （第106行）。
+2	eng:ch02-substitution	lean/Textbook/Ch02/Logic.lean	Ch02.eventually_subst （第76行）。
+2	eng:eventually-exists	lean/Textbook/Ch02/Logic.lean	Ch02.eventually_exists （第135行）。
+3	a:def-preimage	lean/Textbook/Ch03/Statements.lean	Ch03Statements.preimage （第9行）。
+3	a:ex-square-preimage	lean/Textbook/Ch03/Statements.lean	Ch03Statements.square_preimages （第18行）。
+3	a:preimage-laws	lean/Textbook/Ch03/Statements.lean	Ch03Statements.preimage_laws （第12行）。
+3	claim:ch04-approaches	lean/Textbook/Ch03/Approach.lean	Ch03Approach.Approaches （第6行）。
+3	claim:ch04-punctured-definition	lean/Textbook/Ch03/Statements.lean	Ch03Statements.PuncturedLimit （第107行）。
+3	claim:ch04-punctured-iff	lean/Textbook/Ch03/Statements.lean	Ch03Statements.punctured_limit_iff （第110行）。
+3	ex:ch04-quotient	lean/Textbook/Ch03/Statements.lean	Ch03Statements.quotient_limits （第232行）。
+3	eng:changed-center	lean/Textbook/Ch03/Statements.lean	Ch03Statements.changedCenter; Ch03Statements.changed_center_limits （第195行）
+3	a:approaches-eventually	lean/Textbook/Ch03/LimitRules.lean	Ch03Rules.approaches_eventually_iff （第6行）。
+3	lem:ch05-real	lean/Textbook/Ch03/Approach.lean	Ch03Approach.real_iff （第21行）。
+3	lem:ch04-constant	lean/Textbook/Ch03/LimitRules.lean	Ch03Rules.const_limit （第34行）。
+3	claim:ch04-upper-proper	lean/Textbook/Ch03/StandardFilters.lean	Ch03.upperFilter; Ch03.upper_proper （第6行）
+3	claim:ch04-upper-eventually	lean/Textbook/Ch03/Statements.lean	Ch03Statements.eventually_upper_iff （第38行）。
+3	ex:ch04-upper-bound	lean/Textbook/Ch03/Statements.lean	Ch03Statements.square_eventually_gt_hundred （第42行）。
+3	claim:ch04-sequence-definition	lean/Textbook/Ch03/DefinitionExamples.lean	Ch03Definitions.SequenceLimit （第6行）。
+3	claim:ch04-sequence-iff	lean/Textbook/Ch03/DefinitionExamples.lean	Ch03Definitions.sequence_limit_iff （第9行）。
+3	ex:ch04-reciprocal-sequence	lean/Textbook/Ch03/Approach.lean	Ch03Approach.reciprocal_sequence （第59行）。
+3	ex:ch04-quotient-sequence	lean/Textbook/Ch03/WorkedLimits.lean	Ch03WorkedLimits.quotient_sequence （第42行）。
+3	ex:ch04-shifted-sequence	lean/Textbook/Ch03/Statements.lean	Ch03Statements.shifted_reciprocal_sequence （第239行）。
+3	claim:ch04-finite-top-definition	lean/Textbook/Ch03/Statements.lean	Ch03Statements.FiniteAtTop （第150行）。
+3	claim:ch04-finite-top-iff	lean/Textbook/Ch03/DefinitionExamples.lean	Ch03Definitions.finite_atTop_iff （第25行）。
+3	ex:ch04-reciprocal-top	lean/Textbook/Ch03/BasicExamples.lean	Ch03BasicExamples.reciprocal_atTop_from_definition （第22行）。
+3	claim:ch04-finite-bottom-definition	lean/Textbook/Ch03/Statements.lean	Ch03Statements.FiniteAtBot （第153行）。
+3	claim:ch04-finite-bottom-iff	lean/Textbook/Ch03/DefinitionExamples.lean	Ch03Definitions.finite_atBot_iff （第31行）。
+3	ex:ch04-reciprocal-bottom	lean/Textbook/Ch03/BasicExamples.lean	Ch03BasicExamples.reciprocal_atBot_from_definition （第38行）。
+3	claim:ch04-infinite-target-definition	lean/Textbook/Ch03/Statements.lean	Ch03Statements.TendsToPosInf; Ch03Statements.TendsToNegInf （第156行）
+3	claim:ch04-infinite-target-iff	lean/Textbook/Ch03/DefinitionExamples.lean	Ch03Definitions.upper_target_iff （第86行）。
+3	ex:ch04-double-top	lean/Textbook/Ch03/Approach.lean	Ch03Approach.double_atTop （第70行）。
+3	ex:ch04-square-top	lean/Textbook/Ch03/Statements.lean	Ch03Statements.square_atTop （第250行）。
+3	ex:ch04-reciprocal-square-top	lean/Textbook/Ch03/Statements.lean	Ch03Statements.reciprocal_square_atTop （第262行）。
+3	ex:ch04-neg-bottom	lean/Textbook/Ch03/Approach.lean	Ch03Approach.neg_atBot （第77行）。
+3	ex:ch04-square-bot	lean/Textbook/Ch03/WorkedLimits.lean	Ch03WorkedLimits.square_atBot （第56行）。
+3	eng:unbounded-not-infinity	lean/Textbook/Ch03/Statements.lean	Ch03Statements.alternatingSequence; Ch03Statements.alternating_unbounded_not_pos_inf （第278行）
+3	claim:ch04-within	lean/Textbook/Ch03/StandardFilters.lean	Ch03.within （第62行）。
+3	ex:ch04-within-finite	lean/Textbook/Ch03/Statements.lean	Ch03Statements.three_point_restriction （第56行）。
+3	ex:ch04-right-restriction	lean/Textbook/Ch03/Statements.lean	Ch03Statements.right_interval_iff; Ch03Statements.right_interval_new_member; Ch03Statements.right_restriction_strict （第65行）
+3	lem:ch04-within-filter	lean/Textbook/Ch03/StandardFilters.lean	Ch03.within （第62行）。
+3	ex:ch04-restricted	lean/Textbook/Ch03/Statements.lean	Ch03Statements.restricted_example_comparison （第178行）。
+3	eng:ch03-eventually-restrict	lean/Textbook/Ch03/StandardFilters.lean	Ch03.eventually_to_within （第83行）。
+3	claim:ch04-proper	lean/Textbook/Ch03/Statements.lean	Ch03Statements.within_proper_iff （第92行）。
+3	claim:ch04-near-within	lean/Textbook/Ch03/StandardFilters.lean	Ch03.nearWithin; Ch03.eventually_nearWithin_iff （第93行）
+3	claim:ch04-within-definition	lean/Textbook/Ch03/Statements.lean	Ch03Statements.WithinLimit （第104行）。
+3	claim:ch04-within-iff	lean/Textbook/Ch03/DefinitionExamples.lean	Ch03Definitions.finite_within_iff （第58行）。
+3	eng:sqrt-domain	lean/Textbook/Ch03/Statements.lean	Ch03Statements.sqrt_limits_at_zero （第183行）。
+3	claim:ch04-punctured	lean/Textbook/Ch03/StandardFilters.lean	Ch03.punctured （第96行）。
+3	claim:ch04-side-definition	lean/Textbook/Ch03/Statements.lean	Ch03Statements.RightLimit; Ch03Statements.LeftLimit （第124行）
+3	claim:ch04-side-iff	lean/Textbook/Ch03/Statements.lean	Ch03Statements.right_limit_iff; Ch03Statements.left_limit_iff （第130行）
+3	eng:ch03-eventually-sides	lean/Textbook/Ch03/StandardFilters.lean	Ch03.punctured_iff_sides （第123行）。
+3	claim:ch04-side-infinity-iff	lean/Textbook/Ch03/Statements.lean	Ch03Statements.right_pos_inf_iff （第162行）。
+3	ex:ch04-right-infinity	lean/Textbook/Ch03/Approach.lean	Ch03Approach.reciprocal_right_atTop （第84行）。
+3	a:id-approach	lean/Textbook/Ch03/LimitRules.lean	Ch03Rules.approaches_id （第11行）。
+3	a:approach-comp	lean/Textbook/Ch03/LimitRules.lean	Ch03Rules.approaches_comp （第16行）。
+3	a:approach-congr	lean/Textbook/Ch03/LimitRules.lean	Ch03Rules.approaches_congr （第23行）。
+3	eng:ch03-composition-trap	lean/Textbook/Ch03/Examples.lean	Ch03Examples.outer; Ch03Examples.inner_zero; Ch03Examples.outer_punctured_zero; Ch03Examples.composition_is_one; Ch03Examples.composition_not_zero （第7行）
+3	lem:ch05-restrict-source	lean/Textbook/Ch03/LimitRules.lean	Ch03Rules.approaches_within_source （第58行）。
+3	lem:ch05-unique	lean/Textbook/Ch03/LimitRules.lean	Ch03Rules.real_limit_unique （第71行）。
+3	lem:ch04-image-approaches	lean/Textbook/Ch03/Maps.lean	Ch03Maps.Finer; Ch03Maps.approaches_image_iff （第20行）
+4	ex:ch09-merge	lean/Textbook/Ch04/Statements.lean	Ch04Statements.merge_thresholds_and_radii （第10行）。
+4	eng:limit-bounded	lean/Textbook/Ch04/Statements.lean	Ch04Statements.bounded_and_positive （第25行）。
+4	thm:ch09-add	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_add （第13行）。
+4	lem:ch09-sub	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_neg; Ch04.limit_sub （第31行）
+4	cor:ch09-finite-sum	lean/Textbook/Ch04/Statements.lean	Ch04Statements.limit_finset_sum （第33行）。
+4	thm:ch09-mul	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_mul （第48行）。
+4	cor:ch09-pow	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_const_mul; Ch04.limit_pow （第79行）
+4	ex:ch09-affine	lean/Textbook/Ch04/Statements.lean	Ch04Statements.affine_of_limit （第44行）。
+4	ex:ch09-quadratic	lean/Textbook/Ch04/LimitRules.lean	Ch04.quadratic_limit （第216行）。
+4	thm:ch09-inv	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_inv （第84行）。
+4	cor:ch09-div	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_div （第90行）。
+4	ex:ch09-quotient	lean/Textbook/Ch04/Examples.lean	Ch04Examples.quotient_at_one （第21行）。
+4	ex:ch09-one-sided-quotient	lean/Textbook/Ch04/Examples.lean	Ch04Examples.right_sqrt_quotient （第31行）。
+4	lem:ch09-abs-distance	lean/Textbook/Ch04/Statements.lean	Ch04Statements.abs_distance （第48行）。
+4	cor:ch09-abs	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_abs （第103行）。
+4	ex:ch09-abs-counterexample	lean/Textbook/Ch04/Examples.lean	Ch04Examples.alternating; Ch04Examples.alternating_abs_limit （第37行）
+4	thm:ch09-maxmin	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_max; Ch04.limit_min （第114行）
+4	ex:ch09-max-example	lean/Textbook/Ch04/Examples.lean	Ch04Examples.max_min_sequence （第51行）。
+4	thm:ch09-order	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_le （第128行）。
+4	ex:ch09-strict-loss	lean/Textbook/Ch04/Examples.lean	Ch04Examples.strict_order_lost （第63行）。
+4	lem:ch09-separated	lean/Textbook/Ch04/Statements.lean	Ch04Statements.limit_separated （第51行）。
+4	cor:ch09-closed-bound	lean/Textbook/Ch04/Statements.lean	Ch04Statements.limit_closed_bound （第59行）。
+4	thm:ch09-squeeze	lean/Textbook/Ch04/LimitRules.lean	Ch04.limit_squeeze （第147行）。
+4	ex:ch09-sequence-squeeze	lean/Textbook/Ch04/Examples.lean	Ch04Examples.sine_sequence_squeeze （第68行）。
+4	ex:ch09-infinite-source-squeeze	lean/Textbook/Ch04/Examples.lean	Ch04Examples.cosine_top_squeeze （第78行）。
+4	thm:ch09-bounded-zero	lean/Textbook/Ch04/Statements.lean	Ch04Statements.bounded_mul_zero_exists （第64行）。
+4	ex:ch09-bounded-oscillation	lean/Textbook/Ch04/Examples.lean	Ch04Examples.bounded_oscillation; Ch04Examples.two_bounded_oscillations （第88行）
+4	ex:ch09-unbounded-factor	lean/Textbook/Ch04/Examples.lean	Ch04Examples.unbounded_products （第101行）。
+4	cor:ch09-perturbation	lean/Textbook/Ch04/Statements.lean	Ch04Statements.limit_perturbation （第69行）。
+4	eng:infinity-comparison	lean/Textbook/Ch04/LimitRules.lean	Ch04.upper_of_lower （第187行）。
+4	eng:infinity-plus-finite	lean/Textbook/Ch04/LimitRules.lean	Ch04.upper_add_finite （第200行）。
+4	eng:infinity-reciprocal	lean/Textbook/Ch04/Statements.lean	Ch04Statements.infinity_reciprocal_rules （第165行）。
+4	eng:indeterminate	lean/Textbook/Ch04/Examples.lean	Ch04Examples.infinity_difference_examples; Ch04Examples.infinity_quotient_examples （第217行）
+4	eng:def-continuous	lean/Textbook/Ch04/Continuity.lean	Ch04Continuity.BookContinuousAt （第9行）。
+4	eng:continuous-epsilon	lean/Textbook/Ch04/Statements.lean	Ch04Statements.continuous_epsilon （第90行）。
+4	eng:continuous-punctured	lean/Textbook/Ch04/Statements.lean	Ch04Statements.continuous_punctured_iff （第94行）。
+4	eng:center-discontinuous	lean/Textbook/Ch04/Examples.lean	Ch04Examples.center_discontinuous （第109行）。
+4	eng:continuous-algebra	lean/Textbook/Ch04/Statements.lean	Ch04Statements.continuous_arithmetic; Ch04Statements.continuous_comp （第115行）
+4	eng:def-continuous-within	lean/Textbook/Ch04/Statements.lean	Ch04Statements.BookContinuousWithinAt; Ch04Statements.BookContinuousOn （第128行）
+4	eng:sqrt-continuity	lean/Textbook/Ch04/Statements.lean	Ch04Statements.sqrt_continuous_on （第134行）。
+4	eng:continuous-compose	lean/Textbook/Ch04/Statements.lean	Ch04Statements.limit_into_continuous （第124行）。
+4	eng:radical-domain	lean/Textbook/Ch04/Examples.lean	Ch04Examples.radical_limit （第118行）。
+4	eng:extension	lean/Textbook/Ch04/Statements.lean	Ch04Statements.fillCenter; Ch04Statements.extension_and_unique_limit （第139行）
+4	eng:removable	lean/Textbook/Ch04/Examples.lean	Ch04Examples.removable_center （第138行）。
+4	eng:sequential-test	lean/Textbook/Ch04/LocalLimits.lean	Ch04Local.sequential_criterion （第82行）。
+4	eng:two-sequences	lean/Textbook/Ch04/Examples.lean	Ch04Examples.sign_sequences; Ch04Examples.sign_no_punctured_limit （第239行）
+4	eng:rational-limit-workshop	lean/Textbook/Ch04/Examples.lean	Ch04Examples.rational_at_two_book （第151行）。
+4	eng:oscillatory-limit-workshop	lean/Textbook/Ch04/Examples.lean	Ch04Examples.squared_damped_sine （第158行）。
+4	eng:infinite-polynomial	lean/Textbook/Ch04/Examples.lean	Ch04Examples.quadratic_minus_linear_top （第166行）。
+4	eng:continuous-gluing	lean/Textbook/Ch04/Statements.lean	Ch04Statements.continuous_gluing （第155行）。
+4	eng:matching-parameter	lean/Textbook/Ch04/Examples.lean	Ch04Examples.joined; Ch04Examples.matching_parameter （第178行）
+4	eng:local-global-bound	lean/Textbook/Ch04/Examples.lean	Ch04Examples.reciprocal_local_not_global （第202行）。
+5	ex:ch06-two-tasks	lean/Textbook/Ch05/Statements.lean	Ch05Statements.quotient_converges_one （第8行）。
+5	def:ch06-bounded	lean/Textbook/Ch05/Sequences.lean	Ch05.BoundedSeq （第11行）。
+5	lem:ch06-prefix	lean/Textbook/Ch05/Sequences.lean	Ch05.bounded_of_eventual_bound （第40行）。
+5	thm:ch06-convergent-bounded	lean/Textbook/Ch05/Sequences.lean	Ch05.convergent_bounded （第50行）。
+5	ex:ch06-alternating	lean/Textbook/Ch05/Statements.lean	Ch05Statements.alternating_bounded_not_convergent （第11行）。
+5	lem:ch06-positive	lean/Textbook/Ch05/Statements.lean	Ch05Statements.eventually_half_positive （第16行）。
+5	lem:ch06-order	lean/Textbook/Ch05/Statements.lean	Ch05Statements.lower_bound_limit; Ch05Statements.upper_bound_limit （首项第21行）。
+5	def:ch06-supremum	lean/Textbook/Ch05/Statements.lean	Ch05Statements.UpperBound; Ch05Statements.HasUpperBound; Ch05Statements.Supremum （首项第29行）。
+5	ex:ch06-sup-not-member	lean/Textbook/Ch05/Statements.lean	Ch05Statements.quotient_supremum_not_member （第46行）。
+5	prop:ch06-completeness	lean/Textbook/Ch05/Statements.lean	Ch05Statements.real_supremum （第36行）。
+5	lem:ch06-sup-approx	lean/Textbook/Ch05/Statements.lean	Ch05Statements.approximate_supremum （第40行）。
+5	lem:ch06-archimedean	lean/Textbook/Ch05/Statements.lean	Ch05Statements.nat_unbounded （第58行）。
+5	def:ch06-monotone	lean/Textbook/Ch05/Statements.lean	Ch05Statements.Nondecreasing; Ch05Statements.Nonincreasing （首项第60行）。
+5	thm:ch06-monotone	lean/Textbook/Ch05/Sequences.lean	Ch05.monotone_bounded_converges （第109行）。
+5	eng:05-geometric-zero	lean/Textbook/Ch05/Statements.lean	Ch05Statements.geometric_zero （第66行）。
+5	def:ch06-subsequence	lean/Textbook/Ch05/Statements.lean	Ch05Statements.IsSubsequence （第64行）。
+5	lem:ch06-index-ge	lean/Textbook/Ch05/Sequences.lean	Ch05.index_ge （第72行）。
+5	lem:ch06-index-filter	lean/Textbook/Ch05/Sequences.lean	Ch05.subsequence_index （第79行）。
+5	thm:ch06-subsequence	lean/Textbook/Ch05/Sequences.lean	Ch05.converges_subsequence （第86行）。
+5	ex:ch06-even-odd	lean/Textbook/Ch05/Examples.lean	Ch05Examples.alternating_subsequences （第83行）。
+5	lem:ch06-monotone-subsequence	lean/Textbook/Ch05/Statements.lean	Ch05Statements.monotone_subsequence （第105行）。
+5	thm:ch06-bw	lean/Textbook/Ch05/Sequences.lean	Ch05.bounded_subsequence （第131行）。
+5	def:ch06-cauchy	lean/Textbook/Ch05/Sequences.lean	Ch05.CauchySequence （第14行）。
+5	thm:ch06-convergent-cauchy	lean/Textbook/Ch05/Sequences.lean	Ch05.convergent_cauchy （第114行）。
+5	ex:ch06-harmonic	lean/Textbook/Ch05/Examples.lean	Ch05Examples.harmonicSum; Ch05Examples.harmonic_adjacent_not_cauchy （首项第113行）。
+5	lem:ch06-cauchy-bounded	lean/Textbook/Ch05/Sequences.lean	Ch05.cauchy_bounded （第139行）。
+5	lem:ch06-cauchy-subsequence	lean/Textbook/Ch05/Sequences.lean	Ch05.cauchy_subsequence_limit （第150行）。
+5	thm:ch06-cauchy-criterion	lean/Textbook/Ch05/Sequences.lean	Ch05.cauchy_iff_convergent （第177行）。
+5	eng:nested-interval-proof	lean/Textbook/Ch05/Statements.lean	Ch05Statements.nested_interval （第97行）。
+5	eng:bisection-sqrt	lean/Textbook/Ch05/Bisection.lean	Ch05Bisection.bracket; Ch05Bisection.bracket_step; Ch05Bisection.bracket_contains; Ch05Bisection.bracket_nested; Ch05Bisection.midpoint_error （首项第6行）。
+5	eng:ivt	lean/Textbook/Ch05/ClosedIntervals.lean	Ch05ClosedIntervals.intermediate_on_interval; Ch05ClosedIntervals.zero_on_interval （首项第13行）。
+5	eng:extrema	lean/Textbook/Ch05/ClosedIntervals.lean	Ch05ClosedIntervals.bounded_on_interval; Ch05ClosedIntervals.minimum_on_interval; Ch05ClosedIntervals.maximum_on_interval （首项第31行）。
+5	eng:bounded-compact-proof	lean/Textbook/Ch05/ClosedIntervals.lean	Ch05ClosedIntervals.bounded_on_interval （第31行）。
+5	eng:maximum-compact-proof	lean/Textbook/Ch05/ClosedIntervals.lean	Ch05ClosedIntervals.maximum_on_interval （第21行）。
+5	eng:def-uniform-continuity	lean/Textbook/Ch05/ClosedIntervals.lean	Ch05ClosedIntervals.UniformlyContinuous; Ch05ClosedIntervals.uniform_continuity_iff （首项第37行）。
+5	eng:uniform-square	lean/Textbook/Ch05/Examples.lean	Ch05Examples.square_uniform_bounded; Ch05Examples.square_not_uniform （首项第136行）。
+5	eng:heine-cantor	lean/Textbook/Ch05/ClosedIntervals.lean	Ch05ClosedIntervals.heine_cantor （第45行）。
+5	eng:root-stability	lean/Textbook/Ch05/ClosedIntervals.lean	Ch05ClosedIntervals.stable_root （第49行）。
+6	eng:linear-vs-continuous	lean/Textbook/Ch06/Counterexamples.lean	Ch06.linear_vs_continuous （第28行）。
+6	eng:def-derivative	lean/Textbook/Ch06/Derivatives.lean	Ch06.HasDerivative （第10行）。
+6	eng:derivative-increment	lean/Textbook/Ch06/Statements.lean	Ch06.derivative_increment_iff （第26行）。
+6	eng:constant-derivative	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_const （第129行）。
+6	eng:affine-derivative	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_affine （第186行）。
+6	eng:quotient-center	lean/Textbook/Ch06/Examples.lean	Ch06.identity_quotient_center （第53行）。
+6	eng:square-derivative	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_square_direct （第146行）。
+6	eng:reciprocal-derivative	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_reciprocal （第193行）。
+6	eng:reciprocal-zero	lean/Textbook/Ch06/Counterexamples.lean	Ch06.reciprocal_zero （第91行）。
+6	eng:sqrt-derivative	lean/Textbook/Ch06/Statements.lean	Ch06.derivative_sqrt （第7行）。
+6	eng:def-little-o	lean/Textbook/Ch06/Statements.lean	Ch06.LittleOIncrement （第42行）。
+6	eng:derivative-linear-model	lean/Textbook/Ch06/Statements.lean	Ch06.linearRemainder; Ch06.derivative_linear_iff （第45行）
+6	eng:remainder-bound	lean/Textbook/Ch06/Estimates.lean	Ch06.remainder_bound_iff （第6行）。
+6	eng:square-remainder	lean/Textbook/Ch06/Derivatives.lean	Ch06.square_remainder （第207行）。
+6	eng:derivative-implies-continuous	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_continuous （第165行）。
+6	eng:derivative-unique	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_unique （第175行）。
+6	eng:def-derivative-function	lean/Textbook/Ch06/Counterexamples.lean	Ch06.DifferentiablePoints; Ch06.derivativeFunction; Ch06.derivative_function_spec （首项第7行）。
+6	eng:abs-not-derivative	lean/Textbook/Ch06/Counterexamples.lean	Ch06.abs_example （第23行）。
+6	eng:derivative-locality	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_locality （第101行）。
+6	eng:def-within-derivative	lean/Textbook/Ch06/Derivatives.lean	Ch06.HasDerivativeAlong; Ch06.derivative_along_distance_iff; Ch06.HasLeftDerivative; Ch06.HasRightDerivative; Ch06.derivative_left_epsilon_iff; Ch06.derivative_right_epsilon_iff （第21行）
+6	eng:right-derivative	lean/Textbook/Ch06/Statements.lean	Ch06.square_right_at_zero （第15行）。
+6	eng:sqrt-right	lean/Textbook/Ch06/Counterexamples.lean	Ch06.sqrt_right_diverges; Ch06.sqrt_right_no_finite （首项第167行）。
+6	eng:derivative-within-interior	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_to_along; Ch06.derivative_along_interior_iff （首项第82行）。
+6	eng:two-sided-derivative	lean/Textbook/Ch06/Derivatives.lean	Ch06.derivative_sides_iff （第65行）。
+6	eng:piecewise-model	lean/Textbook/Ch06/Piecewise.lean	Ch06.joinedModel; Ch06.joined_model （首项第6行）。
+6	eng:cusp	lean/Textbook/Ch06/Piecewise.lean	Ch06.cusp_no_derivative （第94行）。
+6	eng:same-slope-jump	lean/Textbook/Ch06/Piecewise.lean	Ch06.jumpedModel; Ch06.jumped_no_left_derivative （首项第58行）。
+6	eng:derivative-discontinuous	lean/Textbook/Ch06/Piecewise.lean	Ch06.oscillatingModel; Ch06.oscillating_derivative_zero; Ch06.oscillating_derivative_nonzero; Ch06.oscillating_derivative_discontinuous （首项第109行）。
+6	eng:def-tangent	lean/Textbook/Ch06/Statements.lean	Ch06.tangentModel （第63行）。
+6	eng:cubic-tangent	lean/Textbook/Ch06/Counterexamples.lean	Ch06.cubic_tangent （第34行）。
+6	eng:linear-tangent	lean/Textbook/Ch06/Estimates.lean	Ch06.affine_tangent （第71行）。
+6	eng:tangent-unique	lean/Textbook/Ch06/Estimates.lean	Ch06.tangent_unique （第63行）。
+6	eng:def-differential	lean/Textbook/Ch06/Statements.lean	Ch06.differential （第65行）。
+6	eng:differential-square	lean/Textbook/Ch06/Statements.lean	Ch06.square_differential_example （第72行）。
+6	eng:local-increment-bound	lean/Textbook/Ch06/Estimates.lean	Ch06.local_increment_bound （第27行）。
+6	eng:quadratic-tolerance	lean/Textbook/Ch06/Statements.lean	Ch06.square_tolerance （第79行）。
+6	eng:reciprocal-tolerance	lean/Textbook/Ch06/Counterexamples.lean	Ch06.reciprocal_tolerance （第72行）。
+6	eng:positive-derivative-local	lean/Textbook/Ch06/Estimates.lean	Ch06.positive_derivative_local （第43行）。
+6	eng:zero-slope-comparison	lean/Textbook/Ch06/Counterexamples.lean	Ch06.zero_slope_comparison （第40行）。
+6	eng:07-remainder-algebra	lean/Textbook/Ch07/Statements.lean	Ch07.remainder_algebra （第8行）。
+6	eng:07-linear	lean/Textbook/Ch07/Statements.lean	Ch07.linear_rule （第19行）。
+6	eng:07-linear-example	lean/Textbook/Ch07/Statements.lean	Ch07.linear_example （第26行）。
+6	eng:07-product-rule	lean/Textbook/Ch07/Differentiation.lean	Ch07.product_rule_direct （第8行）。
+6	eng:07-area	lean/Textbook/Ch07/Applications.lean	Ch07.area_product （第18行）。
+6	eng:07-chain-rule	lean/Textbook/Ch07/Differentiation.lean	Ch07.chain_rule （第38行）。
+6	eng:07-composition-example	lean/Textbook/Ch07/Statements.lean	Ch07.composition_example （第112行）。
+6	eng:07-quotient-rule	lean/Textbook/Ch07/Statements.lean	Ch07.quotient_rule （第37行）。
+6	eng:07-rational-derivative	lean/Textbook/Ch07/Applications.lean	Ch07.rational_derivative （第8行）。
+6	eng:07-exp-model	lean/Textbook/Ch07/Applications.lean	Ch07.exp_decay_derivative （第100行）。
+6	eng:07-extremum	lean/Textbook/Ch07/Applications.lean	Ch07.LocalMinimumOn; Ch07.GlobalMinimumOn; Ch07.StrictLocalMinimumOn; Ch07.Stationary （首项第25行）。
+6	eng:07-fermat-theorem	lean/Textbook/Ch07/Statements.lean	Ch07.fermat_book （第105行）。
+6	eng:07-candidates	lean/Textbook/Ch07/Applications.lean	Ch07.candidate_examples （第40行）。
+6	eng:07-rolle-theorem	lean/Textbook/Ch07/Statements.lean	Ch07.rolle_book （第47行）。
+6	eng:07-rolle-counterexamples	lean/Textbook/Ch07/Certificates.lean	Ch07.rolle_counterexamples （第353行）。
+6	eng:07-mvt-theorem	lean/Textbook/Ch07/Statements.lean	Ch07.mean_value_book （第56行）。
+6	eng:07-mvt-square	lean/Textbook/Ch07/Statements.lean	Ch07.mean_value_square （第62行）。
+6	eng:07-sign-monotone	lean/Textbook/Ch07/SignTests.lean	Ch07.derivative_sign_monotonicity （第39行）。
+6	eng:07-strict-monotone-converse	lean/Textbook/Ch07/Applications.lean	Ch07.cube_strict_stationary （第36行）。
+6	eng:07-monotone-converse	lean/Textbook/Ch07/SignTests.lean	Ch07.derivative_nonneg_of_monotone_on （第64行）。
+6	eng:07-first-test	lean/Textbook/Ch07/SignTests.lean	Ch07.first_derivative_test （第75行）。
+6	eng:07-second-definition	lean/Textbook/Ch07/SignTests.lean	Ch07.HasSecondDerivative （第147行）。
+6	eng:07-second-test	lean/Textbook/Ch07/SignTests.lean	Ch07.second_derivative_test （第150行）。
+6	eng:07-second-inconclusive	lean/Textbook/Ch07/Certificates.lean	Ch07.fourth_and_cube_tests; Ch07.vanishing_first_and_second （首项第220行）。
+6	eng:07-quadratic-growth	lean/Textbook/Ch07/Certificates.lean	Ch07.quadratic_growth （第250行）。
+6	eng:07-derivative-bound	lean/Textbook/Ch07/Applications.lean	Ch07.interval_lipschitz （第51行）。
+6	eng:07-lipschitz-definition	lean/Textbook/Ch07/Statements.lean	Ch07.IsLipschitzOn （第71行）。
+6	eng:07-decay-bound	lean/Textbook/Ch07/Certificates.lean	Ch07.decay_lipschitz （第114行）。
+6	eng:07-reciprocal-sensitivity	lean/Textbook/Ch07/Certificates.lean	Ch07.reciprocal_working_range; Ch07.reciprocal_no_global_bound （首项第133行）。
+6	eng:07-log-bounds	lean/Textbook/Ch07/Applications.lean	Ch07.log_bounds （第86行）。
+6	eng:07-log-limit	lean/Textbook/Ch07/Applications.lean	Ch07.log_increment_limit （第94行）。
+6	eng:07-exp-lower	lean/Textbook/Ch07/Statements.lean	Ch07.exp_tangent_lower （第118行）。
+6	eng:07-log-composition	lean/Textbook/Ch07/Certificates.lean	Ch07.log_composition_derivative （第83行）。
+6	eng:07-closed-candidates	lean/Textbook/Ch07/Certificates.lean	Ch07.closed_interval_candidates （第90行）。
+6	eng:07-design-problem	lean/Textbook/Ch07/Certificates.lean	Ch07.quadratic_design （第38行）。
+6	eng:07-near-optimal	lean/Textbook/Ch07/Statements.lean	Ch07.near_optimal （第74行）。
+6	eng:07-perturbed-design	lean/Textbook/Ch07/Certificates.lean	Ch07.perturbed_design （第46行）。
+6	eng:07-box-project	lean/Textbook/Ch07/Certificates.lean	Ch07.box_unique_minimum （第58行）。
+6	eng:07-cubic-solution	lean/Textbook/Ch07/Certificates.lean	Ch07.cubic_closed_interval; Ch07.cubic_stationary_points （首项第182行）。
+7	eng:08-curvature	lean/Textbook/Ch08/Audit.lean	Ch08.curvature_example （第83行）。
+7	eng:08-big-small-o	lean/Textbook/Ch08/Taylor.lean	Ch08.BookBigO; Ch08.BookLittleO; Ch08.bigO_mathlib; Ch08.littleO_mathlib （第19行）
+7	eng:08-source	lean/Textbook/Ch08/Audit.lean	Ch08.power_source （第63行）。
+7	eng:08-quotient-test	lean/Textbook/Ch08/Audit.lean	Ch08.quotient_test （第8行）。
+7	eng:08-small-algebra	lean/Textbook/Ch08/Audit.lean	Ch08.small_algebra （第855行）。
+7	eng:08-transitivity	lean/Textbook/Ch08/Audit.lean	Ch08.asymptotic_transitivity （第32行）。
+7	eng:08-power-order	lean/Textbook/Ch08/Audit.lean	Ch08.power_order （第433行）。
+7	eng:08-product-rules	lean/Textbook/Ch08/Audit.lean	Ch08.asymptotic_product_rules; Ch08.mixed_product （首项第38行）。
+7	eng:08-substitution	lean/Textbook/Ch08/Taylor.lean	Ch08.littleO_comp; Ch08.bigO_comp （首项第42行）。
+7	eng:08-equivalent	lean/Textbook/Ch08/Audit.lean	Ch08.BookEquivalent; Ch08.equivalent_quotient （首项第307行）。
+7	eng:08-equivalent-product	lean/Textbook/Ch08/Audit.lean	Ch08.equivalent_ratio_operations （第892行）。
+7	eng:08-cancellation	lean/Textbook/Ch08/Audit.lean	Ch08.cancellation_example （第337行）。
+7	eng:08-exp-cancellation	lean/Textbook/Ch08/Audit.lean	Ch08.reciprocal_cancellation （第346行）。
+7	eng:08-equivalence-laws	lean/Textbook/Ch08/Audit.lean	Ch08.equivalent_laws （第328行）。
+7	eng:08-taylor-definition	lean/Textbook/Ch08/Audit.lean	Ch08.bookTaylor; Ch08.bookTaylor_within; Ch08.bookTaylor_center_derivative （首项第129行）。
+7	eng:08-cubic	lean/Textbook/Ch08/Audit.lean	Ch08.cubic_taylor; Ch08.cubic_expansion （首项第840行）。
+7	eng:08-cn	lean/Textbook/Ch08/Audit.lean	Ch08.BookContDiffOn; Ch08.bookContDiffOn_mathlib （首项第885行）。
+7	eng:08-lagrange-theorem	lean/Textbook/Ch08/Audit.lean	Ch08.book_lagrange （第143行）。
+7	eng:08-uniform-bound	lean/Textbook/Ch08/Audit.lean	Ch08.book_lagrange_bound （第152行）。
+7	eng:08-linear-error	lean/Textbook/Ch08/Audit.lean	Ch08.linear_error; Ch08.linear_error_radius （首项第177行）。
+7	eng:08-peano	lean/Textbook/Ch08/Audit.lean	Ch08.peano_bound （第491行）。
+7	eng:08-power-to-littleo	lean/Textbook/Ch08/Audit.lean	Ch08.power_to_littleO （第46行）。
+7	eng:08-reciprocal-model	lean/Textbook/Ch08/Audit.lean	Ch08.reciprocal_model （第446行）。
+7	eng:08-exp-rational	lean/Textbook/Ch08/Audit.lean	Ch08.exp_rational_certificate （第203行）。
+7	eng:08-exp-limit	lean/Textbook/Ch08/Audit.lean	Ch08.exp_second_limit （第468行）。
+7	eng:08-angle	lean/Textbook/Ch08/Audit.lean	Ch08.small_angle_certificate （第367行）。
+8	eng:09-displacement	lean/Textbook/Ch09/FurtherExamples.lean	Ch09.tagged_displacement （第9行）。
+8	eng:09-density	lean/Textbook/Ch09/FurtherExamples.lean	Ch09.tagged_density_mass （第16行）。
+8	eng:09-tagged-partition	lean/Textbook/Ch09/Integration.lean	Ch09.TaggedPartition; Ch09.TaggedPartition.width; Ch09.TaggedPartition.mesh （首项第97行）。
+8	eng:09-riemann-sum	lean/Textbook/Ch09/Integration.lean	Ch09.TaggedPartition.riemannSum （第112行）。
+8	eng:09-uniform-partition	lean/Textbook/Ch09/Tagged.lean	Ch09.uniformPartition; Ch09.uniform_width; Ch09.uniform_mesh （首项第9行）。
+8	eng:09-fine-proper	lean/Textbook/Ch09/Tagged.lean	Ch09.arbitrarily_fine; Ch09.tagged_filter_proper （首项第44行）。
+8	eng:09-riemann-integral	lean/Textbook/Ch09/Integration.lean	Ch09.HasTaggedIntegral; Ch09.tagged_integral_iff （第116行）
+8	eng:09-many-pieces	lean/Textbook/Ch09/MeshExamples.lean	Ch09.fixedHalfPartition; Ch09.fixed_half_mesh （首项第11行）。
+8	eng:09-constant	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_constant_sum; Ch09.tagged_constant_integral （首项第63行）。
+8	eng:09-linear-sums	lean/Textbook/Ch09/UniformSums.lean	Ch09.uniform_linear_sums （第27行）。
+8	eng:09-square-sums	lean/Textbook/Ch09/UniformSums.lean	Ch09.uniform_square_sum_formula; Ch09.uniform_square_sum_limit （首项第46行）。
+8	eng:09-cauchy-theorem	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_cauchy_criterion （第249行）。
+8	eng:09-darboux	lean/Textbook/Ch09/DarbouxCriterion.lean	Ch09.tagged_darboux_criterion; Ch09.tagged_darboux_values （首项第129行）。
+8	eng:09-continuous-integrable	lean/Textbook/Ch09/Tagged.lean	Ch09.continuous_tagged_integral （第167行）。
+8	eng:09-monotone-integrable	lean/Textbook/Ch09/Monotone.lean	Ch09.monotone_tagged_integral; Ch09.antitone_tagged_integral （首项第8行）。
+8	eng:09-one-point	lean/Textbook/Ch09/FiniteChange.lean	Ch09.tagged_single_spike （第105行）。
+8	eng:09-dirichlet	lean/Textbook/Ch09/Discontinuities.lean	Ch09.rational_indicator_not_tagged_integrable; Ch09.rational_indicator_interval_integral （首项第11行）。
+8	eng:09-integrable-bounded	lean/Textbook/Ch09/MeasureBridge.lean	Ch09.tagged_integrable_bounded （第9行）。
+8	eng:09-finite-change	lean/Textbook/Ch09/FiniteChange.lean	Ch09.tagged_integral_finite_change （第85行）。
+8	eng:09-change-comparison	lean/Textbook/Ch09/Discontinuities.lean	Ch09.modified_identity_at_zero （第55行）。
+8	eng:09-reversed	lean/Textbook/Ch09/Tagged.lean	Ch09.reversed_constant_example （第332行）。
+8	eng:09-linearity	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_sum_linear; Ch09.tagged_integral_linear （首项第129行）。
+8	eng:09-order	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_integral_mono; Ch09.tagged_integral_bounds （首项第283行）。
+8	eng:09-absolute-bound	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_integral_abs_bound （第325行）。
+8	eng:09-uniform-error	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_integral_error （第308行）。
+8	eng:09-closure	lean/Textbook/Ch09/Closure.lean	Ch09.tagged_integrable_abs; Ch09.tagged_integrable_mul （首项第46行）。
+8	eng:09-integral-triangle	lean/Textbook/Ch09/Closure.lean	Ch09.tagged_integral_triangle （第62行）。
+8	eng:09-adjacent	lean/Textbook/Ch09/DarbouxCriterion.lean	Ch09.tagged_adjacent_iff （第337行）。
+8	eng:09-step-function	lean/Textbook/Ch09/DarbouxCriterion.lean	Ch09.tagged_step_example （第348行）。
+8	eng:09-positive-integral	lean/Textbook/Ch09/MeanValue.lean	Ch09.tagged_integral_positive （第8行）。
+8	eng:09-zero-integral	lean/Textbook/Ch09/MeanValue.lean	Ch09.tagged_integral_zero_iff （第14行）。
+8	eng:09-strict-order	lean/Textbook/Ch09/FurtherExamples.lean	Ch09.tagged_strict_order （第58行）。
+8	eng:09-accumulation-continuous	lean/Textbook/Ch09/Accumulation.lean	Ch09.tagged_accumulation_lipschitz （第15行）。
+8	eng:09-ftc-one-theorem	lean/Textbook/Ch09/Accumulation.lean	Ch09.tagged_accumulation_derivative （第29行）。
+8	eng:09-primitive-exists	lean/Textbook/Ch09/FurtherExamples.lean	Ch09.primitive_on_open_interval （第24行）。
+8	eng:09-accumulation-linear	lean/Textbook/Ch09/Examples.lean	Ch09.linear_accumulation （第15行）。
+8	eng:09-variable-endpoint	lean/Textbook/Ch09/Examples.lean	Ch09.variable_upper_endpoint （第10行）。
+8	eng:09-moving-interval	lean/Textbook/Ch09/Examples.lean	Ch09.moving_square_interval （第27行）。
+8	eng:09-ftc-two-theorem	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_newton_leibniz （第74行）。
+8	eng:09-square-ftc	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_integral_square （第239行）。
+8	eng:09-linear-certificate	lean/Textbook/Ch09/Tagged.lean	Ch09.tagged_integral_id （第244行）。
+8	eng:09-primitive-constant	lean/Textbook/Ch09/FurtherExamples.lean	Ch09.primitives_differ_by_constant （第40行）。
+8	eng:09-log-sum	lean/Textbook/Ch09/UniformSums.lean	Ch09.reciprocal_sum_log_limit （第84行）。
+8	eng:09-riemann-bound	lean/Textbook/Ch09/Quadrature.lean	Ch09.lipschitz_tagged_sum_error （第8行）。
+8	eng:09-sampling-budget	lean/Textbook/Ch09/Quadrature.lean	Ch09.square_sampling_budget; Ch09.square_uniform_sampling_budget （首项第62行）。
+8	eng:09-library-comparison	lean/Textbook/Ch09/MeasureBridge.lean	Ch09.tagged_measure_agreement （第93行）。
+1	a:swap	rocq/Textbook/Ch01/Language.v	swap_and （第31行）。
+1	a:threshold	rocq/Textbook/Ch01/Language.v	threshold_example （第42行）。
+2	def:ch01-eventually	rocq/Textbook/Ch02/Eventually.v	EventuallyNat （第3行）。
+2	ex:ch01-first-proof	rocq/Textbook/Ch02/Eventually.v	eventually_ge_100 （第8行）。
+2	def:ch01-tail	rocq/Textbook/Ch02/Eventually.v	Tail （第32行）。
+2	lem:ch01-and	rocq/Textbook/Ch02/Eventually.v	EventuallyNat_and （第16行）。
+2	ex:ch01-weaken-bound	rocq/Textbook/Ch02/Eventually.v	eventually_weaker_bound （第48行）。
+2	lem:ch01-mono	rocq/Textbook/Ch02/Eventually.v	EventuallyNat_mono （第36行）。
+2	def:ch02-local-radius	rocq/Textbook/Ch02/Neighborhoods.v	locally_holds （第15行）。
+2	def:ch02-neighborhood	rocq/Textbook/Ch02/Neighborhoods.v	is_neighborhood （第8行）。
+2	lem:ch02-neighborhood-laws	rocq/Textbook/Ch02/Filters.v	Ch02.neighborhood_filter （第61行）。
+2	def:ch03-filter	rocq/Textbook/Ch02/Filters.v	Ch02.BookFilter （第7行）。
+2	prop:ch03-tail	rocq/Textbook/Ch02/Filters.v	Ch02.tail_filter （第24行）。
+2	prop:ch03-neighborhood	rocq/Textbook/Ch02/Filters.v	Ch02.neighborhood_filter （第61行）。
+2	eng:principal-example	rocq/Textbook/Ch02/Filters.v	Ch02.principal; Ch02.principal_proper （第40行）
+2	def:ch03-proper	rocq/Textbook/Ch02/Filters.v	Ch02.IsProper （第21行）。
+2	eng:ch02-basic-proper	rocq/Textbook/Ch02/Filters.v	Ch02.tail_filter_proper; Ch02.neighborhood_filter_proper （第34行）
+2	def:ch03-eventually	rocq/Textbook/Ch02/Filters.v	Ch02.Eventually （第92行）。
+2	lem:ch03-of-forall	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventually_of_forall （第18行）。
+2	lem:ch03-mono	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventually_mono （第27行）。
+2	lem:ch03-and	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventually_and_iff （第42行）。
+2	lem:ch03-mp	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventually_mp （第57行）。
+2	def:ch03-eventually-eq	rocq/Textbook/Ch02/Logic.v	Ch02Logic.EventuallyEq （第7行）。
+2	lem:ch03-eq-laws	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventuallyEq_refl; Ch02Logic.eventuallyEq_symm; Ch02Logic.eventuallyEq_trans （第67行）
+2	def:ch03-eventually-le	rocq/Textbook/Ch02/Logic.v	Ch02Logic.EventuallyLE （第11行）。
+2	lem:ch03-le-trans	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventuallyLE_trans （第109行）。
+2	lem:ch03-le-antisymm	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventuallyLE_antisymm （第117行）。
+2	eng:ch02-substitution	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventually_subst （第100行）。
+2	eng:eventually-exists	rocq/Textbook/Ch02/Logic.v	Ch02Logic.eventually_exists （第152行）。
+2	ex:ch02-eventual-shift	lean/Textbook/Ch02/LimitApplications.lean	Ch02Applications.shifted_small （第22行）。
+2	ex:ch02-eventual-sum	lean/Textbook/Ch02/LimitApplications.lean	Ch02Applications.sum_small （第34行）。
+2	ex:ch02-eventual-square	lean/Textbook/Ch02/LimitApplications.lean	Ch02Applications.square_small （第46行）。
+2	ex:ch02-eventual-change	lean/Textbook/Ch02/LimitApplications.lean	Ch02Applications.changed_small （第65行）。
+5	ex:ch05-average-iteration	lean/Textbook/Ch05/Examples.lean	Ch05Examples.average_iteration （第12行）。

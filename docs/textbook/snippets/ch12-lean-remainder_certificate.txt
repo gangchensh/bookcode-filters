@@ -1,0 +1,18 @@
+theorem sensor_remainder_estimate (a h : ℝ × ℝ) (r : ℝ) (hr : 0 ≤ r)
+    (h₁ : |h.1| ≤ r) (h₂ : |h.2| ≤ r) :
+    |(sensor (a+h)).1 - (sensor a).1 - (sensorDifferential a h).1| ≤ r^2 ∧
+    |(sensor (a+h)).2 - (sensor a).2 - (sensorDifferential a h).2| ≤ r^2 := by
+  have heq₁ : (sensor (a+h)).1 - (sensor a).1 -
+      (sensorDifferential a h).1 = h.1^2 := by
+    simp [sensor, sensorDifferential, linearModel]; ring
+  have heq₂ : (sensor (a+h)).2 - (sensor a).2 -
+      (sensorDifferential a h).2 = h.1 * h.2 := by
+    simp [sensor, sensorDifferential, linearModel]; ring
+  rw [heq₁, heq₂, abs_of_nonneg (sq_nonneg h.1), abs_mul]
+  constructor
+  · calc
+      h.1^2 = |h.1|^2 := (sq_abs h.1).symm
+      _ ≤ r^2 := pow_le_pow_left₀ (abs_nonneg _) h₁ 2	-- 第一分量余项为h₁²
+  · calc
+      |h.1| * |h.2| ≤ r * r := mul_le_mul h₁ h₂ (abs_nonneg _) hr
+      _ = r^2 := by ring	-- 第二分量余项为h₁h₂

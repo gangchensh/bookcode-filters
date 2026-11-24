@@ -1,0 +1,68 @@
+附录 A.13：推荐的 Bash 交互配置
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：代码附件根目录 code；先保留配置备份
+
+cp -i ~/.bashrc ~/.bashrc.before-calculus
+mkdir -p ~/.bashrc.d
+cp -i config/bashrc.example ~/.bashrc.d/calculus.sh
+bash -n ~/.bashrc.d/calculus.sh
+
+===== 示例 2 =====
+输入位置：Bash 配置片段
+目录或对象：用户 ~/.bashrc 的末尾；不是在终端逐行执行
+
+if [ -f "$HOME/.bashrc.d/calculus.sh" ]; then
+  source "$HOME/.bashrc.d/calculus.sh"
+fi
+
+===== 示例 3 =====
+输入位置：Bash 配置片段
+目录或对象：用户 ~/.bashrc.d/calculus.sh；与现有内容合并
+
+export CALCULUS_WORK="$HOME/calculus-work"
+export CALCULUS_CODE="$CALCULUS_WORK/code"
+if [ -d "$HOME/tools/bin" ]; then
+  case ":$PATH:" in
+    *":$HOME/tools/bin:"*) ;;
+    *) export PATH="$HOME/tools/bin:$PATH" ;;
+  esac
+fi
+alias cwork='cd "$CALCULUS_WORK"'
+
+===== 示例 4 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；编辑并加载用户自己的配置
+
+code "$HOME/.bashrc.d/calculus.sh"
+bash -n "$HOME/.bashrc.d/calculus.sh"
+source "$HOME/.bashrc"
+printf '%s\n' "$CALCULUS_WORK"
+command -v lean
+
+===== 示例 5 =====
+输入位置：Bash 配置片段
+目录或对象：用户 ~/.bashrc.d/calculus.sh；与现有内容合并
+
+PS1='\W\$ '
+export CALCULUS_WORK="${CALCULUS_WORK:-/mnt/d/calculus-work}"
+export CALCULUS_CODE="${CALCULUS_CODE:-$CALCULUS_WORK/code}"
+alias ll='ls -alF'
+alias ..='cd ..'
+alias cwork='cd "$CALCULUS_WORK"'
+alias ccode='cd "$CALCULUS_CODE"'
+alias gst='git status'
+alias gdiff='git diff'
+
+===== 示例 6 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先载入上述 Bash 片段，目标 switch 已存在
+
+rocqenv calculus-rocq-9.2
+rocq -v

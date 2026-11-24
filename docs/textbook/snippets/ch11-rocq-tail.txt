@@ -1,0 +1,3 @@
+Theorem geometric_remainder (q : R) (Hq : q <> 1) (N : nat) :
+  1/(1-q)-PartialSum (fun n => q^n) N = q^N/(1-q).
+Proof. rewrite partialSum_geometric by exact Hq. field; lra. Qed.

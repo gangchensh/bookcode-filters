@@ -1,0 +1,13 @@
+opam-version: "2.0"
+version: "0.1.0"
+synopsis: "Checked Rocq examples for filter-based formal calculus"
+maintainer: "Gang Chen"
+authors: "Gang Chen"
+license: "MIT"
+depends: [
+  "ocaml" {= "4.14.1"}
+  "rocq-core" {= "9.2.0"}
+  "rocq-stdlib" {= "9.2.0"}
+  "coq-coquelicot" {= "3.4.5"}
+]
+build: [[make "check-rocq"]]

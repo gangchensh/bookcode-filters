@@ -1,0 +1,7 @@
+def EventualSet (A : Set ℕ) : Prop :=                   -- 定义包含尾集的集合
+  EventuallyNat (fun n => n ∈ A)                        -- 集合 A 从某个阈值起包含所有自然数
+
+theorem EventualSet.univ : EventualSet Set.univ := by   -- 自然数全集包含一个尾集
+  refine ⟨0, ?_⟩                                        -- 选取0，留下其余证明任务
+  intro n hn
+  exact Set.mem_univ n                                  -- 使用全空间性质

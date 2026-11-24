@@ -1,0 +1,11 @@
+Theorem integral_x_exp : is_RInt (fun x : R => x*exp x) 0 1 1.
+Proof.
+  assert (Hprim : is_RInt (fun x : R => x*exp x) 0 1
+    ((1-1)*exp 1-(0-1)*exp 0)).
+  { apply (is_RInt_derive (fun x : R => (x-1)*exp x) (fun x : R => x*exp x)).
+    - intros x Hx. auto_derive; nra.	(* 乘积求导后合并为x exp(x) *)
+    - intros x Hx. apply (ex_derive_continuous (fun y : R => y*exp y) x).
+      exists (exp x+x*exp x). auto_derive; nra. }
+  replace ((1-1)*exp 1-(0-1)*exp 0) with 1 in Hprim by (rewrite exp_0; ring).
+  exact Hprim.
+Qed.

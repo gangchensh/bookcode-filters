@@ -1,0 +1,3 @@
+Definition HasDerivative (f : R -> R) (a d : R) : Prop :=
+  Approaches (fun x => (f x-f a)/(x-a))
+    (punctured a) (neighborhood_filter d).

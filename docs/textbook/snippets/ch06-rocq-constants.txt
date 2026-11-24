@@ -1,0 +1,10 @@
+Theorem derivative_const (c a : R) :	(* 常值差商为0 *)
+  HasDerivative (fun _ => c) a 0.
+Proof.
+  unfold HasDerivative. apply (proj2 (real_iff _ _ _)).
+  intros eps Heps. exists 1. split; [lra |].
+  intros x Hx Hne.
+  replace (c-c) with 0 by ring.
+  unfold Rdiv. rewrite Rmult_0_l, Rminus_0_r, Rabs_R0.
+  exact Heps.
+Qed.

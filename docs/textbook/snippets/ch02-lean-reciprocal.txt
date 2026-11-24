@@ -1,0 +1,13 @@
+noncomputable def reciprocal (n : ℕ) : ℝ := 1 / ((n : ℝ) + 1)
+noncomputable def shifted (n : ℕ) : ℝ := 1 / ((n : ℝ) + 2)
+
+theorem reciprocal_small (ε : ℝ) (hε : 0 < ε) :
+    Eventually tailFilter (fun n => |reciprocal n| < ε) := by
+  apply eventually_mono (F := tailFilter)
+    (Ch02Eventually.eventually_reciprocal ε hε)
+  intro n hn
+  have hpos : 0 < 1 / ((n : ℝ) + 1) := by positivity
+  change |1 / ((n : ℝ) + 1)| < ε
+  rw [abs_of_pos hpos]
+  exact hn
+

@@ -1,0 +1,10 @@
+Theorem decay_truncation (T : R) :
+  is_RInt (fun x : R => exp (-x)) 0 T (1-exp (-T)).
+Proof.
+  replace (1-exp (-T)) with (-exp (-T)-(-exp (-0)))
+    by (replace (-0) with 0 by ring; rewrite exp_0; ring).
+  apply (is_RInt_derive (fun x : R => -exp (-x)) (fun x : R => exp (-x))).
+  - intros x Hx. auto_derive; nra.	(* 链式法则与两个负号相消 *)
+  - intros x Hx. apply (ex_derive_continuous (fun y : R => exp (-y)) x).
+    exists (-exp (-x)). auto_derive; nra.
+Qed.

@@ -1,0 +1,10 @@
+theorem linear_example (a : ℝ) :
+    HasDerivative (fun x : ℝ => 3*x^2-2*x+7) a (6*a-2) ∧
+      (3*(3:ℝ)^2-2*3+7 = 28) ∧ (6*(3:ℝ)-2 = 16) := by
+  refine ⟨?_,by norm_num,by norm_num⟩
+  have h := linear_rule (derivative_square a) (derivative_id a) 3 (-2)
+  apply (derivative_mathlib _ _ _).2
+  convert ((derivative_mathlib _ _ _).1 h).add_const 7 using 1
+  · funext x
+    ring
+  · ring

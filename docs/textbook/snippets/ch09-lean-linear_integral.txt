@@ -1,0 +1,12 @@
+theorem integral_linear : (∫ x : ℝ in (0 : ℝ)..1, x) = 1 / 2 := by
+  have hd : ∀ x : ℝ, HasDerivAt (fun t => t ^ 2 / 2) x x := by
+    intro x
+    convert ((hasDerivAt_id x).fun_pow 2).div_const 2 using 1 <;> simp <;> ring
+  have hi : IntervalIntegrable (fun x : ℝ => x) volume 0 1 :=
+    continuous_id.intervalIntegrable _ _	-- 连续性提供被积函数的可积性
+  have h := primitive_integral
+    (F := fun t : ℝ => t ^ 2 / 2) (f := fun t => t)
+    (a := 0) (b := 1) (fun x _ => hd x) hi
+  calc
+    (∫ x : ℝ in (0 : ℝ)..1, x) = 1 ^ 2 / 2 - 0 ^ 2 / 2 := h
+    _ = 1 / 2 := by norm_num	-- 只计算右边的端点差

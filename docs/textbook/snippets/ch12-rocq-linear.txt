@@ -1,0 +1,23 @@
+Theorem linear_filterdiff (c d : R) (a : R * R) :
+  filterdiff (fun x : R * R => c * fst x + d * snd x)
+    (locally a) (fun h => c * fst h + d * snd h).
+Proof.
+  apply filterdiff_linear.	(* 线性函数的微分就是自身 *)
+  split.
+  - intros x y. cbn. ring.	(* 保持向量加法 *)
+  - intros k x. cbn. ring.	(* 保持实数标量乘法 *)
+  - exists (Rabs c + Rabs d + 1).
+    split; [pose proof (Rabs_pos c); pose proof (Rabs_pos d); lra |].
+    intros [x y].
+    change (Rabs (c * x + d * y) <=
+      (Rabs c + Rabs d + 1) * norm (x,y)).
+    eapply Rle_trans; [apply Rabs_triang |].
+    rewrite !Rabs_mult.
+    pose proof (@norm_prod R_AbsRing R_NormedModule R_NormedModule x y) as Hnorm.
+    change (Rmax (Rabs x) (Rabs y) <= norm (x,y) <=
+      sqrt 2 * Rmax (Rabs x) (Rabs y)) in Hnorm.
+    pose proof (Rmax_l (Rabs x) (Rabs y)).
+    pose proof (Rmax_r (Rabs x) (Rabs y)).
+    pose proof (Rabs_pos c). pose proof (Rabs_pos d).
+    pose proof (Rabs_pos x). nra.	(* 以常数乘输入范数控制输出 *)
+Qed.

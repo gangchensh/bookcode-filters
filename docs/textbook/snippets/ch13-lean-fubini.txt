@@ -1,0 +1,10 @@
+theorem product_fubini (f : ℝ × ℝ → ℝ)
+    (hf : Integrable f (volume.prod volume)) :
+    (∫ z, f z ∂volume.prod volume) =
+      ∫ x : ℝ, ∫ y : ℝ, f (x, y) := by
+  exact integral_prod f hf	-- 绝对可积性保证区域积分等于迭代积分
+
+theorem swap_integrals (f : ℝ → ℝ → ℝ)
+    (hf : Integrable (Function.uncurry f) (volume.prod volume)) :
+    (∫ x : ℝ, ∫ y : ℝ, f x y) = ∫ y : ℝ, ∫ x : ℝ, f x y := by
+  exact integral_integral_swap hf	-- 保留同一个二维被积函数

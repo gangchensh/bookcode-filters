@@ -1,0 +1,6 @@
+theorem limit_pow (n : ℕ)	-- 自然数幂由乘法递推
+    (hf : Approaches f F (neighborhoodFilter a)) :
+    Approaches (fun x => (f x)^n) F (neighborhoodFilter (a^n)) := by
+  induction n with
+  | zero => simpa using const_limit F (1 : ℝ)
+  | succ n ih => simpa only [pow_succ] using limit_mul ih hf

@@ -1,0 +1,3 @@
+Theorem improper_library_iff (f : R -> R) (a L : R)
+  (Hlocal : forall T, a <= T -> ex_RInt f a T) :
+  ImproperRight f a L <-> LibraryImproperRight f a L.

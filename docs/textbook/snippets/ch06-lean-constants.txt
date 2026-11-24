@@ -1,0 +1,7 @@
+theorem derivative_const (c a : ℝ) :	-- 常值函数的导数为0
+    HasDerivative (fun _ => c) a 0 := by
+  exact (derivative_mathlib _ _ _).2 (hasDerivAt_const a c)
+
+theorem derivative_id (a : ℝ) :	-- 恒等函数的导数为1
+    HasDerivative (fun x => x) a 1 := by
+  exact (derivative_mathlib _ _ _).2 (hasDerivAt_id a)

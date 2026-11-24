@@ -1,0 +1,30 @@
+theorem limit_mul	-- 乘积极限需先控制一个因子的大小
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hg : Approaches g F (neighborhoodFilter b)) :
+    Approaches (fun x => f x*g x) F (neighborhoodFilter (a*b)) := by
+  apply (real_iff _ _ _).2
+  intro ε hε
+  have hB : 0 < |b|+1 := by positivity
+  have hA : 0 < |a|+1 := by positivity
+  apply F.upward (F.inter_mem (Ch04Local.limit_eventually_bounded hg)
+    (F.inter_mem
+      ((real_iff _ _ _).1 hf (ε/(2*(|b|+1))) (by positivity))
+      ((real_iff _ _ _).1 hg (ε/(2*(|a|+1))) (by positivity))))
+  intro x hx	-- 同时取得有界与两个小距离
+  have hbound : |g x| < |b|+1 := hx.1
+  have hxf : |f x-a| < ε/(2*(|b|+1)) := hx.2.1
+  have hxg : |g x-b| < ε/(2*(|a|+1)) := hx.2.2
+  have hfsmall : |f x-a| *(2*(|b|+1)) < ε :=
+    (lt_div_iff₀ (by positivity)).1 hxf
+  have hgsmall : |g x-b| *(2*(|a|+1)) < ε :=
+    (lt_div_iff₀ (by positivity)).1 hxg
+  have hfirst : |f x-a| *|g x| ≤ |f x-a| *(|b|+1) :=
+    mul_le_mul_of_nonneg_left (le_of_lt hbound) (abs_nonneg _)
+  have hsecond : |a| *|g x-b| ≤ (|a|+1)*|g x-b| :=
+    mul_le_mul_of_nonneg_right (by linarith) (abs_nonneg _)
+  change |f x*g x-a*b| < ε
+  calc
+    |f x*g x-a*b| = |(f x-a)*g x+a*(g x-b)| := by congr 1; ring
+    _ ≤ |(f x-a)*g x|+|a*(g x-b)| := abs_add_le _ _
+    _ = |f x-a| *|g x|+|a| *|g x-b| := by rw [abs_mul, abs_mul]
+    _ < ε := by nlinarith	-- 两项分别小于 ε/2

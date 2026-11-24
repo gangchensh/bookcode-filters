@@ -1,0 +1,42 @@
+# Suggested fragment for interactive Bash. Do not replace your entire .bashrc.
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
+
+# Keep the current directory and privilege indicator; omit the long host name.
+PS1='\W\$ '
+HISTCONTROL=ignoreboth
+shopt -s histappend
+
+# Change this one path if you keep exercises in the Ubuntu home directory.
+export CALCULUS_WORK="${CALCULUS_WORK:-/mnt/d/calculus-work}"
+export CALCULUS_CODE="${CALCULUS_CODE:-$CALCULUS_WORK/code}"
+
+alias ll='ls -alF'
+alias ..='cd ..'
+alias cwork='cd "$CALCULUS_WORK"'
+alias ccode='cd "$CALCULUS_CODE"'
+alias gst='git status'
+alias gdiff='git diff'
+
+if [ -f "$HOME/.elan/env" ]; then
+  . "$HOME/.elan/env"
+fi
+if [ -d "$HOME/.local/bin" ]; then
+  case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) export PATH="$HOME/.local/bin:$PATH" ;;
+  esac
+fi
+
+# Explicit opt-in: select a switch for this shell, without changing the default.
+rocqenv() {
+  if [ "$#" -ne 1 ]; then
+    printf 'Usage: rocqenv SWITCH_NAME\n' >&2
+    return 2
+  fi
+  local calculus_opam_env
+  calculus_opam_env=$(opam env --switch="$1" --set-switch) || return
+  eval "$calculus_opam_env"
+}

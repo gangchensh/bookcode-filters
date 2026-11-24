@@ -1,0 +1,2 @@
+Definition swap_and_term (P Q : Prop) : P /\ Q -> Q /\ P :=
+  fun h => conj (proj2 h) (proj1 h).

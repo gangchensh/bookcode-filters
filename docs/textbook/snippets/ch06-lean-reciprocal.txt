@@ -1,0 +1,4 @@
+theorem derivative_reciprocal (a : ℝ) (ha : a ≠ 0) :
+    HasDerivative (fun x => 1 / x) a (-(a ^ 2)⁻¹) := by
+  apply (derivative_mathlib _ _ _).2
+  simpa only [one_div] using (hasDerivAt_inv ha)

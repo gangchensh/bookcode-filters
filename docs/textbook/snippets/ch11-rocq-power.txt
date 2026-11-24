@@ -1,0 +1,2 @@
+Definition NativePowerSum (c : nat -> R) (x s : R) : Prop :=
+  is_pseries c x s.

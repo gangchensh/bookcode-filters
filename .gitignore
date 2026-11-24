@@ -1,0 +1,43 @@
+# Generated files
+.release/
+.lake/
+**/RocqMakefile
+**/RocqMakefile.conf
+**/.RocqMakefile.d
+*.vo
+*.vos
+*.vok
+*.glob
+.*.aux
+*.cache
+*.olean
+*.ilean
+*.cmi
+*.cmo
+*.cmx
+*.o
+# Host-specific configuration
+.vscode/settings.json
+*.export
+*.tar.gz
+
+**/TextbookMakefile
+**/TextbookMakefile.conf
+**/.TextbookMakefile.d
+*.zip
+*.pyc
+__pycache__/
+**/.lia.cache
+**/.nia.cache
+**/.nra.cache
+*.zip.sha256
+
+**/.vscode/settings.json
+.env
+*.env
+*.pem
+*.key
+*.log
+
+# Local opam switches are machine-specific dependencies
+_opam/

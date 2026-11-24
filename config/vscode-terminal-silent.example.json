@@ -1,0 +1,11 @@
+{
+  "accessibility.signals.terminalCommandSucceeded": {
+    "sound": "off"
+  },
+  "accessibility.signals.terminalCommandFailed": {
+    "sound": "off"
+  },
+  "accessibility.signals.terminalBell": {
+    "sound": "off"
+  }
+}

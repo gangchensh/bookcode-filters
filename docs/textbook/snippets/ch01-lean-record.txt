@@ -1,0 +1,9 @@
+structure ClosedBounds where	-- 两个实数端点及其顺序证明
+  lower : ℝ
+  upper : ℝ
+  ordered : lower ≤ upper
+
+def unitBounds : ClosedBounds where	-- 构造端点为0和1的记录
+  lower := 0
+  upper := 1
+  ordered := zero_le_one

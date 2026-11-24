@@ -1,0 +1,2 @@
+Definition LibraryImproperRight (f : R -> R) (a L : R) : Prop :=
+  is_RInt_gen f (at_point a) (Rbar_locally p_infty) L.

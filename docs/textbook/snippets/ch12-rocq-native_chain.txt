@@ -1,0 +1,12 @@
+Theorem scaled_product_native (c : R) (a : R * R) :
+  filterdiff (fun x : R * R => c * (fst x * snd x)) (locally a)
+    (fun h => c * (fst h * snd a + fst a * snd h)).
+Proof.
+  apply (filterdiff_comp
+    (fun x : R * R => fst x * snd x) (fun t : R => c*t)
+    (fun h => fst h * snd a + fst a * snd h) (fun t : R => c*t)).
+  - apply product_native.	(* 内层在a处的二元乘积微分 *)
+  - exact (@filterdiff_scal_r R_AbsRing R_NormedModule
+      (filtermap (fun x : R*R => fst x*snd x) (locally a)) _ c Rmult_comm).
+	(* 外层沿内层推送的源取微分 *)
+Qed.

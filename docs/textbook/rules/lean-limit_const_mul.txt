@@ -1,0 +1,4 @@
+theorem limit_const_mul (k : ℝ)
+    (hf : Approaches f F (neighborhoodFilter a)) :
+    Approaches (fun x => k*f x) F (neighborhoodFilter (k*a)) :=
+  limit_mul (const_limit F k) hf

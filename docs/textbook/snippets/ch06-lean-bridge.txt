@@ -1,0 +1,11 @@
+theorem derivative_mathlib (f : ℝ → ℝ) (a d : ℝ) :
+    HasDerivative f a d ↔ HasDerivAt f d a := by
+  unfold HasDerivative
+  have hp : toMathlib (punctured a) = 𝓝[≠] a := by
+    change toMathlib (nearWithin a {x | x ≠ a}) = 𝓝[≠] a
+    rw [toMathlib_nearWithin]
+    rfl
+  rw [approaches_mathlib_iff, hp,
+    Ch03.toMathlib_neighborhood]
+  rw [hasDerivAt_iff_tendsto_slope]
+  rw [slope_fun_def_field]

@@ -1,0 +1,17 @@
+附录 A.14：常用数学库怎样安装与核验
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam search coquelicot
+opam search mathcomp
+opam search flocq
+opam show coq-coquelicot
+opam show rocq-mathcomp-ssreflect
+opam show coq-flocq

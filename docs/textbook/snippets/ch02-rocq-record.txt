@@ -1,0 +1,8 @@
+Structure BookFilter (X : Type) : Type := {             (* 声明数据与证明字段 *)
+  members : (X -> Prop) -> Prop;                        (* 指定集合族的成员谓词 *)
+  whole : members (fun _ => True);                      (* 恒真谓词表示全空间 *)
+  meets : forall A B, members A -> members B ->         (* 合并两个成员断言 *)
+    members (fun x => A x /\ B x);                      (* 要求两个成员的交仍是成员 *)
+  upward : forall A B, members A ->                     (* 验证向上封闭性 *)
+    (forall x, A x -> B x) -> members B
+}.

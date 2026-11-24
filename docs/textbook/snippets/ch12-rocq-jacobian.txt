@@ -1,0 +1,4 @@
+Theorem chain_coefficients (c d a b h k : R) :
+  c * (2*a*h+k) + d * (b*h+a*k) =
+    (2*c*a+d*b)*h + (c+d*a)*k.
+Proof. ring. Qed.	(* 行向量乘2×2雅可比矩阵 *)

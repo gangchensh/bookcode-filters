@@ -1,0 +1,3 @@
+Definition IsIterated (f : R -> R -> R) (a b c d I : R) : Prop :=
+  (forall x, Rmin a b <= x <= Rmax a b -> ex_RInt (f x) c d) /\
+  is_RInt (fun x => RInt (f x) c d) a b I.	(* 内层存在，外层积分等于I *)

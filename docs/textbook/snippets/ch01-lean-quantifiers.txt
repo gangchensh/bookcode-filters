@@ -1,0 +1,5 @@
+theorem threshold_example :	-- 选择阈值100后保持下界
+    ∃ N : ℕ, ∀ n : ℕ, N ≤ n → 100 ≤ n := by
+  refine ⟨100, ?_⟩	-- 取N = 100
+  intro n hn	-- hn : 100 ≤ n
+  exact hn

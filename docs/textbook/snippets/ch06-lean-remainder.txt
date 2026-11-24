@@ -1,0 +1,9 @@
+theorem square_remainder (a h : ℝ) :	-- 线性近似的剩余项恰好为h²
+    (a + h) ^ 2 - (a ^ 2 + (2 * a) * h) = h ^ 2 := by
+  ring
+
+theorem square_error_bound (a h η : ℝ)
+    (hη : 0 ≤ η) (hh : |h| ≤ η) :	-- 输入界η给出平方阶剩余项界
+    |(a + h) ^ 2 - (a ^ 2 + (2 * a) * h)| ≤ η ^ 2 := by
+  rw [square_remainder, abs_of_nonneg (sq_nonneg h)]
+  nlinarith [sq_abs h, abs_nonneg h]

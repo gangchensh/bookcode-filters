@@ -1,0 +1,12 @@
+theorem integral_x_exp :
+    (∫ x : ℝ in (0 : ℝ)..1, x * Real.exp x) = 1 := by
+  have hd : ∀ x : ℝ, HasDerivAt (fun t => (t-1)*Real.exp t) (x*Real.exp x) x := by
+    intro x
+    convert ((hasDerivAt_id' x).sub_const 1).mul (Real.hasDerivAt_exp x)
+      using 1 <;>
+      first | rfl | ring
+  have hi : IntervalIntegrable (fun x : ℝ => x*Real.exp x) volume 0 1 := by
+    apply Continuous.intervalIntegrable
+    fun_prop	-- 先保证有限区间上的可积性
+  rw [Ch09.primitive_integral (fun x _ => hd x) hi]
+  norm_num	-- (1-1)e¹-(0-1)e⁰=1

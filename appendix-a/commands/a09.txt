@@ -1,0 +1,87 @@
+附录 A.9：安装 Rocq、标准库与 Coquelicot
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入 tools/platform
+
+mkdir -p /mnt/d/calculus-work/tools
+cd /mnt/d/calculus-work/tools
+git clone https://github.com/rocq-prover/platform.git
+cd platform
+bash coq_platform_make.sh
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；此框是独立的手动安装路线
+
+sudo apt install opam build-essential m4 pkg-config
+opam init
+opam switch create calculus-rocq-9.2 ocaml-base-compiler.4.14.2
+eval "$(opam env --switch=calculus-rocq-9.2 --set-switch)"
+opam repo add rocq-released https://rocq-prover.org/opam/released
+opam update
+opam install rocq-prover rocq-core=9.2.0
+rocq -v
+
+===== 输出示例 3（只核对，不执行） =====
+显示内容：输出示例（只核对）
+目录或对象：最后的 rocq -v；OCaml 版本随所选编译器变化
+
+The Rocq Prover, version 9.2
+compiled with OCaml 4.14.2
+
+===== 示例 4 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam switch list
+opam list --installed
+command -v rocq
+rocq -v
+
+===== 示例 5 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam switch show
+opam list --installed coq-coquelicot
+opam list --installed | grep -i coquelicot
+command -v rocq
+rocq -v
+
+===== 示例 6 =====
+输入位置：Ubuntu 终端
+目录或对象：代码附件根目录 code
+
+rocq compile rocq/AppendixA/CoquelicotSmoke.v
+
+===== 示例 7 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam search coquelicot
+opam show coq-coquelicot
+opam install coq-coquelicot --dry-run
+
+===== 示例 8 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；先选中相应的 Rocq 9.2.0 switch
+
+opam install coq-coquelicot
+
+===== 示例 9 =====
+输入位置：编辑器源码
+目录或对象：附件 rocq/AppendixA/CoquelicotSmoke.v；不输入终端
+
+Require Import Coquelicot.Coquelicot.
+
+Check locally.
+Check locally'.
+Check eventually.
+Check filterlim.
+Check is_lim_seq.

@@ -1,0 +1,17 @@
+Theorem cubic_expansion (a h : R) :
+  (a+h)^3 = a^3 + 3*a^2*h + 3*a*h^2 + h^3.
+Proof. ring. Qed.
+
+Theorem cubic_remainder (a h eta : R)
+  (Hh : Rabs h <= eta) :
+  Rabs ((a+h)^3-(a^3+3*a^2*h+3*a*h^2)) <= eta^3.
+Proof.
+  assert (Heta : 0 <= eta) by (pose proof (Rabs_pos h); lra).
+  replace ((a+h)^3-(a^3+3*a^2*h+3*a*h^2)) with (h*h*h) by ring.
+  rewrite !Rabs_mult. pose proof (Rabs_pos h).
+  replace (eta^3) with (eta*eta*eta) by ring.
+  assert (Hs : Rabs h * Rabs h <= eta*eta).
+  { apply Rmult_le_compat; assumption. }
+  apply Rmult_le_compat; try assumption.
+  apply Rmult_le_pos; assumption.
+Qed.

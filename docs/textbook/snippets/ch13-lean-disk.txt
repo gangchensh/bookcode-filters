@@ -1,0 +1,16 @@
+theorem radial_integral (R : ℝ) :
+    (∫ r : ℝ in (0 : ℝ)..R, r) = R^2/2 := by
+  have hd : ∀ x : ℝ, HasDerivAt (fun t => t^2/2) x x := by
+    intro x
+    convert ((hasDerivAt_id x).fun_pow 2).div_const 2 using 1 <;> simp <;> ring
+  rw [Ch09.primitive_integral (fun x _ => hd x)
+    (continuous_id.intervalIntegrable 0 R)]
+  simp
+
+theorem polar_disk_area (R : ℝ) :
+    (∫ _θ : ℝ in (0 : ℝ)..(2*Real.pi), ∫ r : ℝ in (0 : ℝ)..R, r) =
+      Real.pi * R^2 := by
+  simp_rw [radial_integral]
+  rw [intervalIntegral.integral_const]
+  simp only [smul_eq_mul, sub_zero]
+  ring	-- 几何圆盘解释另要求R≥0

@@ -1,0 +1,15 @@
+theorem product_derivative (a : ℝ × ℝ) :
+    HasFDerivAt (fun x : ℝ × ℝ => x.1 * x.2)
+      (linearModel a.2 a.1) a := by
+  convert!
+    (hasFDerivAt_fst (𝕜 := ℝ) (p := a)).mul
+      (hasFDerivAt_snd (𝕜 := ℝ) (p := a)) using 1
+  apply ContinuousLinearMap.ext
+  intro h
+  simp [linearModel, add_comm]	-- 微分为a₂h₁+a₁h₂
+
+theorem product_remainder (a h : ℝ × ℝ) :
+    (a.1 + h.1) * (a.2 + h.2) - a.1 * a.2 -
+      linearModel a.2 a.1 h = h.1 * h.2 := by
+  simp only [linearModel_apply]
+  ring	-- 剩余项恰为h₁h₂

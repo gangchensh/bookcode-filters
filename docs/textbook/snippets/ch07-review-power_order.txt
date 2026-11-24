@@ -1,0 +1,12 @@
+theorem power_order {R : ℝ → ℝ} {C : ℝ} (hC : 0 ≤ C)
+    (hb : ∀ h, |h| < 1 → |R h| ≤ C*|h|^3) :
+    BookBigO R (fun h => h^3) (𝓝 0) ∧
+    BookLittleO R (fun h => h^2) (𝓝 0) ∧ BookLittleO R id (𝓝 0) := by
+  have he : ∀ᶠ h : ℝ in 𝓝 0, |h| < 1 :=
+    continuous_abs.continuousAt.eventually_lt continuousAt_const (by norm_num)
+  have h₂ := power_to_littleO (n := 2) one_pos hC hb
+  refine ⟨⟨C, hC, ?_⟩, h₂, ?_⟩
+  · filter_upwards [he] with h hh
+    simpa [abs_pow] using hb h hh
+  · apply (littleO_mathlib _ _ _).2
+    exact ((littleO_mathlib _ _ _).1 h₂).trans (isLittleO_pow_id (by decide : 1 < 2))

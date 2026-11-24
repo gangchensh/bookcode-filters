@@ -1,0 +1,12 @@
+theorem rational_at_two :                         -- 去心源上组合有理函数的极限
+    Filter.Tendsto (fun x : ℝ => (x ^ 2 + 3 * x - 1) / (x + 1))
+      (𝓝[≠] 2) (𝓝 3) := by
+  have hx : Filter.Tendsto (fun x : ℝ => x) (𝓝[≠] 2) (𝓝 2) :=
+    tendsto_id.mono_left nhdsWithin_le_nhds
+  have hc : Filter.Tendsto (fun _ : ℝ => (3 : ℝ)) (𝓝[≠] 2) (𝓝 3) :=
+    tendsto_const_nhds
+  have hnum := ((hx.pow 2).add (hc.mul hx)).sub
+    (tendsto_const_nhds (x := (1 : ℝ)))
+  have hden := hx.add (tendsto_const_nhds (x := (1 : ℝ)))
+  have h := hnum.div hden (by norm_num : (2 : ℝ) + 1 ≠ 0)
+  convert h using 1 <;> norm_num

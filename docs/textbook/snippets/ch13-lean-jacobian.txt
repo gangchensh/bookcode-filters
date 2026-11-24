@@ -1,0 +1,15 @@
+theorem polar_determinant (r θ : ℝ) :
+    Matrix.det (!![Real.cos θ, -r*Real.sin θ;
+      Real.sin θ, r*Real.cos θ]) = r := by
+  calc
+    _ = r*(Real.sin θ^2+Real.cos θ^2) := by
+      rw [Matrix.det_fin_two]
+      change Real.cos θ*(r*Real.cos θ)-(-r*Real.sin θ)*Real.sin θ =
+        r*(Real.sin θ^2+Real.cos θ^2)
+      ring
+    _ = r := by rw [Real.sin_sq_add_cos_sq]; ring	-- r(cos²θ+sin²θ)=r
+
+theorem polar_area_factor (r θ : ℝ) (hr : 0 ≤ r) :
+    |Matrix.det (!![Real.cos θ, -r*Real.sin θ;
+      Real.sin θ, r*Real.cos θ])| = r := by
+  rw [polar_determinant, abs_of_nonneg hr]	-- 面积因子使用行列式绝对值

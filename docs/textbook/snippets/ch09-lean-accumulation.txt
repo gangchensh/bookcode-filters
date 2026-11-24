@@ -1,0 +1,6 @@
+theorem accumulation_derivative (f : ℝ → ℝ) (hf : Continuous f) (a b : ℝ) :
+    HasDerivAt (fun t => ∫ x in a..t, f x) (f b) b := by
+  exact intervalIntegral.integral_hasDerivAt_right
+    (hf.intervalIntegrable a b)	-- 连续性保证区间可积
+    hf.aestronglyMeasurable.stronglyMeasurableAtFilter
+    hf.continuousAt	-- 提供b处连续性

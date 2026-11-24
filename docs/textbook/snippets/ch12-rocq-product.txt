@@ -1,0 +1,18 @@
+Theorem product_remainder (a h : R * R) :
+  (fst a + fst h) * (snd a + snd h) - fst a * snd a -
+    (snd a * fst h + fst a * snd h) = fst h * snd h.
+Proof. ring. Qed.	(* 展开后只剩二阶交叉项 *)
+
+Theorem product_derivative (a : R * R) :
+  HasTotalDerivative2 (fun x => fst x * snd x) a
+    (fun h => snd a * fst h + fst a * snd h).
+Proof.
+  split.
+  - split; intros; cbn; ring.	(* 候选映射保持加法和标量乘法 *)
+  - intros eps Heps. exists eps. split; [exact Heps |].
+  intros h Hsmall. cbn [fst snd].
+  rewrite product_remainder, Rabs_mult.	(* 目标化为|h₁||h₂|≤eps·size2 h *)
+  destruct (size2_bounds h) as [Hr [Hx Hy]].
+  pose proof (Rabs_pos (fst h)).
+  pose proof (Rabs_pos (snd h)). nra.	(* |h₁||h₂|≤size2(h)²<eps·size2(h) *)
+Qed.

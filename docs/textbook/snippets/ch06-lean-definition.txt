@@ -1,0 +1,3 @@
+def HasDerivative (f : ℝ → ℝ) (a d : ℝ) : Prop :=	-- 差商沿去心源趋于d
+  Approaches (fun x => (f x - f a) / (x - a))
+    (punctured a) (neighborhoodFilter d)

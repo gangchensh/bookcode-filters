@@ -1,0 +1,8 @@
+def HasMeshIntegral {P : Type*} (mesh sums : P → ℝ) (I : ℝ) : Prop :=
+  Ch03Approach.Approaches sums (fineFilter mesh) (Ch02.neighborhoodFilter I)
+
+theorem mesh_integral_iff {P : Type*} (mesh sums : P → ℝ) (I : ℝ) :
+    HasMeshIntegral mesh sums I ↔
+      ∀ ε > 0, ∃ δ > 0, ∀ p, mesh p < δ → |sums p - I| < ε := by
+  rw [HasMeshIntegral, Ch03Approach.real_iff]
+  rfl

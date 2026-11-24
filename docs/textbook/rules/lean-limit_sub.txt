@@ -1,0 +1,5 @@
+theorem limit_sub
+    (hf : Approaches f F (neighborhoodFilter a))
+    (hg : Approaches g F (neighborhoodFilter b)) :
+    Approaches (fun x => f x-g x) F (neighborhoodFilter (a-b)) := by
+  simpa only [sub_eq_add_neg] using limit_add hf (limit_neg hg)

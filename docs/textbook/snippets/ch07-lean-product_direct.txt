@@ -1,0 +1,18 @@
+theorem product_rule_direct {f g : ℝ → ℝ} {a df dg : ℝ}
+    (hf : HasDerivative f a df) (hg : HasDerivative g a dg) :
+    HasDerivative (fun x => f x * g x) a (df * g a + f a * dg) := by
+  have hgc : Approaches g (punctured a) (neighborhoodFilter (g a)) :=
+    approaches_within_source _ (derivative_continuous hg)
+  have hsum := limit_add (limit_mul hgc hf) (limit_const_mul (f a) hg)
+  have heq : Eventually (punctured a) (fun x =>
+      g x * ((f x - f a) / (x - a)) + f a * ((g x - g a) / (x - a)) =
+        (f x * g x - f a * g a) / (x - a)) := by
+    apply (punctured a).upward (punctured_ne a)
+    intro x hx
+    have hden : x - a ≠ 0 := sub_ne_zero.mpr hx
+    change g x * ((f x - f a) / (x - a)) + f a * ((g x - g a) / (x - a)) =
+      (f x * g x - f a * g a) / (x - a)
+    field_simp [hden]
+    <;> ring	-- 同一去心范围内核对乘积差商
+  have h := approaches_congr heq hsum	-- 用最终相等替换差商
+  simpa [HasDerivative, mul_comm, add_comm] using h

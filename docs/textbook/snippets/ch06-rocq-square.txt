@@ -1,0 +1,12 @@
+Theorem derivative_square (a : R) :	(* 平方差商化为x+a *)
+  HasDerivative (fun x => x*x) a (2*a).
+Proof.
+  unfold HasDerivative. apply (proj2 (real_iff _ _ _)).
+  intros eps Heps. exists eps. split; [exact Heps |].
+  intros x Hx Hne. change (Rabs (x-a) < eps) in Hx.
+  change (x <> a) in Hne.
+  assert (Hden : x-a <> 0) by lra.
+  replace ((x*x-a*a)/(x-a)-2*a) with (x-a).
+  - exact Hx.
+  - field; assumption.
+Qed.

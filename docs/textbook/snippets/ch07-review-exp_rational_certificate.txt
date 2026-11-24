@@ -1,0 +1,11 @@
+theorem exp_rational_certificate :
+    20201/20000 - 1/3000000 ≤ Real.exp (1/100) ∧
+    Real.exp (1/100) ≤ 20201/20000 + 1/3000000 := by
+  have h := exp_quadratic_bound (h := 1/100) (r := 1/2) (by norm_num)
+  have he : Real.exp (1/2) ≤ 2 := by
+    have hlog := Real.one_sub_inv_le_log_of_pos (show (0:ℝ) < 2 by norm_num)
+    have hl : (1/2:ℝ) ≤ Real.log 2 := by norm_num at hlog; linarith
+    exact (Real.exp_le_exp.mpr hl).trans_eq (Real.exp_log (by norm_num))
+  norm_num at h
+  have hb := abs_le.mp h
+  constructor <;> linarith

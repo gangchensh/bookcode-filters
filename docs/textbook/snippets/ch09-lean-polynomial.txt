@@ -1,0 +1,3 @@
+theorem integral_square : (∫ x : ℝ in (0 : ℝ)..1, x ^ 2) = 1 / 3 := by
+  rw [integral_pow]	-- 用幂函数的定积分公式重写
+  norm_num	-- 端点代入后计算为1/3

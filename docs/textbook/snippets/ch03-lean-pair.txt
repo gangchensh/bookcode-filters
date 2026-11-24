@@ -1,0 +1,9 @@
+theorem approaches_pair {α β γ : Type*}
+    {F : BookFilter α} {G : BookFilter β} {H : BookFilter γ}
+    {f : α → β} {g : α → γ}
+    (hf : Approaches f F G) (hg : Approaches g F H) :
+    Approaches (fun x => (f x, g x)) F (productFilter G H) := by
+  rintro U ⟨A, hA, B, hB, hU⟩
+  apply F.upward (F.inter_mem (hf A hA) (hg B hB))
+  intro x hx
+  exact hU hx	-- 两个输出要求在同一个输入范围成立

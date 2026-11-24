@@ -1,0 +1,3 @@
+Definition ImproperRight (f : R -> R) (a L : R) : Prop :=
+  (forall T, a <= T -> ex_RInt f a T) /\
+  filterlim (fun T => RInt f a T) (Rbar_locally p_infty) (locally L).

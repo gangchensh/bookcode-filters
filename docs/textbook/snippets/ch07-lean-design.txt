@@ -1,0 +1,17 @@
+def cost (x : ℝ) : ℝ := (x - 3) ^ 2 + 2
+
+theorem cost_derivative (a : ℝ) :
+    HasDerivAt cost (2 * (a - 3)) a := by
+  change HasDerivAt (fun x : ℝ => (x - 3) ^ 2 + 2) (2 * (a - 3)) a	-- 展开cost，显示待求导的函数
+  apply (hasDerivAt_add_const_iff (2 : ℝ)).2	-- 去掉不影响导数的常数2
+  simpa using ((hasDerivAt_id a).sub_const 3).fun_pow 2
+
+theorem cost_minimum (x : ℝ) : 2 ≤ cost x := by
+  unfold cost
+  nlinarith [sq_nonneg (x - 3)]	-- 对所有输入给出下界
+
+theorem cost_eq_minimum (x : ℝ) : cost x = 2 ↔ x = 3 := by
+  unfold cost
+  constructor
+  · intro h; nlinarith [sq_nonneg (x - 3)]	-- 由代价等于2推出x=3
+  · intro h; simp [h]	-- 代入x=3验证等号

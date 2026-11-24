@@ -1,0 +1,325 @@
+附录 A.11：项目配置与 Make：从单文件到多文件
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：编辑器源码
+目录或对象：附件 lean/Theories/ProjectBase.lean
+
+namespace FilterCalculus
+
+def above (cutoff n : Nat) : Prop := cutoff ≤ n
+
+theorem above_self (n : Nat) : above n n := by          -- 每个自然数都不小于自身
+  exact Nat.le_refl n
+
+end FilterCalculus
+
+===== 示例 2 =====
+输入位置：编辑器源码
+目录或对象：附件 lean/examples/ProjectUse.lean
+
+import Theories.ProjectBase
+
+namespace FilterCalculus
+
+theorem above_three : above 3 3 := by                   -- 验证3不小于3
+  exact above_self 3
+
+end FilterCalculus
+
+===== 示例 3 =====
+输入位置：项目配置内容
+目录或对象：附件 lean/lakefile.toml；已有完整配置
+
+name = "filterCalculus"
+version = "0.1.0"
+defaultTargets = ["FilterCalculus"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.35.0"
+
+[[lean_lib]]
+name = "FilterCalculus"
+roots = ["FilterCalculus", "Theories", "AppendixA", "Textbook"]
+
+===== 示例 4 =====
+输入位置：编辑器源码
+目录或对象：开源代码 lean/FilterCalculus.lean；已有完整文件
+
+import Theories
+import Chapters
+import AppendixA
+
+===== 示例 5 =====
+输入位置：配置结构节选
+目录或对象：Lake 自动生成的 lake-manifest.json；仅帮助阅读，不覆盖文件
+
+{
+  "packagesDir": ".lake/packages",
+  "packages": [
+    {
+      "name": "mathlib",
+      "inputRev": "v4.35.0",
+      "rev": "56a005855ea17e0b0958f73ec801ae140b0a1679"
+    }
+  ]
+}
+
+===== 示例 6 =====
+输入位置：Ubuntu 终端
+目录或对象：代码附件的 lean 项目根目录
+
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run --install "$project_toolchain" lake exe cache get
+elan run "$project_toolchain" lake build
+elan run "$project_toolchain" lake env lean examples/ProjectUse.lean
+
+===== 输出示例 7（只核对，不执行） =====
+显示内容：输出示例（节选，只核对）
+目录或对象：lake build 的成功标志；随后 ProjectUse.lean 检查正常时无输出
+
+Build completed successfully.
+
+===== 示例 8 =====
+输入位置：Ubuntu 终端
+目录或对象：开源代码根目录 code；日常使用，已有项目与工具链
+
+make lean
+
+===== 示例 9 =====
+输入位置：编辑器源码
+目录或对象：附件 rocq/Theories/ProjectBase.v
+
+Definition above (cutoff n : nat) : Prop := cutoff <= n.
+
+Lemma above_self : forall n : nat, above n n.           (* 每个自然数都不小于自身 *)
+Proof.
+  intro n. unfold above. exact (le_n n).
+Qed.
+
+===== 示例 10 =====
+输入位置：编辑器源码
+目录或对象：附件 rocq/examples/ProjectUse.v
+
+From Theories Require Import ProjectBase.
+
+Example above_three : above 3 3.                        (* 验证3不小于3 *)
+Proof.
+  exact (above_self 3).
+Qed.
+
+===== 示例 11 =====
+输入位置：项目配置内容
+目录或对象：附件 rocq/_CoqProject；不是终端命令
+
+-Q Theories Theories
+-Q Textbook Textbook
+-Q AppendixA AppendixA
+-Q examples Examples
+-docroot FilterCalculus
+Theories/Eventually.v
+Theories/ProjectBase.v
+Textbook/Ch02/Eventually.v
+Textbook/Ch02/Reciprocal.v
+Textbook/Ch02/Sets.v
+Textbook/Ch02/Neighborhoods.v
+Textbook/Ch02/Filters.v
+Textbook/Ch02/Logic.v
+Textbook/Ch03/StandardFilters.v
+Textbook/Ch03/Approach.v
+Textbook/Ch03/LimitRules.v
+AppendixA/AndDemo.v
+AppendixA/FirstProof.v
+examples/ProjectUse.v
+examples/Smoke.v
+
+===== 示例 12 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入代码附件的 rocq 项目根目录
+
+cd /mnt/d/calculus-work/code/rocq
+eval "$(opam env --switch=calculus-rocq-9.2 --set-switch)"
+rocq -v
+rocq makefile -f _CoqProject -o RocqMakefile
+make -f RocqMakefile
+
+===== 示例 13 =====
+输入位置：Ubuntu 终端
+目录或对象：代码附件的 rocq 项目根目录
+
+rocq compile -Q Theories Theories Theories/ProjectBase.v
+rocq compile -Q Theories Theories examples/ProjectUse.v
+
+===== 示例 14 =====
+输入位置：Ubuntu 终端
+目录或对象：开源代码 rocq 根目录；已构建依赖，并有图形显示环境
+
+rocqide
+
+===== 示例 15 =====
+输入位置：Ubuntu 终端
+目录或对象：开源代码 rocq 根目录；仅在需要显式核验路径时使用
+
+rocqide -Q Theories Theories -Q examples Examples examples/ProjectUse.v
+
+===== 示例 16 =====
+输入位置：Ubuntu 终端
+目录或对象：开源代码 rocq 根目录；首次构建后，配置与工具版本未变
+
+make -f RocqMakefile
+
+===== 示例 17 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；已选择需要使用的 Rocq 9.2.0 switch
+
+opam switch show
+opam var prefix
+command -v vsrocqtop
+
+===== 示例 18 =====
+输入位置：VS Code 配置内容
+目录或对象：rocq/.vscode/settings.json；路径按本机替换，已有对象只合并字段
+
+{
+  "vsrocq.path": "/home/REPLACE_USER/.opam/REPLACE_SWITCH/bin/vsrocqtop",
+  "vsrocq.proof.mode": 0,
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "[makefile]": { "editor.insertSpaces": false }
+}
+
+===== 示例 19 =====
+输入位置：项目配置示例
+目录或对象：代码附件 rocq/templates/CoqProject.minimal；在 rocq 根目录理解相对路径
+
+# Map the physical Theories/ directory to a logical prefix.
+-Q Theories BookLibrary
+# Include this source file in the generated build targets.
+Theories/ProjectBase.v
+
+===== 示例 20 =====
+输入位置：Rocq 导入形式
+目录或对象：格式对照；在相应示范项目的 .v 源码中使用，不输入终端
+
+From BookTheory Require Import Basics.
+(* Equivalent combined form: *)
+Require Import BookTheory.Basics.
+(* Or load first, then open its names: *)
+Require BookTheory.Basics.
+Import BookTheory.Basics.
+
+===== 示例 21 =====
+输入位置：完整项目配置
+目录或对象：开源代码 rocq/templates/rocq-paths/_CoqProject；示范项目已有文件
+
+# Physical directories and logical prefixes deliberately differ.
+-Q core BookTheory
+-R compat Compat
+-Q examples BookExamples
+-I plugins
+-arg "-w all"
+-docroot PathDemo
+
+# A directory entry includes supported sources below it.
+core
+compat/Small.v
+examples/Use.v
+
+===== 示例 22 =====
+输入位置：Rocq 示例源码
+目录或对象：开源代码 rocq/templates/rocq-paths/examples/Use.v
+
+From BookTheory Require Import Basics.
+Require Import Small.
+
+Example sample_ok : sample = 3.                         (* 验证被导入的sample等于3 *)
+Proof. reflexivity. Qed.                                (* 展开定义后两边相同 *)
+
+Check marker.
+
+===== 示例 23 =====
+输入位置：Ubuntu 终端
+目录或对象：开源代码根目录开始；已选择 Rocq 9.2.0 switch
+
+cd rocq/templates/rocq-paths
+rocq makefile -f _CoqProject -o RocqMakefile
+make -f RocqMakefile
+
+===== 示例 24 =====
+输入位置：可选 Rocq 启动配置
+目录或对象：开源代码 config/coqrc.example；不是证明源码或终端命令
+
+(* Optional display-only startup setting; no implicit library imports. *)
+Set Printing Width 80.
+
+===== 示例 25 =====
+输入位置：Makefile 内容
+目录或对象：CalculusBasics/Makefile；示意中命令行须使用 Tab
+
+.PHONY: check
+check:
+	lake env lean Smoke.lean
+
+===== 示例 26 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusBasics 根目录；代码附件与本项目并列
+
+cp -i ../code/lean/templates/Makefile.single Makefile
+make -n check
+make check
+
+===== 示例 27 =====
+输入位置：完整 Makefile
+目录或对象：开源代码根目录 Makefile；已有文件，命令行保留真实 Tab
+
+SHELL := /bin/bash
+LAKE ?= elan run $(shell tr -d '\r\n' < lean/lean-toolchain) lake
+ROCQ ?= rocq
+
+.PHONY: all lean rocq rocq-coquelicot clean cleanLean cleanRocq
+all: lean rocq
+
+lean:
+	cd lean && $(LAKE) build
+	cd lean && $(LAKE) env lean examples/Smoke.lean
+	cd lean && $(LAKE) env lean examples/ProjectUse.lean
+
+rocq:
+	@version="$$($(ROCQ) --print-version)"; case "$$version" in "9.2 "*|"9.2.0 "*) ;; *) echo "This project requires Rocq 9.2.0; found: $$version" >&2; exit 1;; esac
+	cd rocq && $(ROCQ) makefile -f _CoqProject -o RocqMakefile
+	$(MAKE) -C rocq -f RocqMakefile
+
+rocq-coquelicot: rocq
+	cd rocq && $(ROCQ) compile -Q AppendixA AppendixA AppendixA/CoquelicotSmoke.v
+	cd rocq && $(ROCQ) compile -Q Textbook Textbook Textbook/Ch02/CoquelicotBridge.v
+
+clean: cleanLean cleanRocq
+
+cleanLean:
+	cd lean && $(LAKE) clean filterCalculus
+
+cleanRocq:
+	cd rocq && $(ROCQ) makefile -f _CoqProject -o RocqMakefile
+	$(MAKE) -C rocq -f RocqMakefile clean
+
+===== 示例 28 =====
+输入位置：Ubuntu 终端
+目录或对象：代码附件根目录 code
+
+make lean
+make rocq
+
+===== 示例 29 =====
+输入位置：Ubuntu 终端
+目录或对象：开源代码根目录 code；可选清理操作，按需要选择一行
+
+make cleanLean
+make cleanRocq
+make clean

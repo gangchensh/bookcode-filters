@@ -1,0 +1,4 @@
+theorem variable_upper_endpoint {f u : ℝ → ℝ} {a x d : ℝ}
+    (hf : Continuous f) (hu : HasDerivAt u d x) :
+    HasDerivAt (fun y => ∫ t in a..(u y), f t) (f (u x)*d) x :=
+  (accumulation_derivative f hf a (u x)).comp x hu

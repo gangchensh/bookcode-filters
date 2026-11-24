@@ -1,0 +1,8 @@
+theorem plane_flux :
+    (∫ _u : ℝ in (0 : ℝ)..1, ∫ _v : ℝ in (0 : ℝ)..1, (3 : ℝ)) = 3 := by
+  simp	-- 向上定向平面上的常通量
+
+theorem plane_area :
+    (∫ _u : ℝ in (0 : ℝ)..1, ∫ _v : ℝ in (0 : ℝ)..1, Real.sqrt 6) =
+      Real.sqrt 6 := by
+  simp	-- 面积元为√6，不携带定向符号

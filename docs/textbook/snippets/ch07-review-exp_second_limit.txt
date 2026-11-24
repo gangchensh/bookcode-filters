@@ -1,0 +1,11 @@
+theorem exp_second_limit :
+    Tendsto (fun h : ℝ => (Real.exp h-1-h)/h^2) (𝓝[≠] 0) (𝓝 (1/2)) := by
+  have hz := quotient_from_power_bound (n := 2) (K := Real.exp 1 / 6) one_pos (by positivity)
+    (fun h hh => exp_quadratic_bound hh.le)
+  have hs : Tendsto (fun h : ℝ => 1/2+(Real.exp h-(1+h+h^2/2))/h^2)
+      (𝓝[≠] 0) (𝓝 (1/2)) := by
+    simpa using tendsto_const_nhds.add hz
+  apply hs.congr'
+  filter_upwards [eventual_nonzero_punctured] with h hh
+  field_simp [hh]
+  ring

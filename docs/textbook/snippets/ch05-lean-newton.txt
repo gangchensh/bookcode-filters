@@ -1,0 +1,15 @@
+noncomputable def sqrtTwoStep (b : ℝ) : ℝ :=	-- 精确实数模型中的一步递推
+  (b + 2 / b) / 2
+
+theorem sqrtTwoStep_residual (b : ℝ) (hb : b ≠ 0) :
+    (sqrtTwoStep b) ^ 2 - 2 =
+      (b ^ 2 - 2) ^ 2 / (4 * b ^ 2) := by
+  unfold sqrtTwoStep
+  field_simp [hb]
+  ring	-- 核验平方残差的精确恒等式
+
+theorem sqrtTwoStep_le (b : ℝ) (hb : 0 < b) (h : 2 ≤ b ^ 2) :
+    sqrtTwoStep b ≤ b := by
+  have hdiv : 2 / b ≤ b := (div_le_iff₀ hb).2 (by nlinarith)
+  unfold sqrtTwoStep
+  linarith	-- 上侧迭代不会增大当前近似

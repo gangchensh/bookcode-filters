@@ -1,0 +1,12 @@
+# Physical directories and logical prefixes deliberately differ.
+-Q core BookTheory
+-R compat Compat
+-Q examples BookExamples
+-I plugins
+-arg "-w all"
+-docroot PathDemo
+
+# A directory entry includes supported sources below it.
+core
+compat/Small.v
+examples/Use.v

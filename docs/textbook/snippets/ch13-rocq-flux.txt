@@ -1,0 +1,11 @@
+Theorem plane_flux :
+  is_RInt (fun _u : R => RInt (fun _v : R => 3) 0 1) 0 1 3.
+Proof.
+  assert (Hinner : RInt (fun _v : R => 3) 0 1 = 3).
+  { rewrite RInt_const. change ((1-0)*(3:R)=3). ring. }
+  rewrite Hinner.
+  pose proof (is_RInt_const 0 1 (3:R)) as Hconst.
+  change (is_RInt (fun _ : R => 3) 0 1 ((1-0)*3)) in Hconst.
+  replace ((1-0)*3) with (3:R) in Hconst by ring.
+  exact Hconst.	(* 向上法向量与向量场的内积为3 *)
+Qed.

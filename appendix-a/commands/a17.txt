@@ -1,0 +1,46 @@
+附录 A.17：安装与使用 AI 智能体：Kimi Code 与 Codex
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入用户安装脚本缓存目录
+
+mkdir -p "$HOME/.cache/calculus-install"
+cd "$HOME/.cache/calculus-install"
+curl -fL https://code.kimi.com/kimi-code/install.sh -o install-kimi.sh
+less install-kimi.sh
+bash install-kimi.sh
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；启动智能体前进入选定的练习项目
+
+command -v kimi
+kimi --version
+kimi --help
+cd /mnt/d/calculus-work/CalculusBasics
+kimi
+
+===== 示例 3 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入用户安装脚本缓存目录
+
+mkdir -p "$HOME/.cache/calculus-install"
+cd "$HOME/.cache/calculus-install"
+curl -fL https://chatgpt.com/codex/install.sh -o install-codex.sh
+less install-codex.sh
+sh install-codex.sh
+
+===== 示例 4 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；启动智能体前进入选定的练习项目
+
+command -v codex
+codex --version
+codex --help
+cd /mnt/d/calculus-work/CalculusBasics
+codex

@@ -1,0 +1,12 @@
+Theorem ordered_coquelicot_iff (a : nat -> R) (s : R) :
+  SeriesHasSum a s <-> is_series a s.
+Proof.
+  unfold SeriesHasSum, is_series. split.
+  - intros H P HP. destruct (H P HP) as [N HN].
+    exists N. intros n Hn.
+    rewrite <- partialSum_sum_n. apply HN. lia.	(* S n越过原阈值，级数项序不变 *)
+  - intros H P HP. destruct (H P HP) as [N HN].
+    exists (S N). intros n Hn.
+    destruct n as [|k]; [lia |].
+    rewrite partialSum_sum_n. apply HN. lia.	(* 跳过零项和，恢复sum_n下标 *)
+Qed.

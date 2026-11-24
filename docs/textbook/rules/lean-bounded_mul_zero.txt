@@ -1,0 +1,19 @@
+theorem bounded_mul_zero (C : ℝ)	-- 有界因子不必收敛
+    (hC : 0 ≤ C) (hbound : Eventually F (fun x => |f x| ≤ C))
+    (hg : Approaches g F (neighborhoodFilter 0)) :
+    Approaches (fun x => f x*g x) F (neighborhoodFilter 0) := by
+  apply (real_iff _ _ _).2
+  intro ε hε
+  apply F.upward (F.inter_mem hbound
+    ((real_iff _ _ _).1 hg (ε/(C+1)) (by positivity)))
+  intro x hx
+  have hfC : |f x| ≤ C := hx.1
+  have hgd : |g x-0| < ε/(C+1) := hx.2
+  rw [sub_zero] at hgd
+  have hsmall : |g x| *(C+1) < ε :=
+    (lt_div_iff₀ (by positivity)).1 hgd
+  have hprod : |f x| *|g x| ≤ C*|g x| :=
+    mul_le_mul_of_nonneg_right hfC (abs_nonneg _)
+  change |f x*g x-0| < ε
+  rw [sub_zero, abs_mul]
+  nlinarith [abs_nonneg (g x)]	-- C|g|≤(C+1)|g|<ε

@@ -1,0 +1,5 @@
+theorem limit_inv	-- 非零目标保证倒数连续
+    (hf : Approaches f F (neighborhoodFilter a)) (ha : a ≠ 0) :
+    Approaches (fun x => (f x)⁻¹) F (neighborhoodFilter a⁻¹) := by
+  apply (real_mathlib_iff _ _ _).2
+  exact ((real_mathlib_iff _ _ _).1 hf).inv₀ ha	-- 调用 Mathlib 的非零点倒数规则

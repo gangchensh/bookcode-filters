@@ -1,0 +1,8 @@
+def BookLittleO {α : Type*} (r g : α → ℝ)	-- 任意正倍数最终控制r
+    (F : Filter α) : Prop :=
+  ∀ ε > 0, ∀ᶠ x in F, |r x| ≤ ε * |g x|
+
+theorem littleO_mathlib {α : Type*} (r g : α → ℝ) (F : Filter α) :
+    BookLittleO r g F ↔ r =o[F] g := by
+  simpa only [BookLittleO, Real.norm_eq_abs] using
+    (isLittleO_iff : r =o[F] g ↔ _).symm

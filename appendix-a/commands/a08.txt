@@ -1,0 +1,254 @@
+附录 A.8：安装 Lean 4 并建立项目
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录；仅缺少所列工具时安装
+
+sudo apt update
+sudo apt install git curl
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入练习目录
+
+cd /mnt/d/calculus-work
+curl -fL https://elan.lean-lang.org/elan-init.sh -o elan-init.sh
+less elan-init.sh
+sh elan-init.sh --default-toolchain leanprover/lean4:v4.31.0
+source "$HOME/.elan/env"
+elan --version
+elan show
+lean --version
+lake --version
+
+===== 输出示例 3（只核对，不执行） =====
+显示内容：输出示例（节选，只核对）
+目录或对象：仅列 lean --version 和 lake --version；省略平台、提交等字段
+
+Lean (version 4.31.0, ...)
+Lake version 5.0.0-src+... (Lean version 4.31.0)
+
+===== 示例 4 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；glean 应已放入 tools 目录
+
+mkdir -p /mnt/d/calculus-work/tools
+cd /mnt/d/calculus-work/tools
+chmod +x glean
+./glean -help
+
+===== 示例 5 =====
+输入位置：Ubuntu 终端
+目录或对象：练习目录下的 tools；先替换版本占位符
+
+./glean -install elan -version ELAN_VERSION_FROM_MIRROR
+source "$HOME/.elan/env"
+elan --version
+
+===== 示例 6 =====
+输入位置：Ubuntu 终端
+目录或对象：练习目录下的 tools；先替换版本占位符
+
+./glean -install lean -version LEAN_VERSION_REQUIRED_BY_PROJECT
+elan toolchain list
+
+===== 示例 7 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入 mathematics_in_lean
+
+cd /mnt/d/calculus-work
+git clone --depth 1 https://mirror.sjtu.edu.cn/git/lean4-packages/mathematics_in_lean/
+cd mathematics_in_lean
+cat lean-toolchain
+
+===== 示例 8 =====
+输入位置：Ubuntu 终端
+目录或对象：mathematics_in_lean 项目根目录
+
+../tools/glean -lake-manifest-path lake-manifest.json
+lake exe cache get
+
+===== 示例 9 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入新建的 CalculusBasics
+
+cd /mnt/d/calculus-work
+lake new CalculusBasics
+cd CalculusBasics
+code .
+
+===== 示例 10 =====
+输入位置：编辑器源码
+目录或对象：CalculusBasics 根目录的 Smoke.lean；输入完整文件
+
+import Std
+
+#eval 1 + 1                                             -- 计算表达式的值
+#check Nat
+
+def EventuallyNat (P : Nat → Prop) : Prop :=            -- 定义自然数上的最终成立
+  ∃ N : Nat, ∀ n : Nat, N ≤ n → P n                     -- 要求存在一个合适的见证
+
+example : EventuallyNat (fun n => 100 ≤ n) := by
+  refine ⟨100, ?_⟩                                      -- 选取100，留下其余证明任务
+  intro n hn
+  exact hn
+
+===== 示例 11 =====
+输入位置：编辑器源码片段
+目录或对象：Smoke.lean 中的证明部分；此前应已有 EventuallyNat 定义
+
+example : EventuallyNat (fun n => 100 ≤ n) := by
+  refine ⟨100, ?_⟩                                      -- 选取100，留下其余证明任务
+  intro n hn
+  exact hn
+
+===== 示例 12 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusBasics 项目根目录
+
+lake env lean Smoke.lean
+
+===== 示例 13 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusBasics 项目根目录
+
+lake env lean -o Smoke.olean Smoke.lean
+ls -l Smoke.olean
+
+===== 输出示例 14（只核对，不执行） =====
+显示内容：正常输出示意
+目录或对象：Smoke.lean 的计算与类型查询结果；不输入终端
+
+2
+Nat : Type
+
+===== 输出示例 15（只核对，不执行） =====
+显示内容：错误输出示意
+目录或对象：类型不匹配的核心信息；行号与排版可能随版本变化
+
+Smoke.lean:12:2: error: Type mismatch
+  True.intro
+has type
+  True
+but is expected to have type
+  100 ≤ n
+
+===== 示例 16 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入新建的 CalculusLean
+
+cd /mnt/d/calculus-work
+elan run --install leanprover-community/mathlib4:lean-toolchain lake new CalculusLean math
+cd CalculusLean
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lake exe cache get
+elan run "$project_toolchain" lake build
+code .
+
+===== 输出示例 17（只核对，不执行） =====
+显示内容：输出示例（节选，只核对）
+目录或对象：已有完整缓存时的一种情形；省略解包进度与实际耗时
+
+No files to download
+Completed successfully in ... ms!
+Build completed successfully.
+
+===== 示例 18 =====
+输入位置：编辑器源码
+目录或对象：CalculusLean 根目录的 MathlibSmoke.lean
+
+import Mathlib
+
+open Filter
+open scoped Topology
+
+#check Filter
+#check Filter.atTop
+#check Filter.Tendsto
+#check nhds
+
+example {P Q : Nat → Prop}
+    (hP : ∀ᶠ n in atTop, P n)
+    (hQ : ∀ᶠ n in atTop, Q n) :
+    ∀ᶠ n in atTop, P n ∧ Q n := by
+  exact hP.and hQ
+
+===== 示例 19 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 项目根目录
+
+project_toolchain=$(tr -d '\r\n' < lean-toolchain)
+elan run "$project_toolchain" lake env lean MathlibSmoke.lean
+
+===== 输出示例 20（只核对，不执行） =====
+显示内容：正常输出示例（只核对）
+目录或对象：MathlibSmoke.lean 的四条类型查询；Tendsto 长行在此折行
+
+Filter.{u_1} (α : Type u_1) : Type u_1
+Filter.atTop.{u_2} {α : Type u_2} [Preorder α] : Filter α
+Filter.Tendsto.{u_1, u_2} {α : Type u_1} {β : Type u_2}
+  (f : α → β) (l₁ : Filter α) (l₂ : Filter β) : Prop
+nhds.{u_3} {X : Type u_3} [TopologicalSpace X] (x : X) : Filter X
+
+===== 示例 21 =====
+输入位置：Lean 源码
+目录或对象：CalculusLean/MathlibSmoke.lean；替换原来的 import Mathlib
+
+import Mathlib.Order.Filter.AtTopBot.Defs
+import Mathlib.Topology.Defs.Filter
+
+===== 示例 22 =====
+输入位置：Ubuntu 终端
+目录或对象：当前 Lean 项目根目录；核对后才能决定是否使用简写
+
+cat lean-toolchain
+lean --version
+lake --version
+
+===== 输出示例 23（只核对，不执行） =====
+显示内容：输出示例（节选，只核对）
+目录或对象：仅示范版本匹配；不是要求其他项目升级到4.35.0
+
+leanprover/lean4:v4.35.0
+Lean (version 4.35.0, ...)
+Lake version 5.0.0-src+... (Lean version 4.35.0)
+
+===== 示例 24 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 根目录；已核对工具链，按任务选择命令
+
+lake env lean MathlibSmoke.lean
+lake build
+
+===== 示例 25 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 根目录；仅在需要获取相容缓存时运行
+
+lake exe cache get
+
+===== 示例 26 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 根目录；附件目录与项目并列
+
+cp -i ../code/appendix-a/scripts/check-lean.sh check-lean.sh
+
+===== 示例 27 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 根目录；脚本已复制，按需要选择命令
+
+bash check-lean.sh
+bash check-lean.sh OtherProof.lean
+bash check-lean.sh --build
+
+===== 示例 28 =====
+输入位置：Ubuntu 终端
+目录或对象：CalculusLean 根目录；附件与项目并列，check-lean.sh 已复制
+
+cp -i ../code/lean/AppendixA/MathlibFocusedSmoke.lean .
+bash check-lean.sh MathlibFocusedSmoke.lean

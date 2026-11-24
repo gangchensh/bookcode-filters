@@ -1,0 +1,9 @@
+Definition image_filter {X Y : Type} (f : X -> Y)
+    (F : BookFilter X) : BookFilter Y.
+Proof.
+  refine {| members := fun V => members F (preimage f V) |}.
+  - exact (whole F).
+  - intros A B HA HB. exact (meets F _ _ HA HB).
+  - intros A B HA HAB.
+    eapply upward; [exact HA |]. intros x Hx. exact (HAB _ Hx).
+Defined.

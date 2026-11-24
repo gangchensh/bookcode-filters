@@ -1,0 +1,8 @@
+theorem mean_value_square {a b : ℝ} (hab : a < b) :
+    (a+b)/2 ∈ Ioo a b ∧
+      HasDerivative (fun x => x^2) ((a+b)/2) ((b^2-a^2)/(b-a)) := by
+  refine ⟨⟨by linarith,by linarith⟩,?_⟩
+  rw [show (b^2-a^2)/(b-a) = 2*((a+b)/2) by
+    field_simp [sub_ne_zero.mpr hab.ne']
+    <;> ring]
+  exact derivative_square _

@@ -1,0 +1,8 @@
+Lemma integral_affine (c a b : R) :
+  is_RInt (fun t : R => c*t) a b (c*b*b/2-c*a*a/2).
+Proof.
+  apply (is_RInt_derive (fun t : R => c*t*t/2) (fun t : R => c*t)).
+  - intros x Hx. auto_derive; nra.
+  - intros x Hx. apply (ex_derive_continuous (fun t : R => c*t) x).
+    exists c. auto_derive; nra.
+Qed.

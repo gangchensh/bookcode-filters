@@ -1,0 +1,10 @@
+theorem limit_abs
+    (hf : Approaches f F (neighborhoodFilter a)) :
+    Approaches (fun x => |f x|) F (neighborhoodFilter |a|) := by
+  apply (real_iff _ _ _).2
+  intro ε hε
+  apply F.upward ((real_iff _ _ _).1 hf ε hε)
+  intro x hx
+  have hd : |f x-a| < ε := hx
+  change abs (abs (f x) - abs a) < ε
+  exact lt_of_le_of_lt (abs_abs_sub_abs_le_abs_sub _ _) hd

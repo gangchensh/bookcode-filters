@@ -1,0 +1,60 @@
+附录 A.7：Git：给学习笔记保存可比较的版本
+
+以下按教材出现顺序收录命令、配置或证明源码。
+请先阅读对应小节，确认执行平台、目录和版本。不要把整个文件作为脚本运行。
+标为“输出示例”的内容只用于核对，不输入终端。
+示例路径、用户名和版本占位符应按实际替换。
+
+===== 示例 1 =====
+输入位置：Ubuntu 终端
+目录或对象：任意目录开始；随后进入练习目录下的 GitNotes
+
+cd /mnt/d/calculus-work
+mkdir -p GitNotes
+cd GitNotes
+git init
+git config user.name "Student"
+git config user.email "student@example.com"
+code .
+
+===== 示例 2 =====
+输入位置：Ubuntu 终端
+目录或对象：GitNotes 项目根目录
+
+git status
+git add notes.txt
+git diff --cached
+git commit -m "Write first note about eventual truth"
+git log --oneline
+
+===== 示例 3 =====
+输入位置：Ubuntu 终端
+目录或对象：GitNotes 项目根目录
+
+git diff
+git add notes.txt
+git commit -m "Explain the meaning of eventually"
+git log --oneline
+git status
+
+===== 输出示例 4（只核对，不执行） =====
+显示内容：输出示例（节选，只核对）
+目录或对象：git log 与最后的 git status；提交标识为示例
+
+9f3c2a1 Explain the meaning of eventually
+7d8e4b2 Write first note about eventual truth
+On branch main
+nothing to commit, working tree clean
+
+===== 示例 5 =====
+输入位置：Ubuntu 终端
+目录或对象：GitNotes 项目根目录
+
+git rev-parse --show-toplevel
+git status --short
+
+===== 示例 6 =====
+输入位置：Ubuntu 终端
+目录或对象：GitNotes 项目根目录
+
+git switch -c try-another-proof

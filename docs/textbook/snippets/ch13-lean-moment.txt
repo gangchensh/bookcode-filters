@@ -1,0 +1,46 @@
+theorem triangle_moment_x :
+    (∫ x : ℝ in (0 : ℝ)..1, ∫ _y : ℝ in (0 : ℝ)..(1-x), x*(2*x)) = 1/6 := by
+  simp_rw [intervalIntegral.integral_const, smul_eq_mul, sub_zero]
+  have hd : ∀ x : ℝ, HasDerivAt
+      (fun t => (2/3 : ℝ)*t^3 - t^4/2) ((1-x)*(x*(2*x))) x := by
+    intro x
+    convert (((hasDerivAt_id x).fun_pow 3).const_mul (2/3 : ℝ)).sub
+      (((hasDerivAt_id x).fun_pow 4).div_const 2) using 1 <;>
+      first | rfl
+            | (funext t; dsimp; norm_num <;> ring)
+            | (dsimp; norm_num <;> ring)
+  have hi : IntervalIntegrable (fun x : ℝ => (1-x)*(x*(2*x))) volume 0 1 := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  rw [Ch09.primitive_integral (fun x _ => hd x) hi]
+  norm_num
+
+theorem triangle_y_slice (x : ℝ) :
+    (∫ y : ℝ in (0 : ℝ)..(1-x), y*(2*x)) = x*(1-x)^2 := by
+  have hd : ∀ y : ℝ, HasDerivAt (fun t => x*t^2) (y*(2*x)) y := by
+    intro y
+    convert ((hasDerivAt_id y).fun_pow 2).const_mul x using 1 <;>
+      first | rfl | (funext t; dsimp; ring) | (dsimp; ring)
+  have hi : IntervalIntegrable (fun y : ℝ => y*(2*x)) volume 0 (1-x) := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  rw [Ch09.primitive_integral (fun y _ => hd y) hi]
+  simp
+
+theorem triangle_moment_y :
+    (∫ x : ℝ in (0 : ℝ)..1, ∫ y : ℝ in (0 : ℝ)..(1-x), y*(2*x)) = 1/12 := by
+  simp_rw [triangle_y_slice]
+  have hd : ∀ x : ℝ, HasDerivAt
+      (fun t => t^2/2 - (2/3 : ℝ)*t^3 + t^4/4) (x*(1-x)^2) x := by
+    intro x
+    convert ((((hasDerivAt_id x).fun_pow 2).div_const 2).sub
+      (((hasDerivAt_id x).fun_pow 3).const_mul (2/3 : ℝ))).add
+      (((hasDerivAt_id x).fun_pow 4).div_const 4) using 1 <;>
+      first | rfl
+            | (funext t; dsimp; norm_num <;> ring)
+            | (dsimp; norm_num <;> ring)
+  have hi : IntervalIntegrable (fun x : ℝ => x*(1-x)^2) volume 0 1 := by
+    apply Continuous.intervalIntegrable
+    fun_prop
+  rw [Ch09.primitive_integral (fun x _ => hd x) hi]
+  norm_num

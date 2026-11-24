@@ -1,0 +1,5 @@
+Theorem mean_value (f df : R -> R) (a b : R)
+  (Hab : a < b)
+  (Hd : forall x, a <= x <= b -> derivable_pt_lim f x (df x)) :
+  exists c, f b-f a = df c*(b-a) /\ a < c < b.
+Proof. exact (MVT_cor2 f df a b Hab Hd). Qed.

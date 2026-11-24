@@ -1,0 +1,7 @@
+theorem polynomial_limit (a : ℝ × ℝ) :
+    Tendsto sensor (𝓝 a) (𝓝 (sensor a)) := by
+  exact (sensor_derivative a).continuousAt	-- 全微分存在蕴含连续
+
+theorem restricted_limit (S : Set (ℝ × ℝ)) (a : ℝ × ℝ) :
+    Tendsto sensor (𝓝[S] a) (𝓝 (sensor a)) := by
+  exact (polynomial_limit a).mono_left nhdsWithin_le_nhds

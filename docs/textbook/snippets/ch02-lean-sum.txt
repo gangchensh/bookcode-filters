@@ -1,0 +1,11 @@
+theorem sum_small (ε : ℝ) (hε : 0 < ε) :
+    Eventually tailFilter
+      (fun n => |reciprocal n + shifted n| < ε) := by
+  have hu := reciprocal_small (ε / 2) (half_pos hε)
+  have hv := shifted_small (ε / 2) (half_pos hε)
+  apply eventually_mono (eventually_and hu hv) -- 合并两个ε/2要求
+  intro n hn
+  calc
+    |reciprocal n + shifted n|
+        ≤ |reciprocal n| + |shifted n| := abs_add_le _ _
+    _ < ε := by linarith [hn.1, hn.2]          -- 两个距离界相加

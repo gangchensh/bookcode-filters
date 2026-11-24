@@ -1,0 +1,264 @@
+附录 A：参考文献与网页地址
+目录整理日期：2026-10-20
+网址单独占一行，不含排版换行或隐藏连字符。
+
+[1] Lean 官方安装说明
+https://lean-lang.org/install/
+
+[2] Rocq 官方安装说明
+https://rocq-prover.org/install
+
+[3] Platform Linux 说明
+https://github.com/rocq-prover/platform/blob/main/doc/README_Linux.md
+
+[4] VS Code 的官方要求
+https://code.visualstudio.com/docs/supporting/requirements
+
+[5] Rocq Platform 发布页
+https://github.com/rocq-prover/platform/releases
+
+[6] Lean Web 在线编辑器
+https://live.lean-lang.org/
+
+[7] jsCoq 在线环境
+https://coq.vercel.app/
+
+[8] VS Code 语言服务器说明
+https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
+
+[9] 微软安装文档
+https://learn.microsoft.com/windows/wsl/install
+
+[10] 微软跨文件系统说明
+https://learn.microsoft.com/windows/wsl/filesystems
+
+[11] Ubuntu 包管理说明
+https://ubuntu.com/server/docs/how-to/software/package-management/
+
+[12] 官方手册
+https://curl.se/docs/manpage.html
+
+[13] 微软 WSL 资源配置说明
+https://learn.microsoft.com/en-us/windows/wsl/wsl-config
+
+[14] 微软 systemd 启用说明
+https://learn.microsoft.com/en-us/windows/wsl/systemd
+
+[15] systemd 资源限制说明
+https://www.freedesktop.org/software/systemd/man/latest/systemd.resource-control.html
+
+[16] scope 内存不足策略
+https://www.freedesktop.org/software/systemd/man/latest/systemd.scope.html
+
+[17] Linux cgroup v2 文档
+https://docs.kernel.org/admin-guide/cgroup-v2.html
+
+[18] VS Code 官方下载页
+https://code.visualstudio.com/Download
+
+[19] Windows 安装说明
+https://code.visualstudio.com/docs/setup/windows
+
+[20] VS Code 的 Linux 安装说明
+https://code.visualstudio.com/docs/setup/linux
+
+[21] VS Code 的 WSL 文档
+https://code.visualstudio.com/docs/remote/wsl
+
+[22] VS Code 终端文档
+https://code.visualstudio.com/docs/terminal/basics
+
+[23] Git 初始配置说明
+https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+
+[24] Git 记录修改说明
+https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+
+[25] VS Code 源代码管理文档
+https://code.visualstudio.com/docs/sourcecontrol/overview
+
+[26] VS Code 仓库与远程说明
+https://code.visualstudio.com/docs/sourcecontrol/repos-remotes
+
+[27] Lean 官方手动安装指南
+https://lean-lang.org/install/manual/
+
+[28] Lean/elan 镜像说明
+https://mirror.sjtu.edu.cn/docs/elan
+
+[29] Glean 项目说明
+https://github.com/alissa-tung/glean
+
+[30] elan 工具链文档
+https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Managing-Toolchains-with-Elan/
+
+[31] Lake 官方参考
+https://lean-lang.org/doc/reference/latest/Build-Tools-and-Distribution/Lake/
+
+[32] Lake 模板源码
+https://github.com/leanprover/lean4/blob/v4.31.0/src/lake/Lake/CLI/Init.lean
+
+[33] mathlib 项目配置
+https://github.com/leanprover-community/mathlib4/blob/master/lakefile.lean
+
+[34] mathlib 的官方说明
+https://github.com/leanprover-community/mathlib4
+
+[35] 缓存程序源码
+https://github.com/leanprover-community/mathlib4/blob/master/Cache/Main.lean
+
+[36] elan 工具链实现
+https://github.com/leanprover/elan/blob/master/src/elan/toolchain.rs
+
+[37] mathlib 滤子记号文档
+https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Filter/Defs.html
+
+[38] mathlib 文档
+https://leanprover-community.github.io/mathlib4_docs/
+
+[39] atTop 模块文档
+https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Filter/AtTopBot/Defs.html
+
+[40] 邻域滤子模块文档
+https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/Defs/Filter.html
+
+[41] opam 官方使用说明
+https://opam.ocaml.org/doc/Usage.html
+
+[42] Platform 仓库
+https://github.com/rocq-prover/platform
+
+[43] Rocq 开发者关于跨平台编译库的讨论
+https://discourse.rocq-prover.org/t/is-it-possible-to-share-binary-only-libraries-across-oses/1825
+
+[44] Rocq 的 opam 安装文档
+https://rocq-prover.org/docs/using-opam
+
+[45] GNU m4 手册
+https://www.gnu.org/software/m4/manual/m4.html
+
+[46] pkg-config 项目说明
+https://www.freedesktop.org/wiki/Software/pkg-config/
+
+[47] Coquelicot 官方文档
+https://coquelicot.gitlabpages.inria.fr/coquelicot/
+
+[48] 官方包索引
+https://rocq-prover.org/p/coq-coquelicot/latest/versions
+
+[49] Rocq 版本管理文档
+https://rocq-prover.org/docs/managing-versions
+
+[50] VS Code 变量说明
+https://code.visualstudio.com/docs/reference/variables-reference
+
+[51] VsRocq 官方 FAQ
+https://github.com/rocq-prover/vsrocq/blob/main/docs/FAQ.md
+
+[52] 2.5.0 的 opam 包说明
+https://raw.githubusercontent.com/ocaml/opam-repository/master/packages/vsrocq-language-server/vsrocq-language-server.2.5.0/opam
+
+[53] Rocq 9.2 的 RocqIDE 文档
+https://rocq-prover.org/doc/V9.2.0/refman/practical-tools/coqide.html
+
+[54] Rocq 工程文档
+https://rocq-prover.org/doc/V9.2.0/refman/practical-tools/utilities.html
+
+[55] VsRocq 文档
+https://github.com/rocq-prover/vsrocq
+
+[56] 服务器路径查找实现
+https://raw.githubusercontent.com/rocq-prover/vsrocq/main/client/src/utilities/toolchain.ts
+
+[57] 命令选项说明
+https://rocq-prover.org/doc/V9.2.0/refman/practical-tools/coq-commands.html
+
+[58] mathlib 的4.35.0标签
+https://raw.githubusercontent.com/leanprover-community/mathlib4/v4.35.0/lean-toolchain
+
+[59] Lean 社区项目说明
+https://leanprover-community.github.io/install/project.html
+
+[60] Flocq 官方安装说明
+https://flocq.gitlabpages.inria.fr/
+
+[61] opam switch 手册
+https://opam.ocaml.org/doc/man/opam-switch.html
+
+[62] 微软 WSL 导出与导入说明
+https://learn.microsoft.com/en-us/windows/wsl/basic-commands
+
+[63] 微软 WSL 文件系统说明
+https://learn.microsoft.com/en-us/windows/dev-environment/wsl-interop
+
+[64] Lean 扩展的配置声明
+https://github.com/leanprover/vscode-lean4/blob/master/vscode-lean4/package.json
+
+[65] Lean VS Code 扩展手册的文件重启说明
+https://github.com/leanprover/vscode-lean4/blob/master/vscode-lean4/manual/manual.md
+
+[66] 官方项目
+https://github.com/MoonshotAI/kimi-code
+
+[67] 官方入门文档
+https://github.com/MoonshotAI/kimi-code/blob/main/docs/en/guides/getting-started.md
+
+[68] Kimi CLI 命令参考
+https://github.com/MoonshotAI/kimi-code/blob/main/docs/en/reference/kimi-command.md
+
+[69] OpenAI 官方 Codex CLI 文档
+https://learn.chatgpt.com/docs/codex/cli
+
+[70] WSL 使用说明
+https://learn.chatgpt.com/docs/windows/wsl
+
+[71] OpenAI 认证说明
+https://learn.chatgpt.com/docs/auth
+
+[72] OpenAI 的 CLI 命令参考
+https://learn.chatgpt.com/docs/developer-commands?surface=cli
+
+[73] Lean 的证明验证说明
+https://lean-lang.org/doc/reference/latest/ValidatingProofs/
+
+[74] 命令中使用的下载或仓库地址：README.md
+https://raw.githubusercontent.com/leanprover/elan/master/README.md
+
+[75] 命令中使用的下载或仓库地址：microsoft.asc
+https://packages.microsoft.com/keys/microsoft.asc
+
+[76] 命令中使用的下载或仓库地址：code
+https://packages.microsoft.com/repos/code
+
+[77] 命令中使用的下载或仓库地址：elan-init.sh
+https://elan.lean-lang.org/elan-init.sh
+
+[78] 命令中使用的下载或仓库地址：mathematics_in_lean
+https://mirror.sjtu.edu.cn/git/lean4-packages/mathematics_in_lean/
+
+[79] 命令中使用的下载或仓库地址：platform.git
+https://github.com/rocq-prover/platform.git
+
+[80] 命令中使用的下载或仓库地址：released
+https://rocq-prover.org/opam/released
+
+[81] 命令中使用的下载或仓库地址：install.sh
+https://code.kimi.com/kimi-code/install.sh
+
+[82] 命令中使用的下载或仓库地址：install.sh
+https://chatgpt.com/codex/install.sh
+
+[83] Mathematics in Lean 教程
+https://leanprover-community.github.io/mathematics_in_lean/
+
+[84] GNU Make 手册
+https://manpages.ubuntu.com/manpages/noble/man1/make.1.html
+
+[85] RocqIDE 官方界面图原文件
+https://rocq-prover.org/doc/V9.2.0/refman/_images/rocqide.png
+
+[86] opam clean 手册
+https://opam.ocaml.org/doc/man/opam-clean.html
+
+[87] 微软 WSL 磁盘空间说明
+https://learn.microsoft.com/en-us/windows/wsl/disk-space

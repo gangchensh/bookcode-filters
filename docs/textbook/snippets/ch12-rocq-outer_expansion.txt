@@ -1,0 +1,5 @@
+Theorem outer_square_expansion (h k : R) :
+  1+(3+(2*h+k)+h^2)^2+(2+(2*h+k)+h*k)^2-14 =
+  10*(2*h+k)+(6*h^2+4*h*k+2*(2*h+k)^2+
+    2*(2*h+k)*(h^2+h*k)+h^4+h^2*k^2).
+Proof. ring. Qed.	(* 分离一次项与二阶以上余项 *)

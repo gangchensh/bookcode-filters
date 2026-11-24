@@ -1,0 +1,6 @@
+theorem area_product {u v : ℝ → ℝ} {a du dv : ℝ}
+    (hu : HasDerivative u a du) (hv : HasDerivative v a dv) :
+    HasDerivative (fun t => u t*v t) a (du*v a+u a*dv) ∧
+      ∀ x, u x*v x-u a*v a =
+        v a*(u x-u a)+u a*(v x-v a)+(u x-u a)*(v x-v a) := by
+  exact ⟨product_rule_direct hu hv,fun x => by ring⟩

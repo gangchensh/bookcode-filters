@@ -1,0 +1,16 @@
+Theorem limit_add (f g : X -> R) (a b : R) :	(* 共同源上的和极限 *)
+  Approaches f F (neighborhood_filter a) ->
+  Approaches g F (neighborhood_filter b) ->
+  Approaches (fun x => f x+g x) F (neighborhood_filter (a+b)).
+Proof.
+  intros Hf Hg. apply (proj2 (real_iff _ _ _)).
+  intros eps Heps. assert (Hhalf : 0 < eps/2) by lra.
+  eapply upward.
+  - exact (eventually_and
+      (proj1 (real_iff _ _ _) Hf _ Hhalf)
+      (proj1 (real_iff _ _ _) Hg _ Hhalf)).	(* 合并两个 eps/2 距离界 *)
+  - intros x [Hxf Hxg].
+    replace (f x+g x-(a+b)) with ((f x-a)+(g x-b)) by ring.
+    pose proof (Rabs_triang (f x-a) (g x-b)).
+    lra.	(* 距离之和严格小于 eps *)
+Qed.

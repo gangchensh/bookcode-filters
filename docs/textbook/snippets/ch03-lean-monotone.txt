@@ -1,0 +1,13 @@
+theorem source_finer {α β : Type*} {f : α → β}
+    {F F' : BookFilter α} {G : BookFilter β}
+    (hF : Finer F' F) (hf : Approaches f F G) :
+    Approaches f F' G := by
+  intro V hV
+  exact hF (f ⁻¹' V) (hf V hV)	-- 原像的最终要求在更细源中仍成立
+
+theorem target_coarser {α β : Type*} {f : α → β}
+    {F : BookFilter α} {G G' : BookFilter β}
+    (hG : Finer G G') (hf : Approaches f F G) :
+    Approaches f F G' := by
+  intro V hV
+  exact hf V (hG V hV)	-- 较粗目标的要求已包含在原要求中

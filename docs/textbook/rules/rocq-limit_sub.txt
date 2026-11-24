@@ -1,0 +1,8 @@
+Theorem limit_sub (f g : X -> R) (a b : R) :
+  Approaches f F (neighborhood_filter a) ->
+  Approaches g F (neighborhood_filter b) ->
+  Approaches (fun x => f x-g x) F (neighborhood_filter (a-b)).
+Proof.
+  intros Hf Hg. exact (limit_add f (fun x => -g x) a (-b)
+    Hf (limit_neg g b Hg)).
+Qed.

@@ -1,0 +1,4 @@
+theorem derivative_square (a : ℝ) :	-- 平方函数在a处的导数为2a
+    HasDerivative (fun x => x ^ 2) a (2 * a) := by
+  apply (derivative_mathlib _ _ _).2
+  simpa using (hasDerivAt_id a).fun_pow 2

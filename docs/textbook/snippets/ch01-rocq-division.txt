@@ -1,0 +1,12 @@
+Example nat_half : (1 / 2 = 0)%nat.	(* 自然数除法取整数商 *)
+Proof. reflexivity. Qed.
+
+Example real_div_zero : 1 / 0 = 0.	(* 实数标准库约定除以0为0 *)
+Proof.
+  unfold Rdiv. rewrite Rinv_0, Rmult_0_r.
+  reflexivity.
+Qed.
+
+Theorem real_div_self (x : R) (Hx : x <> 0) :	(* 非零实数除以自身等于1 *)
+  x / x = 1.
+Proof. apply Rdiv_diag. exact Hx. Qed.

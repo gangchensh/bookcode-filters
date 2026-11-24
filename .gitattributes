@@ -1,0 +1,21 @@
+# Keep commands and proof sources consistent in Windows and Linux checkouts.
+* text=auto
+*.sh text eol=lf
+*.lean text eol=lf
+*.v text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+lean-toolchain text eol=lf
+Makefile* text eol=lf
+_CoqProject text eol=lf
+config/* text eol=lf
+*.png binary
+appendix-a/examples/CoqProject.minimal text eol=lf
+appendix-a/examples/rocq-paths/_CoqProject text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.py text eol=lf
+*.opam text eol=lf
+_CoqProjectTextbook text eol=lf

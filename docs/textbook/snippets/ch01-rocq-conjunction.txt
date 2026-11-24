@@ -1,0 +1,8 @@
+Theorem swap_and (P Q : Prop) :	(* 交换合取中的两个命题 *)
+  P /\ Q -> Q /\ P.
+Proof.
+  intros [HP HQ].	(* 取出P与Q的证明 *)
+  split.	(* 分别证明Q和P *)
+  - exact HQ.
+  - exact HP.
+Qed.

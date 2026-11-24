@@ -1,0 +1,5 @@
+theorem exp_series (x : ℝ) :
+    SeriesHasSum (fun n => x^n/(Nat.factorial n : ℝ)) (Real.exp x) := by
+  have h : HasSum (fun n => x^n/(Nat.factorial n : ℝ)) (Real.exp x) := by
+    simpa only [Real.exp_eq_exp_ℝ] using (NormedSpace.expSeries_div_hasSum_exp x)
+  exact h.tendsto_sum_nat	-- 绝对收敛的库级数也按自然顺序收敛
